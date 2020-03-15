@@ -15,7 +15,10 @@ TXT_DIR = $(SRC)/txt
 TXT_SRC = $(wildcard $(TXT_DIR)/*.cpp)
 
 # Ensemble des répertoires
-DIR = $(BIN) $(OBJ) $(DATA) $(DOC) $(SRC) $(CORE_SRC_DIR) $(TXT_SRC_DIR) 
+DIR = $(BIN) $(OBJ) $(DATA) $(DOC) $(SRC) $(CORE_DIR) $(TXT_DIR) 
+
+# Fichier de configuration Doxygen
+DOC_CONF = $(DOC)/Doxyfile
 
 
 
@@ -53,9 +56,10 @@ OBJ_LIST_TXT = $(patsubst %.cpp, %.o, $(addprefix $(OBJ)/, $(notdir $(TXT_SRC) $
 #=============================== Règles ===================================
 #------------------- Règle par défaut ------------------------------------
 # Pour tout compiler
-default: make_dir $(TARGET_TXT)
+default: init $(TARGET_TXT) 
 
-
+# Pour initialiser le workspace
+init: make_dir $(DOC_CONF)
 
 #-------------------- Dépendances --------------------------------
 # Gérer la génération des listes de dépendences et inclusion de ces dernières
@@ -86,5 +90,14 @@ $(OBJ)/%.o: $(SRC)/*/%.cpp
 
 #------------------ Règles utilitaires --------------------------------------
 # Supprimer les fichiers  inutiles
+.PHONY: clean doc_update default make_dir
+.SILENT: doc_update
+
 clean:
-	rm -rf $(OBJ) $(BIN) $(DEP)
+	rm -rf $(OBJ) $(BIN) $(DEP) $(DOC)/*[^Doxyfile]
+
+doc_update: $(DOC_CONF)
+	doxygen $(DOC_CONF) > /dev/null
+
+$(DOC_CONF):
+	doxygen -g $@
