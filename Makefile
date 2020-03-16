@@ -18,7 +18,8 @@ TXT_SRC = $(wildcard $(TXT_DIR)/*.cpp)
 DIR = $(BIN) $(OBJ) $(DATA) $(DOC) $(SRC) $(CORE_DIR) $(TXT_DIR) 
 
 # Fichier de configuration Doxygen
-DOC_CONF = $(DOC)/Doxyfile
+CONF = Doxyfile
+DOC_CONF = $(DOC)/$(CONF)
 
 
 
@@ -56,7 +57,7 @@ OBJ_LIST_TXT = $(patsubst %.cpp, %.o, $(addprefix $(OBJ)/, $(notdir $(TXT_SRC) $
 #=============================== Règles ===================================
 #------------------- Règle par défaut ------------------------------------
 # Pour tout compiler
-default: init $(TARGET_TXT) 
+default: init $(TARGET_TXT)
 
 # Pour initialiser le workspace
 init: make_dir $(DOC_CONF)
@@ -81,6 +82,7 @@ $(DIR):
 # Edition de liens
 $(TARGET_TXT): $(patsubst %.cpp, %.o, $(OBJ_LIST_TXT))
 	$(LD) $(LDFLAGS) $+ -o $@ $(LDFLAGS)
+	$(doc_update)
 
 # Compilation des fichiers objets et génération des listes de dépendances
 $(OBJ)/%.o: $(SRC)/*/%.cpp
@@ -94,10 +96,13 @@ $(OBJ)/%.o: $(SRC)/*/%.cpp
 .SILENT: doc_update
 
 clean:
-	rm -rf $(OBJ) $(BIN) $(DEP) $(DOC)/*[^Doxyfile]
+	rm -rf $(OBJ) $(BIN) $(DEP)
+	find $(DOC)/* -type d ! -name '$(CONF)' | xargs rm -rf
 
-doc_update: $(DOC_CONF)
-	doxygen $(DOC_CONF) > /dev/null
+doc_update = doxygen $(DOC_CONF)
+
+doc_update:
+	$(doc_update)
 
 $(DOC_CONF):
 	doxygen -g $@
