@@ -20,6 +20,7 @@ DIR = $(BIN) $(OBJ) $(DATA) $(DOC) $(SRC) $(CORE_DIR) $(TXT_DIR)
 # Fichier de configuration Doxygen
 CONF = Doxyfile
 DOC_CONF = $(DOC)/$(CONF)
+DOC_MAIN = $(DOC)/html/index.html
 
 
 
@@ -64,7 +65,7 @@ BLUE = \e[38;5;45m
 #=============================== Règles ===================================
 #------------------- Règle par défaut ------------------------------------
 # Pour tout compiler
-default: init $(TARGET_TXT)
+default: init $(TARGET_TXT) $(DOC_MAIN)
 
 # Pour initialiser le workspace
 init: make_dir $(DOC_CONF)
@@ -114,10 +115,10 @@ clean:
 
 doc_update = doxygen $(DOC_CONF)
 
-doc_update:
+$(DOC_MAIN): README.md
 	@$(doc_update)
 	@echo "Updating documentation"
 
 $(DOC_CONF):
-	@doxygen -g $@
 	@echo "Generating doxygen configuration file : $@$(NORM)"
+	@doxygen -g $@
