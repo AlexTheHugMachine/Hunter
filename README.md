@@ -13,15 +13,15 @@ Referent teacher : Elodie Desseree
 This project is part of the Lifap4 course and is a rogue-like assasination game
 
 ## Avancement
-[X] Makefile
+- [X] Makefile
 
-[X] Documentation
+- [X] Documentation
 
-[ ] Core module
+- [ ] Core module
 
-[ ] Text display module
+- [ ] Text display module
 
-[ ] Graphical display module
+- [ ] Graphical display module
 
 ## Directory organization
 
