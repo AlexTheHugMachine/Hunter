@@ -1,3 +1,5 @@
+#ifndef VEC2
+#define VEC2
 
 /** This class handles all vector operations
  *  @class Vec2
@@ -16,6 +18,7 @@ public:
     Vec2(float x, float y);
 
     /** Default constructor : initializes at (0, 0)
+     * Construct 
      */
     Vec2();
 
@@ -38,3 +41,5 @@ public:
 
 
 };
+
+#endif
