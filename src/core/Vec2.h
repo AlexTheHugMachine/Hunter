@@ -30,6 +30,10 @@ public:
      */
     Vec2 operator+(Vec2 v);
 
+    /** Vector incrementation
+     */
+    Vec2 operator+=(Vec2 v);
+
     /** Vector substraction
      */
     Vec2 operator-(Vec2 v);

@@ -1,10 +1,10 @@
-#ifndef _CASE
-#define _CASE
+#ifndef CASE
+#define CASE
 
-typedef int Case;
+enum Case{
+    Empty,
+    Wall
+};
 
-void afficheElementTD(Case e);
-/* Preconditions : aucune */
-/* Postconditions : affichage de e sur la sortie standard */
 
 #endif
