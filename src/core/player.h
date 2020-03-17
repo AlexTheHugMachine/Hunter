@@ -41,8 +41,6 @@ class player {
          * Destructeur par défaut de la classe player
          */
         ~player();
-
-        //coucou
 };
 
 #endif
