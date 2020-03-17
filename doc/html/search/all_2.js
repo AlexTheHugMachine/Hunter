@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['vec2',['Vec2',['../classVec2.html',1,'Vec2'],['../classVec2.html#a6256fecebf5a43b14d5d5341c58cfdc4',1,'Vec2::Vec2(float x, float y)'],['../classVec2.html#a76080feed7005893ecc634f903cfbae0',1,'Vec2::Vec2()']]]
+  ['operator_2a',['operator*',['../classVec2.html#a8c9d1b35cb8d86450147f1a07b335c75',1,'Vec2']]],
+  ['operator_2b',['operator+',['../classVec2.html#af8b2ed514fb07805a2fd9b3c78ad4c92',1,'Vec2']]],
+  ['operator_2d',['operator-',['../classVec2.html#a26ec20d08a80a0bd6e49f23a1e992e00',1,'Vec2']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7evec2',['~Vec2',['../classVec2.html#a13007f52587b4205f78ed6b1659f5eac',1,'Vec2']]]
+  ['vec2',['Vec2',['../classVec2.html',1,'Vec2'],['../classVec2.html#a6256fecebf5a43b14d5d5341c58cfdc4',1,'Vec2::Vec2(float x, float y)'],['../classVec2.html#a76080feed7005893ecc634f903cfbae0',1,'Vec2::Vec2()']]]
 ];

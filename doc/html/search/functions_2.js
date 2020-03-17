@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7evec2',['~Vec2',['../classVec2.html#a13007f52587b4205f78ed6b1659f5eac',1,'Vec2']]]
+  ['player',['player',['../classplayer.html#a97de83bce15f880241f561b55b016b02',1,'player']]]
 ];

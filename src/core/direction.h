@@ -6,4 +6,6 @@ enum direction {
     gauche,
     haut,
     bas
-}
+};
+
+#endif
