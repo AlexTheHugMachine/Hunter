@@ -2,7 +2,7 @@
 #define PLAYER_H
 #include "Vec2.h"
 #include "direction.h"
-//#include "Terrain.h"
+#include "Terrain.h"
 
 /** Represent the player
  * 
@@ -21,10 +21,11 @@ class player {
         /**
          * @brief
          * Fonction permettant le déplacement du joueur sur un terrain en fnction d'une direction
-         * @param T Prend en paramètre un terrain T ainsi qu'une direction D
+         * @param T Terrain
+         * @param D Direction
          * @return Renvoie la position du joueur après modification des coordonnées
          */
-        //Vec2 Move(TableauDynamique2D T, direction D);
+        Vec2 Move(Terrain T, direction D);
         /**
          * @brief
          * Procédure permettant d'initialiser une position du joueur
@@ -41,8 +42,6 @@ class player {
          * Destructeur par défaut de la classe player
          */
         ~player();
-
-        //coucou
 };
 
 #endif

@@ -4,6 +4,8 @@
 #include "Case.h"
 #include "Vec2.h"
 
+/** Terrain
+ */
 class Terrain{
 private:
     Case* arr;

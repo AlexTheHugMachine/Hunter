@@ -1,4 +1,3 @@
-#include "Vec2.h"
 #include "player.h"
 
 using namespace std;
@@ -12,9 +11,9 @@ Vec2 player::GetPos() const {
     return Pos;
 }
 
-/*Vec2 player::Move(TableauDynamique2D T, direction D) {
+Vec2 player::Move(Terrain T, direction D) {
 
-}*/
+}
 
 void player::SetPos(Vec2 V) {
     Pos.x = V.x;
