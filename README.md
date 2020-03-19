@@ -18,6 +18,12 @@ This project is part of the Lifap4 course and is a rogue-like assasination game
 - [X] Documentation
 
 - [ ] Core module
+    - [X] Vec2 class 
+    - [X] Player class (basic)
+    - [ ] Terrain class (basic)
+    - [ ] Ennemy class (basic)
+    - [ ] Pathfinding
+    - [ ] Game menus (class, basic)
 
 - [ ] Text display module
 
