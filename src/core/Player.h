@@ -8,8 +8,6 @@
  * 
  */
 class Player {
-    private :
-        Vec2 pos; ///< Player position
     public :
         /** Default constructor : initializes at (0, 0)
          *  
@@ -49,6 +47,9 @@ class Player {
         /** Test the player class
          */
         void test() const;
+    
+    private :
+        Vec2 pos; ///< Player position
 };
 
 #endif
