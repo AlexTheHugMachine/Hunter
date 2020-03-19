@@ -41,3 +41,8 @@ Vec2 Vec2::operator*(float a)
 {
     return Vec2(x * a, y * a);
 }
+
+void Vec2::print() const
+{
+    cout << "x = " << x << ", y = " << y << endl;
+}

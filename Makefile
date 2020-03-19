@@ -47,7 +47,7 @@ LDFLAGS =
 
 #-------------------- Fichiers pour la compilation -------------------
 # Pour trouver les headers
-INCLUDE_LOCAL = -I$(CORE_SRC) -I$(TXT_SRC)
+INCLUDE_LOCAL = -I$(CORE_DIR) -I$(TXT_DIR) #-I$(SRC) -I.
 
 # Liste des fichiers objets à générer pour l'exécutable texte
 OBJ_LIST_TXT = $(patsubst %.cpp, %.o, $(addprefix $(OBJ)/, $(notdir $(TXT_SRC) $(CORE_SRC))))
@@ -82,23 +82,23 @@ DEPFLAGS = -MMD -MF $(@:.o=.d)
 make_dir: $(DIR)
 
 $(DIR): 
-	@mkdir $@
 	@echo "Creating $(YELLOW)$@$(NORM) directory"
+	@mkdir $@
 
 
 
 #----------------- Règles de compilation --------------------------------------
 # Edition de liens
 $(TARGET_TXT): $(patsubst %.cpp, %.o, $(OBJ_LIST_TXT))
-	@$(LD) $(LDFLAGS) $+ -o $@ $(LDFLAGS)
 	@echo "Linking $(BLUE)$+$(NORM) and creating executable $(GREEN)$@$(NORM)"
-	@$(doc_update)
+	@$(LD) $(LDFLAGS) $+ -o $@ $(LDFLAGS) $(INCLUDE_LOCAL)
 	@echo "Updating documentation"
+	@$(doc_update)
 
 # Compilation des fichiers objets et génération des listes de dépendances
 $(OBJ)/%.o: $(SRC)/*/%.cpp
-	@$(CC) $(CCFLAGS) -o $@ $< $(DEPFLAGS)
 	@echo "Compiling $(RED)$<$(NORM) and generating its dependency list"
+	@$(CC) $(CCFLAGS) -o $@ $< $(DEPFLAGS) $(INCLUDE_LOCAL)
 
 
 
@@ -108,16 +108,16 @@ $(OBJ)/%.o: $(SRC)/*/%.cpp
 .SILENT: doc_update
 
 clean:
-	@rm -rf $(OBJ)/* $(BIN)/*  
 	@echo "Emptying $(YELLOW)$(OBJ)$(NORM) and $(YELLOW)$(BIN)$(NORM) directories"
+	@rm -rf $(OBJ)/* $(BIN)/*  
 	@echo "Removing $(YELLOW)$$(find $(DOC)/* -maxdepth 0 -type d ! -name '$(CONF)')$(NORM) directory"
 	@find $(DOC)/* -maxdepth 0 -type d ! -name '$(CONF)' | xargs rm -rf
 
 doc_update = doxygen $(DOC_CONF)
 
 $(DOC_MAIN): README.md
-	@$(doc_update)
 	@echo "Updating documentation"
+	@$(doc_update)
 
 $(DOC_CONF):
 	@echo "Generating doxygen configuration file : $@$(NORM)"

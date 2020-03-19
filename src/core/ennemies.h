@@ -1,7 +1,7 @@
 #ifndef ENNEMIES_H
 #define ENNEMIES_H
 #include "Vec2.h"
-#include "player.h"
+#include "Player.h"
 #include "direction.h"
 //#include "Terrain.h"
 

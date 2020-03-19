@@ -18,7 +18,7 @@ public:
     Vec2(float x, float y);
 
     /** Default constructor : initializes at (0, 0)
-     * Construct 
+     *  
      */
     Vec2();
 
@@ -41,6 +41,10 @@ public:
     /** Scaling / Multiplication by a float
      */
     Vec2 operator*(float a);
+
+    /** Prints value in the console for debugging purposes
+     */
+    void print() const;
 
 
 
