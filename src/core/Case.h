@@ -2,8 +2,8 @@
 #define CASE
 
 enum Case{
-    Empty,
-    Wall
+    empty,
+    wall
 };
 
 

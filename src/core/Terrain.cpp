@@ -3,38 +3,38 @@
 Terrain::Terrain(int x, int y)
 {
     arr = new Case[x * y];
-    DimX = x;
-    DimY = y; 
+    dimX = x;
+    dimY = y; 
 }
 
 Terrain::~Terrain()
 {
     delete arr;
-    DimX = 0;
-    DimY = 0;
+    dimX = 0;
+    dimY = 0;
 }
 
-int Terrain::GetDimX() const
+int Terrain::getDimX() const
 {
-   return DimX;
+   return dimX;
 }
 
-int Terrain::GetDimY() const
+int Terrain::getDimY() const
 {
-    return DimY;
+    return dimY;
 }
 
-Vec2 Terrain::GetDim() const
+Vec2 Terrain::getDim() const
 {
-    return Vec2(DimX, DimY);
+    return Vec2(dimX, dimY);
 }
 
-Case Terrain::GetCase(int x, int y) const
+Case Terrain::getCase(Vec2 v) const
 {
-    return arr[DimX * y + x];
+    return arr[dimX * (int) v.y + (int) v.x];
 }
 
-void Terrain::SetCase(int x, int y, Case c)
+void Terrain::setCase(Vec2 v, Case c)
 {
-    arr[DimX * y + x] = c;
+    arr[dimX * (int) v.y + (int) v.x] = c;
 }

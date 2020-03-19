@@ -7,13 +7,6 @@
 /** Terrain
  */
 class Terrain{
-private:
-    Case* arr;
-    int DimX;
-    int DimY;
-
-private:
-
 public:
 
     /** New terrain
@@ -30,31 +23,34 @@ public:
     /** DimX accessor
      * @return DimY
      */
-    int GetDimX() const;
+    int getDimX() const;
 
     /** DimY accessor
      * @return DimY
      */
-    int GetDimY() const;
+    int getDimY() const;
 
     /** Dimensions accessor
      * @return Vec2 with dimensions in X and Y axes
      */
-    Vec2 GetDim() const;
+    Vec2 getDim() const;
 
     /** Case accessor
-     * @param x coordinate
-     * @param y coordinate
+     * @param v Coordinates
      * @return Case value
      */
-    Case GetCase(int x, int y) const;
+    Case getCase(Vec2 v) const;
 
     /** Case mutator
-     * @param x coordinate
-     * @param y coordinate
+     * @param v Coordinates
      * @param c Case value
      */
-    void SetCase(int x, int y, Case c);
+    void setCase(Vec2 v, Case c);
+
+private:
+    Case* arr;
+    int dimX;
+    int dimY;
 
 };
 
