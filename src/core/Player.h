@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Vec2.h"
-#include "direction.h"
+#include "Direction.h"
 #include "Terrain.h"
 
 /** Represent the player
@@ -37,7 +37,7 @@ class Player {
          * @param D Direction
          * @return Renvoie la position du joueur après modification des coordonnées
          */
-        void move(Terrain T, direction D);
+        void move(Terrain T, Direction D);
 
         /**
          * @brief

@@ -17,7 +17,7 @@ Vec2 Player::getPos() const {
     return pos;
 }
 
-void Player::move(Terrain T, direction D) {
+void Player::move(Terrain T, Direction D) {
 
 }
 
