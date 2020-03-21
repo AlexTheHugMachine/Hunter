@@ -1,6 +1,7 @@
 #include "Terrain.h"
 #include <cassert>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -16,6 +17,46 @@ Terrain::Terrain(int x, int y)
             arr[dimX * j + i] = Case::empty;
         }
     }
+}
+
+Terrain::Terrain(std::string filename)
+{
+    ifstream file(filename);
+    if(file.is_open()){
+
+    cout << "Fichier ouvert" << endl;
+    }
+    else cout << "Nope" << endl; 
+    file >> dimX;
+    file >> dimY;
+
+    cout << "dimX " << dimX;
+    cout << " dimY " << dimY << endl;
+
+    arr = new Case[dimX * dimY];
+    char c;
+    int i = 0;
+    
+    while(!file.eof())
+    {
+        file.read(&c, 1);
+        if(c != '|' && c != '\n'){
+            switch (c)
+            {
+            case '#':
+                arr[i] = Case::wall;
+                break;
+            case ' ':
+                arr[i] = Case::empty;
+            default:
+                break;
+            }
+            i++;
+        }
+    }
+
+    file.close();
+    draw();
 }
 
 Terrain::~Terrain()
@@ -50,6 +91,28 @@ void Terrain::setCase(Vec2 v, Case c)
     assert(v.x >= 0 && v.x < dimX);
     assert(v.y >= 0 && v.y < dimY);
     arr[dimX * (int) v.y + (int) v.x] = c;
+}
+
+void Terrain::setCase(int x, int y, Case c)
+{
+    setCase(Vec2(x, y), c);
+}
+
+void Terrain::draw() const
+{
+    for(int j = 0; j < dimY; ++j)
+    {
+        cout << "|";
+        for(int i = 0; i < dimX; ++i)
+        {
+            if(arr[dimX * j + i] == Case::wall)
+            {
+                cout << "#";
+            }
+            else cout << " ";
+        }
+        cout << "|" << endl;
+    }
 }
 
 void Terrain::test() const

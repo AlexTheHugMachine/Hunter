@@ -3,6 +3,7 @@
 
 #include "Case.h"
 #include "Vec2.h"
+#include <string>
 
 /** Terrain
  */
@@ -15,6 +16,11 @@ public:
      * @param y dimension
      */
     Terrain(int x, int y);
+
+    /** Load terrain from file
+     * @param filename file location
+     */
+    Terrain(std::string filename);
 
     /** Deletes terrain
      */
@@ -46,13 +52,24 @@ public:
      * @param c Case value
      */
     void setCase(Vec2 v, Case c);
+    
+    /** Case mutator
+     * @param x Coordinate
+     * @param y Coordinate
+     * @param c Case value
+     */
+    void setCase(int x, int y, Case c);
+
+    /** @brief [DEBUG] displays the terrain
+     */
+    void draw() const;
 
     /** @brief Test the Ennemy class
      */
     void test() const;
 
 private:
-    Case* arr;
+    Case* arr = nullptr;
     int dimX;
     int dimY;
 
