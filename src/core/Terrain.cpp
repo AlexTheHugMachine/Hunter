@@ -36,7 +36,7 @@ Terrain::Terrain(std::string filename)
     arr = new Case[dimX * dimY];
     char c;
     int i = 0;
-    
+
     while(!file.eof())
     {
         file.read(&c, 1);
@@ -100,6 +100,7 @@ void Terrain::setCase(int x, int y, Case c)
 
 void Terrain::draw() const
 {
+    //############ DEBUG ONLY!!! ############
     for(int j = 0; j < dimY; ++j)
     {
         cout << "|";
@@ -113,6 +114,7 @@ void Terrain::draw() const
         }
         cout << "|" << endl;
     }
+    //############ DEBUG ONLY!!! ############
 }
 
 void Terrain::test() const
