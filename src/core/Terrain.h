@@ -47,6 +47,10 @@ public:
      */
     void setCase(Vec2 v, Case c);
 
+    /** @brief Test the Ennemy class
+     */
+    void test() const;
+
 private:
     Case* arr;
     int dimX;
