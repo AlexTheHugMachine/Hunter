@@ -61,8 +61,9 @@ public:
     void setCase(int x, int y, Case c);
 
     /** @brief [DEBUG] displays the terrain
+     * @warning DEBUG ONLY!!
      */
-    void draw() const;
+    void draw() const; // DEBUG ONLY!!!!!!
 
     /** @brief Test the Ennemy class
      */
