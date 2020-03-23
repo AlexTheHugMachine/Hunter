@@ -1,6 +1,7 @@
 #include "Vec2.h"
 
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 Vec2::Vec2(float x, float y)
@@ -40,6 +41,35 @@ Vec2 Vec2::operator-(Vec2 v)
 Vec2 Vec2::operator*(float a)
 {
     return Vec2(x * a, y * a);
+}
+
+float Vec2::norm() const
+{
+    return sqrt(x*x + y*y);
+}
+
+bool Vec2::operator!=(const Vec2& rhs)
+{
+    return x != rhs.x ||
+            y != rhs.y;
+}
+
+bool Vec2::operator==(const Vec2& rhs)
+{
+    return x == rhs.x &&
+            y == rhs.y;
+}
+
+bool Vec2::isInTab(Vec2* t, int size) const
+{
+    for(int i = 0; i < size; ++i)
+    {
+        if(t[i] == *this)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Vec2::print() const

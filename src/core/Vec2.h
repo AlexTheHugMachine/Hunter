@@ -42,6 +42,24 @@ public:
      */
     Vec2 operator*(float a);
 
+    /** @brief length/norm of the vector
+     */
+    float norm() const;
+
+    /** @brief inequality operator
+     */
+    bool operator!=(const Vec2& rhs);
+
+    /** @brief equality test operator
+     */
+    bool operator==(const Vec2& rhs);
+
+    /** @brief Tests if a Vec2 is in an array
+     *  @param t Pointer too first element of an array of Vec2
+     *  @param size size of the array
+     */
+    bool isInTab(Vec2* t, int size) const;
+
     /** Prints value in the console for debugging purposes
      */
     void print() const;

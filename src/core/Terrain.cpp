@@ -2,8 +2,12 @@
 #include <cassert>
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+
+#define INF 999999
 
 Terrain::Terrain(int x, int y)
 {
@@ -100,21 +104,165 @@ void Terrain::setCase(int x, int y, Case c)
 
 void Terrain::draw() const
 {
+    Vec2 pos(0, 2);
+    Vec2* t;
+    int s;
     //############ DEBUG ONLY!!! ############
+    t = getAdjacentPath(pos, s);
     for(int j = 0; j < dimY; ++j)
     {
         cout << "|";
         for(int i = 0; i < dimX; ++i)
         {
+
             if(arr[dimX * j + i] == Case::wall)
             {
                 cout << "#";
             }
+            else if(Vec2(i, j).isInTab(t, s)) cout << "0";
             else cout << " ";
         }
         cout << "|" << endl;
     }
     //############ DEBUG ONLY!!! ############
+}
+
+/*vector<Vec2>* Terrain::Dijkstra(Vec2 start, Vec2 end)
+{
+    vector<Node> unvisited, 
+                visited;    
+    Node nStart = Node{start, 0, nullptr};
+    unvisited.push_back(nStart);
+
+    Vec2 pos;
+    // Initialize unvisited list
+    for(int i = 0; i < dimX; ++i)
+    {
+        for(int j = 0; j < dimY; ++j)
+        {
+            pos = Vec2(i, j);
+            if(pos == start) unvisited.push_back(nStart);
+            else unvisited.push_back(Node{pos, INF, nullptr});
+        }
+    }
+
+    bool success = false;
+    Node cur, n;
+    while(!unvisited.empty())
+    {
+        vector<Node>::iterator it = min_element(unvisited.begin(), unvisited.end());
+        int min_i = distance(unvisited.begin(), it);
+        cur = unvisited[min_i];     // Visit node with minimum dist to start
+
+        visited.push_back(cur);
+        if(cur.coords == end)   // If visit end point, over
+        {
+            success = true;
+            break;
+        }
+
+        int size;
+        Vec2* neighbors = getAdjacentPath(cur.coords, size);
+
+        
+
+        for(int i = 0; i < size; ++i) // For every neighbor
+        {
+            n.coords = Vec2(-1, -1);
+            for(int j = 0; j < unvisited.size(); j++) // Find node in 
+            {
+                if(unvisited[j].coords == neighbors[i]) 
+                {
+                    n = unvisited[i];
+                    break;
+                }
+            }
+            if(n.coords != Vec2(-1, -1)) // If neighbor is in unvisited
+            {
+                int new_d = 1 + cur.dist;
+                if(new_d < n.dist) // If found shorter path for neighbor, then update neighbor
+                {
+                    n.dist = new_d;
+                    n.via = &cur;
+                }
+            }
+        }
+    }
+
+    vector<Vec2>* path = new vector<Vec2>;
+    n = visited.back();
+    path->insert(path->begin(), n.coords);
+    visited.pop_back();
+
+    while(!visited.empty())
+    {
+        if(&visited.back() == n.via)
+        {
+            n = visited.back();
+            path->insert(path->begin(), n.coords);
+        }
+        visited.pop_back();
+
+    }
+
+    return path;
+
+
+
+
+    
+}*/
+vector<Vec2> Terrain::funtion(int i)
+{
+    vector<Vec2> v(i);
+    return v;
+}
+
+Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
+{
+    Vec2* arr = new Vec2[8];
+    size = 0;
+    Vec2 cur;
+    for(int i = pos.x - 1; i <= pos.x + 1; ++i)
+    {
+        for(int j = pos.y - 1; j <= pos.y + 1; ++j)
+        {
+            cur = Vec2(i, j);
+            if(cur != pos && isInTerrain(cur))
+            {
+                arr[size] = cur;
+                size++;
+            }
+        }
+    }
+    return arr;
+}
+
+Vec2* Terrain::getAdjacentPath(Vec2 pos, int& size) const
+{
+    int s = size;
+    size = 0;
+    Vec2* res = getAdjacent(pos, s);
+    Vec2* arr = new Vec2[8];
+    
+    for(int i = 0; i < s; ++i)
+    {
+        if(getCase(res[i]) == Case::empty)
+        {
+            arr[size] = res[i];
+            size++;
+        }
+    }
+    delete [] res;
+    return arr;
+}
+
+bool Terrain::isInTerrain(Vec2 pos) const
+{
+    return pos.x >= 0 &&
+            pos.y >= 0 &&
+            pos.x < dimX &&
+            pos.y < dimY;
 }
 
 void Terrain::test() const

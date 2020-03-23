@@ -3,7 +3,8 @@
 
 enum Case{
     empty,
-    wall
+    wall, 
+    test
 };
 
 

@@ -65,15 +65,63 @@ public:
      */
     void draw() const; // DEBUG ONLY!!!!!!
 
+    /** @brief Dijkstra pathfinding
+     *  @param start Starting position
+     *  @param end Ending position
+     */
+    //vector <Vec2>* Dijkstra(Vec2 start, Vec2 end);
+
     /** @brief Test the Ennemy class
      */
     void test() const;
+    vector<Vec2> funtion(int i);
+
+private:
+
+    /** @brief returns adjacent tiles
+     *  @param pos [in] current tile
+     *  @param size [out] size of array returned
+     *  @return pointer on array of Vec2
+     */
+    Vec2* getAdjacent(Vec2 pos, int& size) const;
+
+    /** @brief returns adjacent tiles where characters can walk
+     *  @param pos [in] current tile
+     *  @param size [out] size of array returned
+     *  @return pointer on array of Vec2
+     */
+    Vec2* getAdjacentPath(Vec2 pos, int& size) const;
+
+    
+
+    /** @brief Checks if coords inside of the Terrain boundaries
+     *  @param pos coord of tile to check
+     */
+    bool isInTerrain(Vec2 pos) const;
 
 private:
     Case* arr = nullptr;
     int dimX;
     int dimY;
 
+};
+
+/** @brief Node class used by the pathfinding algorithm
+ */
+class Node
+{
+public:
+    Vec2 coords; ///< Coordinates in the grid
+    //int heur;    ///< Heuristic : distance to end Node
+    //int cost;   ///< Total cost of the path to the node
+    int dist;   ///< Distance to starting Node
+    Node* via; ///< Current path via
+
+public:
+    bool operator< (const Node& rhs)
+    {
+        return dist < rhs.dist;
+    }
 };
 
 #endif
