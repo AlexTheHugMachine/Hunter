@@ -104,11 +104,14 @@ void Terrain::setCase(int x, int y, Case c)
 
 void Terrain::draw() const
 {
-    Vec2 pos(0, 2);
+    Vec2 start(0, 2);
+    Vec2 end(2, 2);
+    
+    
     Vec2* t;
     int s;
     //############ DEBUG ONLY!!! ############
-    t = getAdjacentPath(pos, s);
+    t = Dijkstra(start, end, s);
     for(int j = 0; j < dimY; ++j)
     {
         cout << "|";
@@ -127,7 +130,7 @@ void Terrain::draw() const
     //############ DEBUG ONLY!!! ############
 }
 
-/*vector<Vec2>* Terrain::Dijkstra(Vec2 start, Vec2 end)
+Vec2* Terrain::Dijkstra(Vec2 start, Vec2 end, int & size) const
 {
     vector<Node> unvisited, 
                 visited;    
@@ -146,7 +149,7 @@ void Terrain::draw() const
         }
     }
 
-    bool success = false;
+    
     Node cur, n;
     while(!unvisited.empty())
     {
@@ -157,7 +160,7 @@ void Terrain::draw() const
         visited.push_back(cur);
         if(cur.coords == end)   // If visit end point, over
         {
-            success = true;
+            
             break;
         }
 
@@ -169,7 +172,7 @@ void Terrain::draw() const
         for(int i = 0; i < size; ++i) // For every neighbor
         {
             n.coords = Vec2(-1, -1);
-            for(int j = 0; j < unvisited.size(); j++) // Find node in 
+            for(unsigned int j = 0; j < unvisited.size(); j++) // Find node in 
             {
                 if(unvisited[j].coords == neighbors[i]) 
                 {
@@ -191,7 +194,7 @@ void Terrain::draw() const
 
     vector<Vec2>* path = new vector<Vec2>;
     n = visited.back();
-    path->insert(path->begin(), n.coords);
+    path->push_back(n.coords);
     visited.pop_back();
 
     while(!visited.empty())
@@ -199,23 +202,22 @@ void Terrain::draw() const
         if(&visited.back() == n.via)
         {
             n = visited.back();
-            path->insert(path->begin(), n.coords);
+            path->push_back(n.coords);
         }
         visited.pop_back();
 
     }
 
-    return path;
 
-
-
-
+    size = path->size();
+    Vec2* res = new Vec2[size];
+    for(int i = 0; i < size; ++i)
+    {
+        res[i] = path->back();
+        path->pop_back();
+    }
+    return res;
     
-}*/
-vector<Vec2> Terrain::funtion(int i)
-{
-    vector<Vec2> v(i);
-    return v;
 }
 
 Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const

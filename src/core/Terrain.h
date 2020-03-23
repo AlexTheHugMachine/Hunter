@@ -69,12 +69,11 @@ public:
      *  @param start Starting position
      *  @param end Ending position
      */
-    //vector <Vec2>* Dijkstra(Vec2 start, Vec2 end);
+    Vec2* Dijkstra(Vec2 start, Vec2 end, int& size) const;
 
     /** @brief Test the Ennemy class
      */
     void test() const;
-    vector<Vec2> funtion(int i);
 
 private:
 
