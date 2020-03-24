@@ -105,22 +105,4 @@ private:
 
 };
 
-/** @brief Node class used by the pathfinding algorithm
- */
-class Node
-{
-public:
-    Vec2 coords; ///< Coordinates in the grid
-    //int heur;    ///< Heuristic : distance to end Node
-    //int cost;   ///< Total cost of the path to the node
-    int dist;   ///< Distance to starting Node
-    Node* via; ///< Current path via
-
-public:
-    bool operator< (const Node& rhs)
-    {
-        return dist < rhs.dist;
-    }
-};
-
 #endif
