@@ -8,7 +8,7 @@
 /**
 @brief Un jeu (de pacman) = un terrain et un pacman
 */
-class Jeu {
+/*class Jeu {
 
 private :
 
@@ -30,6 +30,6 @@ public :
     bool actionClavier(const char touche);
     //ajouter padfinding;
 
-};
+};*/
 
 #endif
