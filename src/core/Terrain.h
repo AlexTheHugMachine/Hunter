@@ -10,8 +10,7 @@
 class Terrain{
 public:
 
-    /** New terrain
-     * Initializes a new terrain
+    /** Initializes a new terrain
      * @param x dimension
      * @param y dimension
      */
@@ -66,20 +65,15 @@ public:
     void draw(); // DEBUG ONLY!!!!!!
 
     /** @brief Test the Ennemy class
+     * 
+     * regression test
      */
     void test() const;
-
-    /** @brief returns adjacent tiles
-     *  @param pos [in] current tile
-     *  @param size [out] size of array returned
-     *  @return pointer on array of Vec2
-     */
-    Vec2* getAdjacent(Vec2 pos, int& size) const;
 
     /** @brief returns adjacent tiles where characters can walk
      *  @param pos [in] current tile
      *  @param size [out] size of array returned
-     *  @return pointer on array of Vec2
+     *  @warning Don't forget to disallocate the returned array ! 
      */
     Vec2* getAdjacentPath(Vec2 pos, int& size) const;
 
@@ -91,9 +85,18 @@ public:
     bool isInTerrain(Vec2 pos) const;
 
 private:
-    Case* arr = nullptr;
+    Case* arr;
     int dimX;
     int dimY;
+
+private:
+    /** @brief returns adjacent tiles
+     *  @param pos [in] current tile
+     *  @param size [out] size of array returned
+     *  @return pointer on array of Vec2
+     *  @warning Don't forget to disallocate the returned array ! 
+     */
+    Vec2* getAdjacent(Vec2 pos, int& size) const;
 
 };
 

@@ -11,9 +11,9 @@ using namespace std;
 
 Terrain::Terrain(int x, int y)
 {
-    arr = new Case[x * y];
     dimX = x;
     dimY = y; 
+    arr = new Case[x * y];
     for(int i = 0; i < dimX; ++i)
     {
         for(int j = 0; j < dimY; ++j)
@@ -65,7 +65,8 @@ Terrain::Terrain(std::string filename)
 
 Terrain::~Terrain()
 {
-    delete arr;
+    delete [] arr;
+    arr = nullptr;
     dimX = 0;
     dimY = 0;
 }
@@ -126,17 +127,18 @@ void Terrain::draw()
         cout << "|" << endl;
     }
     //############ DEBUG ONLY!!! ############
+    delete [] p;
 }
 
 Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
 {
-    Vec2* arr = new Vec2[4];
+    Vec2* A = new Vec2[8];
     size = 0;
     Vec2 cur;
 
     
 
-    /* To show diagonal tiles
+     //To show diagonal tiles
     for(int i = pos.x - 1; i <= pos.x + 1; ++i)
     {
         for(int j = pos.y - 1; j <= pos.y + 1; ++j)
@@ -144,12 +146,12 @@ Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
             cur = Vec2(i, j);
             if(cur != pos && isInTerrain(cur))
             {
-                arr[size] = cur;
+                A[size] = cur;
                 size++;
             }
         }
-    }*/
-    return arr;
+    }
+    return A;
 }
 
 Vec2* Terrain::getAdjacentPath(Vec2 pos, int& size) const
@@ -157,18 +159,18 @@ Vec2* Terrain::getAdjacentPath(Vec2 pos, int& size) const
     int s = size;
     size = 0;
     Vec2* res = getAdjacent(pos, s);
-    Vec2* arr = new Vec2[8];
+    Vec2* A = new Vec2[8];
     
     for(int i = 0; i < s; ++i)
     {
         if(getCase(res[i]) == Case::empty)
         {
-            arr[size] = res[i];
+            A[size] = res[i];
             size++;
         }
     }
     delete [] res;
-    return arr;
+    return A;
 }
 
 bool Terrain::isInTerrain(Vec2 pos) const

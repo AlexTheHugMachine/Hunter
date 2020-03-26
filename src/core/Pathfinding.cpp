@@ -34,14 +34,9 @@ UnVisited::UnVisited(Terrain* t, Vec2 start)
         for(int y = 0; y < dimY; ++y)
         {
             if(Vec2(x, y) == start)
-            {
                 arr.push_back(Node(start, 0, Vec2(-1, -1)));
-            }
             else
-            {
                 arr.push_back(Node(Vec2(x, y), INF, Vec2(-1, -1)));
-            }
-            
         }
     }
 }
@@ -102,12 +97,6 @@ bool UnVisited::exists(Vec2 coord)
     return res;
 }
 
-
-Visited::Visited(Terrain* ter)
-{
-    t = ter;
-}
-
 void Visited::push(Node n)
 {
     arr.push_back(n);
@@ -158,7 +147,7 @@ Vec2* Visited::getPath(int &s)
     Vec2* res = new Vec2[s];
 
     int count = 0;
-    for(; i>=0; --i)
+    for(; i>=0; --i) // Reverse the order of the array to have the path go from start to end
     {
         res[count] = a[i];
         count ++;
@@ -170,12 +159,11 @@ Vec2* Visited::getPath(int &s)
 
     
 }
-/* bug : no following path described by "via" => pointers are null?
-*/
+
 Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size)
 {
     UnVisited UV(t, start);
-    Visited V(t);
+    Visited V;
 
     bool success = false;
     while(! UV.empty())
@@ -200,6 +188,7 @@ Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size)
                 UV.update(tab[i], N);
             }
         }
+        delete [] tab;
     }
 
     if(success)
