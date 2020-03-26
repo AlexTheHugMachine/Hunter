@@ -4,10 +4,10 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <Pathfinding.h>
 
 using namespace std;
 
-#define INF 999999
 
 Terrain::Terrain(int x, int y)
 {
@@ -102,10 +102,19 @@ void Terrain::setCase(int x, int y, Case c)
     setCase(Vec2(x, y), c);
 }
 
-void Terrain::draw() const
+void Terrain::draw() 
 {
     //############ DEBUG ONLY!!! ############
-    
+    Vec2 start(0, 0);
+    Vec2 end(2, 2);
+    int s;
+    Vec2* p = Dijkstra(this, start, end, s);
+
+    for(int i = 0; i < s; i++)
+    {
+        cout << p[i].x << " " << p[i].y << endl;
+    }
+
     for(int j = 0; j < dimY; ++j)
     {
         cout << "|";
@@ -116,6 +125,7 @@ void Terrain::draw() const
             {
                 cout << "#";
             }
+            else if(Vec2(i, j).isInTab(p, s)) cout << "0";
             else cout << " ";
         }
         cout << "|" << endl;

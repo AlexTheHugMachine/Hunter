@@ -3,6 +3,7 @@
 
 #include "Vec2.h"
 #include <vector>
+#include "Terrain.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ public:
     Node() = default;
     Node(Vec2 v, int d, Node* n);
 
-    void update(Node n);
+    void update(Node* n);
 
     bool operator< (const Node& rhs)
     {
@@ -35,7 +36,39 @@ class UnVisited
 {
 public:
     vector<Node> arr;
+    Terrain* t;
 
+public:
+    UnVisited(Terrain* t, Vec2 start);
+
+    bool empty();
+
+    int getMinIndex();
+
+    Node extractMin();
+
+    void update(Vec2 coord, Node* n);
+
+    bool exists(Vec2 coord);
+    
+};
+
+class Visited
+{
+public:
+    vector<Node> arr;
+    Terrain* t;
+
+public:
+    Visited(Terrain* ter);
+
+    Node* push(Node n);
+
+    Node pop();
+
+    bool empty();
+
+    Vec2* getPath(int &s);
 };
 
 
@@ -43,7 +76,7 @@ public:
      *  @param start Starting position
      *  @param end Ending position
      */
-    Vec2* Dijkstra(Vec2 start, Vec2 end, int& size);
+    Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size);
 
 
 #endif

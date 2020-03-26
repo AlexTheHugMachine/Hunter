@@ -63,19 +63,11 @@ public:
     /** @brief [DEBUG] displays the terrain
      * @warning DEBUG ONLY!!
      */
-    void draw() const; // DEBUG ONLY!!!!!!
-
-    /** @brief Dijkstra pathfinding
-     *  @param start Starting position
-     *  @param end Ending position
-     */
-    Vec2* Dijkstra(Vec2 start, Vec2 end, int& size) const;
+    void draw(); // DEBUG ONLY!!!!!!
 
     /** @brief Test the Ennemy class
      */
     void test() const;
-
-private:
 
     /** @brief returns adjacent tiles
      *  @param pos [in] current tile
