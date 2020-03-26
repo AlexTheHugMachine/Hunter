@@ -1,5 +1,5 @@
 #include "Jeux.h"
-
+/*
 Jeu::Jeu () : ter(), play(), enn() {
 	//ter.mangePastille(pac.getX(),pac.getY());
 }
@@ -43,3 +43,4 @@ bool Jeu::actionClavier (const char touche) {
     //fan.versPacman(ter,pac);
     fan.bougeAuto(ter);
 }
+*/
