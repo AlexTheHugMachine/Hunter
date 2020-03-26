@@ -16,14 +16,14 @@ public:
     //int heur;    ///< Heuristic : distance to end Node
     //int cost;   ///< Total cost of the path to the node
     int dist;   ///< Distance to starting Node
-    Node* via; ///< Current path via
+    Vec2 via; ///< Current path via coords
 
 public:
 
     Node() = default;
-    Node(Vec2 v, int d, Node* n);
+    Node(Vec2 v, int d, Vec2 n);
 
-    void update(Node* n);
+    void update(Node n);
 
     bool operator< (const Node& rhs)
     {
@@ -47,7 +47,7 @@ public:
 
     Node extractMin();
 
-    void update(Vec2 coord, Node* n);
+    void update(Vec2 coord, Node n);
 
     bool exists(Vec2 coord);
     
@@ -62,7 +62,7 @@ public:
 public:
     Visited(Terrain* ter);
 
-    Node* push(Node n);
+    void push(Node n);
 
     Node pop();
 

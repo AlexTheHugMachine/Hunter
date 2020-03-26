@@ -7,20 +7,20 @@ using namespace std;
 #define INF 999999
 
 
-Node::Node(Vec2 v, int d, Node* n)
+Node::Node(Vec2 v, int d, Vec2 n)
 {
     coords = v;
     dist = d;
     via = n;
 }
 
-void Node::update(Node* n)
+void Node::update(Node n)
 {
-    int new_dist = 1 + n->dist;
+    int new_dist = 1 + n.dist;
     if(new_dist < dist)
     {
         dist = new_dist;
-        via = n;
+        via = n.coords;
     }
 }
 
@@ -35,11 +35,11 @@ UnVisited::UnVisited(Terrain* t, Vec2 start)
         {
             if(Vec2(x, y) == start)
             {
-                arr.push_back(Node(start, 0, nullptr));
+                arr.push_back(Node(start, 0, Vec2(-1, -1)));
             }
             else
             {
-                arr.push_back(Node(Vec2(x, y), INF, nullptr));
+                arr.push_back(Node(Vec2(x, y), INF, Vec2(-1, -1)));
             }
             
         }
@@ -55,7 +55,6 @@ int UnVisited::getMinIndex()
 {
     int min = arr.front().dist;
     int imin = 0;
-    if(min != arr[imin].dist) cout << "Issue??" << endl;
 
     for(unsigned int i = 0; i < arr.size(); ++i)
     {
@@ -78,7 +77,7 @@ Node UnVisited::extractMin()
     return n;
 }
 
-void UnVisited::update(Vec2 coord, Node* n)
+void UnVisited::update(Vec2 coord, Node n)
 {
     for(unsigned int i = 0; i < arr.size(); ++i)
     {
@@ -109,13 +108,9 @@ Visited::Visited(Terrain* ter)
     t = ter;
 }
 
-Node* Visited::push(Node n)
+void Visited::push(Node n)
 {
     arr.push_back(n);
-    int s = arr.size();
-    return &arr[s-1];
-    //vector<Node>::iterator it = arr.end();
-    //return &(*it);
 }
 
 Node Visited::pop()
@@ -132,12 +127,12 @@ bool Visited::empty()
 
 Vec2* Visited::getPath(int &s)
 {
-    cout << "Visited coords : " << endl << endl;
+    /*cout << "Visited coords : " << endl << endl;
     for(int i = 0; i < arr.size(); i++)
     {
-        cout << &arr[i] << " " << arr[i].coords.x << " " << arr[i].coords.y << " " << arr[i].via << endl;
+        cout << &arr[i] << " " << arr[i].coords.x << " " << arr[i].coords.y << endl;
     }
-    cout << endl;
+    cout << endl;*/
 
     Vec2* a = new Vec2[arr.size()];
     Node node = pop();
@@ -150,7 +145,7 @@ Vec2* Visited::getPath(int &s)
     while(!empty())
     {
         Node next = pop();
-        if(&next == node.via)
+        if(next.coords == node.via)
         {
             node = next;
             a[s] = node.coords;
@@ -186,11 +181,10 @@ Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size)
     while(! UV.empty())
     {
         Node N = UV.extractMin();
-        Node* pN = V.push(N);
+        V.push(N);
 
         if(N.coords == end)
         {
-            //cout << "end!" << endl;
             success = true;
             break;
         }
@@ -203,7 +197,7 @@ Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size)
         {
             if(UV.exists(tab[i]))
             {
-                UV.update(tab[i], pN);
+                UV.update(tab[i], N);
             }
         }
     }

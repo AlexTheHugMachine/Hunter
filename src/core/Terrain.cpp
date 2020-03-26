@@ -35,7 +35,7 @@ Terrain::Terrain(std::string filename)
     file >> dimY;
 
     cout << "dimX " << dimX;
-    cout << " dimY " << dimY << endl;
+    cout << " dimY " << dimY << endl << endl;
 
     arr = new Case[dimX * dimY];
     char c;
@@ -106,14 +106,9 @@ void Terrain::draw()
 {
     //############ DEBUG ONLY!!! ############
     Vec2 start(0, 0);
-    Vec2 end(2, 2);
+    Vec2 end(9, 4);
     int s;
     Vec2* p = Dijkstra(this, start, end, s);
-
-    for(int i = 0; i < s; i++)
-    {
-        cout << p[i].x << " " << p[i].y << endl;
-    }
 
     for(int j = 0; j < dimY; ++j)
     {
@@ -135,9 +130,13 @@ void Terrain::draw()
 
 Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
 {
-    Vec2* arr = new Vec2[8];
+    Vec2* arr = new Vec2[4];
     size = 0;
     Vec2 cur;
+
+    
+
+    /* To show diagonal tiles
     for(int i = pos.x - 1; i <= pos.x + 1; ++i)
     {
         for(int j = pos.y - 1; j <= pos.y + 1; ++j)
@@ -149,7 +148,7 @@ Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
                 size++;
             }
         }
-    }
+    }*/
     return arr;
 }
 
