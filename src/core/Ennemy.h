@@ -46,7 +46,12 @@ class Ennemy {
          */
          /* @param T [in] Terrain
          *  @param P [in] Player */
-        void update(/*const Terrain & T, const Player & P*/);
+        void update(const Terrain & T, const Player & P);
+
+        /** @brief Changes the state of the ennemy
+         *  @param s [in] New state
+         */
+        void setState(State s);
 
         /** @brief Test the Ennemy class
          * 

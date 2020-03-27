@@ -54,7 +54,12 @@ int main(void)
             case 'd':
                 dir = Direction::right;
                 break;
+            case 'p':
+                e.setState(State::pursuit);
+                dir = Direction::none;
+                break;
             case 'x':
+                dir = Direction::none;
                 stop = true;
                 break;
             default:
@@ -62,7 +67,7 @@ int main(void)
         }
         p.move(ter, dir);
 
-        e.update();
+        e.update(ter, p);
     }
     
 

@@ -60,7 +60,6 @@ Terrain::Terrain(std::string filename)
     }
 
     file.close();
-    draw();
 }
 
 Terrain::~Terrain()

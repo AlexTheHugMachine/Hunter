@@ -11,6 +11,7 @@ Ennemy::Ennemy(const Terrain *t, Vec2 start, Vec2 end) {
     patrolPath = Dijkstra(t, start, end, length);
     patrolPos = 0;
     patrolInc = 1;
+    state = State::patrol;
 }
 
 Ennemy::~Ennemy()
@@ -25,7 +26,11 @@ Vec2 Ennemy::getPos() const {
 
 void Ennemy::chasePlayer(const Terrain & T, const Player & P) 
 {
+    int s;
+    Vec2* t = Dijkstra(&T, pos, P.getPos(), s);
 
+    if(s > 1)
+        pos = t[1];
 }
 
 void Ennemy::patrol() 
@@ -45,9 +50,17 @@ void Ennemy::patrol()
     pos = patrolPath[patrolPos];
 }
 
-void Ennemy::update(/*const Terrain & T, const Player & P*/) 
+void Ennemy::update(const Terrain & T, const Player & P) 
 {
-    patrol();
+    if(state == State::patrol)
+        patrol();
+    else if(state == State::pursuit)
+        chasePlayer(T, P);
+}
+
+void Ennemy::setState(State s)
+{
+    state = s;
 }
 
 void Ennemy::test(const Terrain *t) const
