@@ -1,3 +1,5 @@
+/** @file Pathfinding.h
+ */
 #ifndef PATH_H
 #define PATH_H
 
@@ -24,19 +26,19 @@ public:
     Node() = default;
 
     /** @brief Constructor
-     *  @param v Coordintates in the terrain
-     *  @param d Distance to starting node
-     *  @param n Coordinates of the previous node in the path
+     *  @param v [in] Coordintates in the terrain
+     *  @param d [in] Distance to starting node
+     *  @param n [in] Coordinates of the previous node in the path
      */
     Node(Vec2 v, int d, Vec2 n);
 
     /** @brief Update the current node passing through another node
-     *  @param n node of passage
+     *  @param n [in] node of passage
      */
     void update(Node n);
 
     /** @brief inequality test
-     *  @param rhs right hand side term
+     *  @param rhs [in] right hand side term
      */
     bool operator< (const Node& rhs)
     {
@@ -55,10 +57,10 @@ public:
 
 public:
     /** @brief Constructor
-     *  @param t Pointer on terrain
-     *  @param start starting coordinates for pathfinding
+     *  @param t [in] Pointer on terrain
+     *  @param start [in] starting coordinates for pathfinding
      */
-    UnVisited(Terrain* t, Vec2 start);
+    UnVisited(const Terrain* t, Vec2 start);
 
     /** @brief tests if the array is empty
      *  @return bool : true if the array is empty
@@ -71,13 +73,13 @@ public:
     Node extractMin();
 
     /** @brief updates the node with certain coordinates
-     *  @param coord Coordinates of the node to update
-     *  @param n Node of passage for the update
+     *  @param coord [in] Coordinates of the node to update
+     *  @param n [in] Node of passage for the update
      */
     void update(Vec2 coord, Node n);
 
     /** @brief Tests if a node with certain coordinates exists
-     *  @param coord Coordinates of the node to test the existence in the array
+     *  @param coord [in] Coordinates of the node to test the existence in the array
      */
     bool exists(Vec2 coord);
     
@@ -103,7 +105,7 @@ public:
     Visited() = default;
 
     /** @brief Push a node at the top of the Stack
-     *  @param n Node to push
+     *  @param n [in] Node to push
      */
     void push(Node n);
 
@@ -127,13 +129,13 @@ private:
 
 
 /** @brief Dijkstra pathfinding
- *  @param t Pointer on terrain
- *  @param start Starting position
- *  @param end Ending position
+ *  @param t [in] Pointer on terrain
+ *  @param start [in] Starting position
+ *  @param end [in] Ending position
  *  @return Pointer on the first value of a dynamically allocated array
  *  @param size [out] size of the returned array
  */
-Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size);
+Vec2* Dijkstra(const Terrain* t, Vec2 start, Vec2 end, int& size);
 
 
 #endif

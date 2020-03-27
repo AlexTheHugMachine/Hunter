@@ -21,7 +21,7 @@ Vec2::~Vec2()
 {
 }
 
-Vec2 Vec2::operator+(Vec2 v)
+Vec2 Vec2::operator+(Vec2 v) const
 {
     return Vec2(x + v.x, y + v.y);
 }
@@ -33,12 +33,12 @@ Vec2 Vec2::operator+=(Vec2 v)
     return *this;
 }
 
-Vec2 Vec2::operator-(Vec2 v)
+Vec2 Vec2::operator-(Vec2 v) const
 {
     return Vec2(x - v.x, y - v.y);
 }
 
-Vec2 Vec2::operator*(float a)
+Vec2 Vec2::operator*(float a) const
 {
     return Vec2(x * a, y * a);
 }
@@ -48,19 +48,19 @@ float Vec2::norm() const
     return sqrt(x*x + y*y);
 }
 
-bool Vec2::operator!=(const Vec2& rhs)
+bool Vec2::operator!=(const Vec2& rhs) const 
 {
     return x != rhs.x ||
             y != rhs.y;
 }
 
-bool Vec2::operator==(const Vec2& rhs)
+bool Vec2::operator==(const Vec2& rhs) const
 {
     return x == rhs.x &&
             y == rhs.y;
 }
 
-bool Vec2::isInTab(Vec2* t, int size) const
+bool Vec2::isInTab(const Vec2* t, int size) const
 {
     for(int i = 0; i < size; ++i)
     {
@@ -70,9 +70,4 @@ bool Vec2::isInTab(Vec2* t, int size) const
         }
     }
     return false;
-}
-
-void Vec2::print() const
-{
-    cout << "x = " << x << ", y = " << y << endl;
 }

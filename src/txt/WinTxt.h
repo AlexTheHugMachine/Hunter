@@ -1,6 +1,10 @@
+/** @file WinTxt.h
+ */
 #ifndef WINTXT_H
 #define WINTXT_H
 
+/** @brief This class handls the display of the game in the terminal
+ */
 class WinTXT {
     private :
         int dimx;

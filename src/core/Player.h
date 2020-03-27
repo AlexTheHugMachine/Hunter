@@ -1,50 +1,49 @@
+/** @file Player.h
+ */
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Vec2.h"
 #include "Direction.h"
 #include "Terrain.h"
 
-/** Represent the player
- * 
+/** @brief Represent the player
+ *  @sa Ennemy
+ *  @sa Terrain
  */
 class Player {
     public :
-        /** Default constructor : initializes at (0, 0)
-         *  
+        /** @brief Default constructor : initializes at (0, 0)
          */
         Player();
 
         /**
-         * @brief
-         * Destructeur par défaut de la classe player
+         * @brief Destructeur par défaut de la classe player
          */
         ~Player();
 
         /** 
-         * @brief
-         * Fonction renvoyant la position du joueur
-         * @return
-         * Renvoie le vecteur de la position du joueur
+         * @brief Fonction renvoyant la position du joueur
+         * @return Renvoie le vecteur de la position du joueur
          */
         Vec2 getPos() const;
 
         /**
-         * @brief
-         * Fonction permettant le déplacement du joueur sur un terrain en fnction d'une direction
-         * @param T Terrain
-         * @param D Direction
+         * @brief Fonction permettant le déplacement du joueur sur un terrain en fnction d'une direction
+         * @param T [in] Terrain
+         * @param D [in] Direction
          * @return Renvoie la position du joueur après modification des coordonnées
          */
-        void move(Terrain T, Direction D);
+        void move(const Terrain& T, Direction D);
 
         /**
-         * @brief
-         * Procédure permettant d'initialiser une position du joueur
-         * @param V Prend en paramètre un vecteur V
+         * @brief Procédure permettant d'initialiser une position du joueur
+         * @param pos Prend en paramètre un vecteur
          */
-        void setPos(Vec2 V);
+        void setPos(Vec2 pos);
 
-        /** Test the player class
+        /** @brief Test the player class
+         * 
+         *  This is a regression test
          */
         void test() const;
     

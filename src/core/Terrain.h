@@ -1,3 +1,5 @@
+/** @file Terrain.h
+ */
 #ifndef TERRAIN
 #define TERRAIN
 
@@ -11,13 +13,13 @@ class Terrain{
 public:
 
     /** Initializes a new terrain
-     * @param x dimension
-     * @param y dimension
+     * @param x [in] dimension
+     * @param y [in] dimension
      */
     Terrain(int x, int y);
 
     /** Load terrain from file
-     * @param filename file location
+     * @param filename [in] file location
      */
     Terrain(std::string filename);
 
@@ -41,32 +43,32 @@ public:
     Vec2 getDim() const;
 
     /** Case accessor
-     * @param v Coordinates
+     * @param v [in] Coordinates
      * @return Case value
      */
     Case getCase(Vec2 v) const;
 
     /** Case mutator
-     * @param v Coordinates
-     * @param c Case value
+     * @param v [in] Coordinates
+     * @param c [in] Case value
      */
     void setCase(Vec2 v, Case c);
     
     /** Case mutator
-     * @param x Coordinate
-     * @param y Coordinate
-     * @param c Case value
+     * @param x [in] Coordinate
+     * @param y [in] Coordinate
+     * @param c [in] Case value
      */
     void setCase(int x, int y, Case c);
 
     /** @brief [DEBUG] displays the terrain
-     * @warning DEBUG ONLY!!
+     *  @warning DEBUG ONLY!!
      */
     void draw(); // DEBUG ONLY!!!!!!
 
     /** @brief Test the Ennemy class
      * 
-     * regression test
+     * This is a regression test
      */
     void test() const;
 
@@ -80,7 +82,7 @@ public:
     
 
     /** @brief Checks if coords inside of the Terrain boundaries
-     *  @param pos coord of tile to check
+     *  @param pos [in] coord of tile to check
      */
     bool isInTerrain(Vec2 pos) const;
 

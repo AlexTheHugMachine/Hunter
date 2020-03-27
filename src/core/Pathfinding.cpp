@@ -24,7 +24,7 @@ void Node::update(Node n)
     }
 }
 
-UnVisited::UnVisited(Terrain* t, Vec2 start)
+UnVisited::UnVisited(const Terrain* t, Vec2 start)
 {
     int dimX = t->getDimX();
     int dimY = t->getDimY();
@@ -160,7 +160,7 @@ Vec2* Visited::getPath(int &s)
     
 }
 
-Vec2* Dijkstra(Terrain* t, Vec2 start, Vec2 end, int& size)
+Vec2* Dijkstra(const Terrain* t, Vec2 start, Vec2 end, int& size)
 {
     UnVisited UV(t, start);
     Visited V;

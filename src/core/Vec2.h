@@ -1,9 +1,10 @@
+/** @file Vec2.h
+ */
 #ifndef VEC2
 #define VEC2
 
-/** This class handles all vector operations
- *  @class Vec2
- * 
+/** @class Vec2
+ *  @brief This class handles all vector operations
  */
 class Vec2{
 public:
@@ -12,8 +13,8 @@ public:
 
 public:
     /** Class constructor
-     *  @param [in] x : initialisation value for x
-     *  @param [in] y : initialisation value for y
+     *  @param x [in] Initialisation value for x
+     *  @param y [in] Initialisation value for y
      */
     Vec2(float x, float y);
 
@@ -27,42 +28,45 @@ public:
     ~Vec2();
 
     /** Vector addition
+     *  @param v [in] Right hand side operator
      */
-    Vec2 operator+(Vec2 v);
+    Vec2 operator+(Vec2 v) const;
 
     /** Vector incrementation
+     *  @param v [in] Right hand side operator
      */
     Vec2 operator+=(Vec2 v);
 
     /** Vector substraction
+     *  @param v [in] Right hand side operator
      */
-    Vec2 operator-(Vec2 v);
+    Vec2 operator-(Vec2 v) const;
 
-    /** Scaling / Multiplication by a float
+    /** Scaling / Multiplication by a float number
+     *  @param a [in] Right hand side operator (float)
      */
-    Vec2 operator*(float a);
+    Vec2 operator*(float a) const;
 
     /** @brief length/norm of the vector
+     *  @return lenghth of the vector
      */
     float norm() const;
 
     /** @brief inequality operator
+     *  @param rhs [in] Right hand side operator
      */
-    bool operator!=(const Vec2& rhs);
+    bool operator!=(const Vec2& rhs) const;
 
     /** @brief equality test operator
+     *  @param rhs [in] Right hand side operator
      */
-    bool operator==(const Vec2& rhs);
+    bool operator==(const Vec2& rhs) const;
 
     /** @brief Tests if a Vec2 is in an array
-     *  @param t Pointer too first element of an array of Vec2
-     *  @param size size of the array
+     *  @param t [in] Pointer too first element of an array of Vec2
+     *  @param size [in] size of the array
      */
-    bool isInTab(Vec2* t, int size) const;
-
-    /** Prints value in the console for debugging purposes
-     */
-    void print() const;
+    bool isInTab(const Vec2* t, int size) const;
 
 
 
