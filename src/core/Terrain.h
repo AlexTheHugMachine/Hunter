@@ -61,6 +61,13 @@ public:
      */
     void setCase(int x, int y, Case c);
 
+    /** @brief Access the terrain
+     *  @return Pointer on array of Case
+     *  @param dim [out] Vec2 comprised of the dimensions of the terrain
+     *  @warning Don't forget to delete the array!
+     */
+    Case* getTerrain(Vec2& dim) const;
+
     /** Tests if a position is in the Terrrain
      *  @param v [in] Vec2 to test
      */

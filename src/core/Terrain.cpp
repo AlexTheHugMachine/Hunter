@@ -102,6 +102,12 @@ void Terrain::setCase(int x, int y, Case c)
     setCase(Vec2(x, y), c);
 }
 
+Case* Terrain::getTerrain(Vec2& dim) const
+{
+    dim = getDim();
+    return arr;
+}
+
 bool Terrain::isInTerrain(Vec2 v) const
 {
     return v.x >= 0 && v.y >= 0 &&

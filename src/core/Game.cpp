@@ -1,15 +1,15 @@
 #include "Game.h"
 
-Game::Game(int n)
+#define NB_E 2
+
+Game::Game()
 {
     p = Player();
     t = Terrain("data/test.txt");
-    NbE = n;
-    E = new Ennemy[n];
-    for(int i = 0; i < NbE; ++i)
-    {
-        E[i] = Ennemy(&t, Vec2(9, i), Vec2(0, i)); //Careful, not more than 5 ennemies with this initialization
-    }
+    NbE = NB_E;
+    E = new Ennemy[NbE];
+    E[0] = Ennemy(&t, Vec2(9, 0), Vec2(0, 0));
+    E[0] = Ennemy(&t, Vec2(9, 1), Vec2(0, 1));
 }
 
 Game::~Game()
@@ -48,5 +48,29 @@ void Game::UpdateGame(Direction d)
             
         }
     }
+}
 
+Vec2 Game::getPlayerPos() const
+{
+    return p.getPos();
+}
+
+Vec2* Game::getEnnemiesPosition(int& s) const
+{
+    Vec2* r = new Vec2[NbE];
+    s = 0;
+    for(int i = 0; i < NbE; ++i)
+    {
+        //if(E[i].getState() != State::dead)
+        {
+            r[i] = E[i].getPos();
+            s++;
+        }
+    }
+    return r;
+}
+
+Case* Game::getTerrain(Vec2& dim) const
+{
+    return t.getTerrain(dim);
 }
