@@ -85,9 +85,9 @@ public:
     bool isInTerrain(Vec2 pos) const;
 
 private:
-    Case* arr;
-    int dimX;
-    int dimY;
+    Case* arr; ///< Array of tiles
+    int dimX; ///< width
+    int dimY; ///< height
 
 private:
     /** @brief returns adjacent tiles

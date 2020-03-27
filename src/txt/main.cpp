@@ -7,6 +7,6 @@ using namespace std;
 int main(void)
 { 
     Terrain ter("data/test.txt");
-
-	exit(EXIT_SUCCESS);
+    
+    return EXIT_SUCCESS;
 }
