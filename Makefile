@@ -104,7 +104,7 @@ $(OBJ)/%.o: $(SRC)/*/%.cpp
 
 #------------------ Règles utilitaires --------------------------------------
 # Supprimer les fichiers  inutiles
-.PHONY: clean doc_update default make_dir init
+.PHONY: clean doc_update default make_dir init valgrind
 .SILENT: doc_update
 
 clean:
@@ -122,3 +122,6 @@ $(DOC_MAIN): README.md
 $(DOC_CONF):
 	@echo "Generating doxygen configuration file : $@$(NORM)"
 	@doxygen -g $@
+
+valgrind: default
+	@valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all $(BIN)/$(EXEC_TXT)

@@ -10,3 +10,7 @@ int main(void)
     
     return EXIT_SUCCESS;
 }
+
+/* 
+TODO : Ennemy and player movement
+*/
