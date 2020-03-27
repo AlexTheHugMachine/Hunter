@@ -63,6 +63,11 @@ void Ennemy::setState(State s)
     state = s;
 }
 
+State Ennemy::getState() const
+{
+    return state;
+}
+
 void Ennemy::test(const Terrain *t) const
 {
     Vec2 start(0, 0);

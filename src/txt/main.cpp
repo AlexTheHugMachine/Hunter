@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Terrain.h"
-#include "Ennemy.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -8,7 +8,9 @@ using namespace std;
 int main(void)
 { 
 
+    Game g(2);
     
+    /*
     Terrain ter("data/test.txt");
 
     Vec2 start(0, 1);
@@ -51,13 +53,6 @@ int main(void)
             case 'q':
                 dir = Direction::left;
                 break;
-            case 'd':
-                dir = Direction::right;
-                break;
-            case 'p':
-                e.setState(State::pursuit);
-                dir = Direction::none;
-                break;
             case 'x':
                 dir = Direction::none;
                 stop = true;
@@ -70,7 +65,7 @@ int main(void)
         e.update(ter, p);
     }
     
-
+    */
 
     return EXIT_SUCCESS;
 }

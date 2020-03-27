@@ -11,7 +11,7 @@
  */
 class Terrain{
 public:
-
+    Terrain() = default;
     /** Initializes a new terrain
      * @param x [in] dimension
      * @param y [in] dimension
