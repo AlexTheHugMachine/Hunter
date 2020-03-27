@@ -10,7 +10,8 @@ enum Direction {
     right, ///< Right / West
     left,  ///< Left / East
     up,    ///< Up / North
-    down   ///< Down / South
+    down,   ///< Down / South
+    none    ///< No movement
 };
 
 #endif

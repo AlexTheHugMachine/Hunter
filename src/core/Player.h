@@ -37,9 +37,9 @@ class Player {
 
         /**
          * @brief Procédure permettant d'initialiser une position du joueur
-         * @param pos Prend en paramètre un vecteur
+         * @param p Prend en paramètre un vecteur
          */
-        void setPos(Vec2 pos);
+        void setPos(Vec2 p);
 
         /** @brief Test the player class
          * 

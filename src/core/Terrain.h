@@ -61,6 +61,16 @@ public:
      */
     void setCase(int x, int y, Case c);
 
+    /** Tests if a position is in the Terrrain
+     *  @param v [in] Vec2 to test
+     */
+    bool isInTerrain(Vec2 v) const;
+
+    /** Tests if a position is in the Terrrain and a path
+     *  @param v [in] Vec2 to test
+     */
+    bool isTerrainPath(Vec2 v) const;
+
     /** @brief [DEBUG] displays the terrain
      *  @warning DEBUG ONLY!!
      */
@@ -79,12 +89,7 @@ public:
      */
     Vec2* getAdjacentPath(Vec2 pos, int& size) const;
 
-    
 
-    /** @brief Checks if coords inside of the Terrain boundaries
-     *  @param pos [in] coord of tile to check
-     */
-    bool isInTerrain(Vec2 pos) const;
 
 private:
     Case* arr; ///< Array of tiles

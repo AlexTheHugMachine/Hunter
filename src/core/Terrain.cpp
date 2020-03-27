@@ -103,6 +103,18 @@ void Terrain::setCase(int x, int y, Case c)
     setCase(Vec2(x, y), c);
 }
 
+bool Terrain::isInTerrain(Vec2 v) const
+{
+    return v.x >= 0 && v.y >= 0 &&
+            v.x < dimX && v.y < dimY;
+}
+
+bool Terrain::isTerrainPath(Vec2 v) const
+{
+    return isInTerrain(v) && getCase(v) == Case::empty;
+    
+}
+
 void Terrain::draw() 
 {
     //############ DEBUG ONLY!!! ############
@@ -199,14 +211,6 @@ Vec2* Terrain::getAdjacentPath(Vec2 pos, int& size) const
     }
     delete [] res;
     return A;
-}
-
-bool Terrain::isInTerrain(Vec2 pos) const
-{
-    return pos.x >= 0 &&
-            pos.y >= 0 &&
-            pos.x < dimX &&
-            pos.y < dimY;
 }
 
 void Terrain::test() const

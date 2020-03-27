@@ -43,9 +43,9 @@ class Ennemy {
         Vec2 getPos() const;
 
         /** @brief Moves according to its state
-         *  @param T [in] Terrain
-         *  @param P [in] Player
          */
+         /* @param T [in] Terrain
+         *  @param P [in] Player */
         void update(/*const Terrain & T, const Player & P*/);
 
         /** @brief Test the Ennemy class
