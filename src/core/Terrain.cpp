@@ -106,10 +106,10 @@ void Terrain::setCase(int x, int y, Case c)
 void Terrain::draw() 
 {
     //############ DEBUG ONLY!!! ############
-    Vec2 start(0, 0);
+    /*Vec2 start(0, 0);
     Vec2 end(9, 4);
     int s;
-    Vec2* p = Dijkstra(this, start, end, s);
+    Vec2* p = Dijkstra(this, start, end, s);*/
 
     for(int j = 0; j < dimY; ++j)
     {
@@ -121,13 +121,13 @@ void Terrain::draw()
             {
                 cout << "#";
             }
-            else if(Vec2(i, j).isInTab(p, s)) cout << "0";
+            //else if(Vec2(i, j).isInTab(p, s)) cout << "0";
             else cout << " ";
         }
         cout << "|" << endl;
     }
     //############ DEBUG ONLY!!! ############
-    delete [] p;
+    //delete [] p;
 }
 
 Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const

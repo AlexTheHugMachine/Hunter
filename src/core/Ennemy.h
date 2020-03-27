@@ -24,9 +24,12 @@ enum State {
 class Ennemy {
     public :
         /**
-         * @brief Constructeur par défaut de la classe ennemies
+         * @brief Initializes the Ennemy
+         * @param t [in] Pointer on terrain
+         * @param start [in] Staring position of the patrol
+         * @param end [in] End position of the patrol path
          */
-        Ennemy();
+        Ennemy(const Terrain *t, Vec2 start, Vec2 end);
 
         /**
          * @brief Destructeur par défaut de la classe ennemies
@@ -43,19 +46,22 @@ class Ennemy {
          *  @param T [in] Terrain
          *  @param P [in] Player
          */
-        void update(const Terrain & T, const Player & P);
+        void update(/*const Terrain & T, const Player & P*/);
 
         /** @brief Test the Ennemy class
          * 
          *  This is a regressino test
          */
-        void test() const;
+        void test(const Terrain *t) const;
         
     private :
         Vec2 pos;       ///< Position
         Direction dir;  ///< Direction
         State state;    ///< State
-        //Vec2 Ronde
+        Vec2* patrolPath;   ///< Patrol path
+        int length;     ///< Patrol path length
+        int patrolPos;  ///< Position on the patrol path
+        int patrolInc;  ///< Increment to move along the patrol path
 
     private:
         /** @brief Moves towards the Player
@@ -64,10 +70,9 @@ class Ennemy {
          */
         void chasePlayer(const Terrain & T, const Player & P);
 
-        /** @brief Moves along a predefined path
-         *  @param T [in] terrain
+        /** @brief Moves along the predefined patrol path
          */
-        void patrol(const Terrain & T);
+        void patrol();
 };
 
 #endif

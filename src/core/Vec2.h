@@ -68,6 +68,12 @@ public:
      */
     bool isInTab(const Vec2* t, int size) const;
 
+    /** @brief finds a Vec2 in an array
+     *  @param t [in] Pointer too first element of an array of Vec2
+     *  @param size [in] size of the array
+     *  @return index of t where the Vec2 can be found
+     */
+    int findInTab(const Vec2* t, int size) const;
 
 
 };
