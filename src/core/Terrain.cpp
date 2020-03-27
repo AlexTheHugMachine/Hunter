@@ -132,12 +132,39 @@ void Terrain::draw()
 
 Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
 {
-    Vec2* A = new Vec2[8];
+    Vec2* A = new Vec2[4]; //Set to 8 to show diagonal tiles
     size = 0;
     Vec2 cur;
 
-    
+    cur = pos - Vec2(1, 0);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
 
+    cur = pos + Vec2(1, 0);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+    
+    cur = pos - Vec2(0, 1);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+    
+    cur = pos + Vec2(0, 1);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+    
+/*
      //To show diagonal tiles
     for(int i = pos.x - 1; i <= pos.x + 1; ++i)
     {
@@ -150,7 +177,8 @@ Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
                 size++;
             }
         }
-    }
+    }*/
+
     return A;
 }
 
