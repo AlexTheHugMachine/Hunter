@@ -1,4 +1,4 @@
-#include "winTxt.h"
+#include "WinTxt.h"
 #include <cassert>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -34,11 +34,13 @@ void termMove(int x, int y) // deplace le curseur du terminal
 
 void termClear()  // efface le terminal
 {
+    int r;
 #ifdef _WIN32
-    system("cls");
+    r = system("cls");
 #else
-    system("clear");
+    r = system("clear");
 #endif
+    if(r == -1) perror("system clear");
 }
 
 void termInit()      // configure la saisie : ne pas afficher les caracteres tapes

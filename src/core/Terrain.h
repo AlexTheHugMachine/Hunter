@@ -1,3 +1,5 @@
+/** @file Terrain.h
+ */
 #ifndef TERRAIN
 #define TERRAIN
 
@@ -9,16 +11,15 @@
  */
 class Terrain{
 public:
-
-    /** New terrain
-     * Initializes a new terrain
-     * @param x dimension
-     * @param y dimension
+    Terrain() = default;
+    /** Initializes a new terrain
+     * @param x [in] dimension
+     * @param y [in] dimension
      */
     Terrain(int x, int y);
 
     /** Load terrain from file
-     * @param filename file location
+     * @param filename [in] file location
      */
     Terrain(std::string filename);
 
@@ -42,66 +43,74 @@ public:
     Vec2 getDim() const;
 
     /** Case accessor
-     * @param v Coordinates
+     * @param v [in] Coordinates
      * @return Case value
      */
     Case getCase(Vec2 v) const;
 
     /** Case mutator
-     * @param v Coordinates
-     * @param c Case value
+     * @param v [in] Coordinates
+     * @param c [in] Case value
      */
     void setCase(Vec2 v, Case c);
     
     /** Case mutator
-     * @param x Coordinate
-     * @param y Coordinate
-     * @param c Case value
+     * @param x [in] Coordinate
+     * @param y [in] Coordinate
+     * @param c [in] Case value
      */
     void setCase(int x, int y, Case c);
 
-    /** @brief [DEBUG] displays the terrain
-     * @warning DEBUG ONLY!!
+    /** @brief Access the terrain
+     *  @return Pointer on array of Case
+     *  @param dim [out] Vec2 comprised of the dimensions of the terrain
+     *  @warning Don't forget to delete the array!
      */
-    void draw() const; // DEBUG ONLY!!!!!!
+    Case* getTerrain(Vec2& dim) const;
 
-    /** @brief Dijkstra pathfinding
-     *  @param start Starting position
-     *  @param end Ending position
+    /** Tests if a position is in the Terrrain
+     *  @param v [in] Vec2 to test
      */
-    Vec2* Dijkstra(Vec2 start, Vec2 end, int& size) const;
+    bool isInTerrain(Vec2 v) const;
+
+    /** Tests if a position is in the Terrrain and a path
+     *  @param v [in] Vec2 to test
+     */
+    bool isTerrainPath(Vec2 v) const;
+
+    /** @brief [DEBUG] displays the terrain
+     *  @warning DEBUG ONLY!!
+     */
+    void draw(); // DEBUG ONLY!!!!!!
 
     /** @brief Test the Ennemy class
+     * 
+     * This is a regression test
      */
     void test() const;
-
-private:
-
-    /** @brief returns adjacent tiles
-     *  @param pos [in] current tile
-     *  @param size [out] size of array returned
-     *  @return pointer on array of Vec2
-     */
-    Vec2* getAdjacent(Vec2 pos, int& size) const;
 
     /** @brief returns adjacent tiles where characters can walk
      *  @param pos [in] current tile
      *  @param size [out] size of array returned
-     *  @return pointer on array of Vec2
+     *  @warning Don't forget to disallocate the returned array ! 
      */
     Vec2* getAdjacentPath(Vec2 pos, int& size) const;
 
-    
 
-    /** @brief Checks if coords inside of the Terrain boundaries
-     *  @param pos coord of tile to check
-     */
-    bool isInTerrain(Vec2 pos) const;
 
 private:
-    Case* arr = nullptr;
-    int dimX;
-    int dimY;
+    Case* arr; ///< Array of tiles
+    int dimX; ///< width
+    int dimY; ///< height
+
+private:
+    /** @brief returns adjacent tiles
+     *  @param pos [in] current tile
+     *  @param size [out] size of array returned
+     *  @return pointer on array of Vec2
+     *  @warning Don't forget to disallocate the returned array ! 
+     */
+    Vec2* getAdjacent(Vec2 pos, int& size) const;
 
 };
 

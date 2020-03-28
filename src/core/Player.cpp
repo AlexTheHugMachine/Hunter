@@ -1,46 +1,65 @@
 #include "Player.h"
 
-#include <iostream>
 #include <assert.h>
+#include <iostream>
 using namespace std;
 
-Player::Player() {
-    pos.x = 0;
-    pos.y = 0;
+Player::Player()
+{
+    pos = Vec2(0, 0);
 }
 
 Player::~Player()
 {
+
 }
 
-Vec2 Player::getPos() const {
+Vec2 Player::getPos() const
+{
     return pos;
 }
 
-void Player::move(Terrain T, Direction D) {
+void Player::move(const Terrain& t, Direction D)
+{
+    switch (D)
+    {
+    case Direction::left:
+        if(t.isTerrainPath(pos - Vec2(1, 0))) pos = pos - Vec2(1, 0);
+        break;
 
+    case Direction::right:
+        if(t.isTerrainPath(pos + Vec2(1, 0))) pos = pos + Vec2(1, 0);
+        break;
+
+    case Direction::up:
+        if(t.isTerrainPath(pos - Vec2(0, 1))) pos = pos - Vec2(0, 1);
+        break;
+
+    case Direction::down:
+        if(t.isTerrainPath(pos + Vec2(0, 1))) pos = pos + Vec2(0, 1);
+        break;
+    
+    default:
+        break;
+    }
 }
 
-void Player::setPos(Vec2 V) {
-    pos.x = V.x;
-    pos.y = V.y;
+void Player::setPos(Vec2 p)
+{
+    pos = p;
 }
 
 void Player::test() const
 {
     Player p;
-    assert(p.pos.x == 0 && p.pos.y == 0);
-    cout << "The constructor works" << endl;
+    assert(p.pos == Vec2(0, 0));
+    cout << "Constructor works" << endl;
 
-    Vec2 v = p.getPos();
-    assert(v.x == p.pos.x && v.y == p.pos.y);
-    cout << "The getPos() accessor works" << endl;
+    assert(p.getPos() == p.pos);
+    cout << "The accessor works" << endl;
 
-    v = Vec2(5., 9.);
+    Vec2 v(5, 5);
     p.setPos(v);
-    assert(p.pos.x == v.x && p.pos.y == v.y);
-    cout << "The setPos() mutator works" << endl;
-
-    cout << "The move() function is not implemented yet!!" << endl;
-    
+    assert(p.pos == v);
+    cout << "The mutator works" << endl;
 }

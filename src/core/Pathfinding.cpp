@@ -4,8 +4,10 @@
 
 using namespace std;
 
+#define INF 999999
 
-Node::Node(Vec2 v, int d, Node* n)
+
+Node::Node(Vec2 v, int d, Vec2 n)
 {
     coords = v;
     dist = d;
@@ -18,124 +20,182 @@ void Node::update(Node n)
     if(new_dist < dist)
     {
         dist = new_dist;
-        via = &n;
+        via = n.coords;
     }
 }
 
-/*Vec2* Dijkstra(Vec2 start, Vec2 end, int & size)
+UnVisited::UnVisited(const Terrain* t, Vec2 start)
 {
-    cout << "Start (" << start.x << ", " << start.y << ")" << endl;
-    cout << "End (" << end.x << ", " << end.y << ")" << endl;
+    int dimX = t->getDimX();
+    int dimY = t->getDimY();
 
-
-    vector<Node> unvisited, 
-                visited;    
-    Node nStart = Node{start, 0, nullptr};
-    Node cur, n;
-
-    unvisited.push_back(nStart);
-
-    Vec2 pos;
-    // Initialize unvisited list
-    for(int i = 0; i < dimX; ++i)
+    for(int x = 0; x < dimX; ++x)
     {
-        for(int j = 0; j < dimY; ++j)
+        for(int y = 0; y < dimY; ++y)
         {
-            pos = Vec2(i, j);
-            if(pos == start) 
-            {
-                unvisited.push_back(nStart);
-                
-            }
-            else 
-            {
-                //cout << pos.x << " " << pos.y << endl;
-                unvisited.push_back(Node{pos, INF, nullptr});
-            }
+            if(Vec2(x, y) == start)
+                arr.push_back(Node(start, 0, Vec2(-1, -1)));
+            else
+                arr.push_back(Node(Vec2(x, y), INF, Vec2(-1, -1)));
+        }
+    }
+}
+
+bool UnVisited::empty()
+{
+    return arr.empty();
+}
+
+int UnVisited::getMinIndex()
+{
+    int min = arr.front().dist;
+    int imin = 0;
+
+    for(unsigned int i = 0; i < arr.size(); ++i)
+    {
+        if(arr[i].dist < min)
+        {
+            min = arr[i].dist;
+            imin = i;
         }
     }
 
-    cout << "Unvisited list initialized" << endl;
+    return imin;
+
+}
+
+Node UnVisited::extractMin()
+{
+    int i = getMinIndex();
+    Node n = arr[i];
+    arr.erase(arr.begin() + i);
+    return n;
+}
+
+void UnVisited::update(Vec2 coord, Node n)
+{
+    for(unsigned int i = 0; i < arr.size(); ++i)
+    {
+        if(arr[i].coords == coord)
+        {
+            arr[i].update(n);
+        }
+    }
+}
+
+bool UnVisited::exists(Vec2 coord)
+{
+    bool res = false;
+    for(unsigned int i = 0; i < arr.size(); ++i)
+    {
+        if(arr[i].coords == coord)
+        {
+            res = true;
+            break;
+        }
+    }
+    return res;
+}
+
+void Visited::push(Node n)
+{
+    arr.push_back(n);
+}
+
+Node Visited::pop()
+{
+    Node n = arr.back();
+    arr.pop_back();
+    return n;
+}
+
+bool Visited::empty()
+{
+    return arr.empty();
+}
+
+Vec2* Visited::getPath(int &s)
+{
+    /*cout << "Visited coords : " << endl << endl;
+    for(int i = 0; i < arr.size(); i++)
+    {
+        cout << &arr[i] << " " << arr[i].coords.x << " " << arr[i].coords.y << endl;
+    }
+    cout << endl;*/
+
+    Vec2* a = new Vec2[arr.size()];
+    Node node = pop();
+    
+    // node.coords == end if everything works
+    
+
+    a[0] = node.coords;
+    s = 1;
+    while(!empty())
+    {
+        Node next = pop();
+        if(next.coords == node.via)
+        {
+            node = next;
+            a[s] = node.coords;
+            s++;
+        }
+    }
+    
+    int i = s - 1;
+
+    Vec2* res = new Vec2[s];
+
+    int count = 0;
+    for(; i>=0; --i) // Reverse the order of the array to have the path go from start to end
+    {
+        res[count] = a[i];
+        count ++;
+    }
+
+    delete [] a;
+    a = nullptr;
+    return res;
 
     
-    while(!unvisited.empty())
+}
+
+Vec2* Dijkstra(const Terrain* t, Vec2 start, Vec2 end, int& size)
+{
+    UnVisited UV(t, start);
+    Visited V;
+
+    bool success = false;
+    while(! UV.empty())
     {
-        vector<Node>::iterator it = min_element(unvisited.begin(), unvisited.end());
-        int min_i = distance(unvisited.begin(), it);
-        cur = unvisited[min_i];     // Visit node with minimum dist to start
+        Node N = UV.extractMin();
+        V.push(N);
 
-        visited.push_back(cur);
-        unvisited.erase(it);
-
-//if(cur.via != nullptr)
-        cout << "Visited (" << cur.coords.x << ", " << cur.coords.y << ") via " << cur.dist /*<< " " << cur.via->coords.y<< endl;
-        
-        if(cur.coords == end)   // If visit end point, over
+        if(N.coords == end)
         {
-            
+            success = true;
             break;
         }
 
-        int size;
-        Vec2* neighbors = getAdjacentPath(cur.coords, size);
+        int s;
+        Vec2* tab;
+        tab = t->getAdjacentPath(N.coords, s);
 
-        cout << "Neighb : " <<cur.coords.x << " " << cur.coords.y << endl;
-
-        
-
-        for(int i = 0; i < size; ++i) // For every neighbor
+        for(int i = 0; i < s; ++i)
         {
-            cout << neighbors[i].x << " " << neighbors[i].y << endl;
-            n.coords = Vec2(-1, -1);
-            for(unsigned int j = 0; j < unvisited.size(); j++) // Find node in unvisited
+            if(UV.exists(tab[i]))
             {
-                if(unvisited[j].coords == neighbors[i]) 
-                {
-                    n = unvisited[j];
-                    //break;
-                }
-            }
-            if(n.coords != Vec2(-1, -1)) // If neighbor is in unvisited
-            {
-                int new_d = 1 + cur.dist;
-                if(new_d < n.dist) // If found shorter path for neighbor, then update neighbor
-                {
-                    n.dist = new_d;
-                    n.via = &cur;
-                }
+                UV.update(tab[i], N);
             }
         }
+        delete [] tab;
     }
 
-    cout << "Exited (" << cur.coords.x << ", " << cur.coords.y << ") via " << cur.dist << endl;
-
-    vector<Vec2>* path = new vector<Vec2>;
-    n = visited.back();
-    path->push_back(n.coords);
-    visited.pop_back();
-
-    while(!(visited.empty()))
+    if(success)
     {
-
-        //cout << visited.back().coords.x << " " << visited.back().coords.y << " " << visited.back().dist << endl;
-        if(&visited.back() == n.via)
-        {
-            n = visited.back();
-            path->push_back(n.coords);
-        }
-        visited.pop_back();
-
+        return V.getPath(size);
     }
-
-
-    size = path->size();
-    Vec2* res = new Vec2[size];
-    for(int i = 0; i < size; ++i)
-    {
-        res[i] = path->back();
-        //cout << res[i].x << " " << res[i].y << endl;
-        path->pop_back();
-    }
-    return res;
+    cout << "NOPE" << endl;
+    return nullptr;
     
-}*/
+}

@@ -4,16 +4,16 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <Pathfinding.h>
 
 using namespace std;
 
-#define INF 999999
 
 Terrain::Terrain(int x, int y)
 {
-    arr = new Case[x * y];
     dimX = x;
     dimY = y; 
+    arr = new Case[x * y];
     for(int i = 0; i < dimX; ++i)
     {
         for(int j = 0; j < dimY; ++j)
@@ -35,7 +35,7 @@ Terrain::Terrain(std::string filename)
     file >> dimY;
 
     cout << "dimX " << dimX;
-    cout << " dimY " << dimY << endl;
+    cout << " dimY " << dimY << endl << endl;
 
     arr = new Case[dimX * dimY];
     char c;
@@ -60,12 +60,12 @@ Terrain::Terrain(std::string filename)
     }
 
     file.close();
-    draw();
 }
 
 Terrain::~Terrain()
 {
-    delete arr;
+    delete [] arr;
+    arr = nullptr;
     dimX = 0;
     dimY = 0;
 }
@@ -102,10 +102,32 @@ void Terrain::setCase(int x, int y, Case c)
     setCase(Vec2(x, y), c);
 }
 
-void Terrain::draw() const
+Case* Terrain::getTerrain(Vec2& dim) const
+{
+    dim = getDim();
+    return arr;
+}
+
+bool Terrain::isInTerrain(Vec2 v) const
+{
+    return v.x >= 0 && v.y >= 0 &&
+            v.x < dimX && v.y < dimY;
+}
+
+bool Terrain::isTerrainPath(Vec2 v) const
+{
+    return isInTerrain(v) && getCase(v) == Case::empty;
+    
+}
+
+void Terrain::draw() 
 {
     //############ DEBUG ONLY!!! ############
-    
+    /*Vec2 start(0, 0);
+    Vec2 end(9, 4);
+    int s;
+    Vec2* p = Dijkstra(this, start, end, s);*/
+
     for(int j = 0; j < dimY; ++j)
     {
         cout << "|";
@@ -116,18 +138,51 @@ void Terrain::draw() const
             {
                 cout << "#";
             }
+            //else if(Vec2(i, j).isInTab(p, s)) cout << "0";
             else cout << " ";
         }
         cout << "|" << endl;
     }
     //############ DEBUG ONLY!!! ############
+    //delete [] p;
 }
 
 Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
 {
-    Vec2* arr = new Vec2[8];
+    Vec2* A = new Vec2[4]; //Set to 8 to show diagonal tiles
     size = 0;
     Vec2 cur;
+
+    cur = pos - Vec2(1, 0);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+
+    cur = pos + Vec2(1, 0);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+    
+    cur = pos - Vec2(0, 1);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+    
+    cur = pos + Vec2(0, 1);
+    if(isInTerrain(cur)) 
+    {
+        A[size] = cur;
+        size++;
+    }
+    
+/*
+     //To show diagonal tiles
     for(int i = pos.x - 1; i <= pos.x + 1; ++i)
     {
         for(int j = pos.y - 1; j <= pos.y + 1; ++j)
@@ -135,12 +190,13 @@ Vec2* Terrain::getAdjacent(Vec2 pos, int& size) const
             cur = Vec2(i, j);
             if(cur != pos && isInTerrain(cur))
             {
-                arr[size] = cur;
+                A[size] = cur;
                 size++;
             }
         }
-    }
-    return arr;
+    }*/
+
+    return A;
 }
 
 Vec2* Terrain::getAdjacentPath(Vec2 pos, int& size) const
@@ -148,26 +204,18 @@ Vec2* Terrain::getAdjacentPath(Vec2 pos, int& size) const
     int s = size;
     size = 0;
     Vec2* res = getAdjacent(pos, s);
-    Vec2* arr = new Vec2[8];
+    Vec2* A = new Vec2[8];
     
     for(int i = 0; i < s; ++i)
     {
         if(getCase(res[i]) == Case::empty)
         {
-            arr[size] = res[i];
+            A[size] = res[i];
             size++;
         }
     }
     delete [] res;
-    return arr;
-}
-
-bool Terrain::isInTerrain(Vec2 pos) const
-{
-    return pos.x >= 0 &&
-            pos.y >= 0 &&
-            pos.x < dimX &&
-            pos.y < dimY;
+    return A;
 }
 
 void Terrain::test() const

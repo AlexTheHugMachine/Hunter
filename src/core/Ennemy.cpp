@@ -2,16 +2,37 @@
 
 #include <iostream>
 #include <cassert>
+#include "Pathfinding.h"
 
 using namespace std;
 
-Ennemy::Ennemy() {
-    pos.x = 1.;
-    pos.y = 1.;
+Ennemy::Ennemy(const Terrain *t, Vec2 start, Vec2 end) {
+    pos = start;
+    patrolPath = Dijkstra(t, start, end, length);
+    patrolPos = 0;
+    patrolInc = 1;
+    state = State::patrol;
 }
 
 Ennemy::~Ennemy()
 {
+    delete [] patrolPath;
+}
+
+Ennemy& Ennemy::operator=(const Ennemy& rhs)
+{
+    pos = rhs.pos;
+    patrolPos = rhs.patrolPos;
+    patrolInc = rhs.patrolInc;
+    state = rhs.state;
+    length = rhs.length;
+    patrolPath = new Vec2[length];
+
+    for(int i = 0; i < length; i++)
+    {
+        patrolPath[i] = rhs.patrolPath[i];
+    }
+    return *this;
 }
 
 Vec2 Ennemy::getPos() const {
@@ -21,27 +42,59 @@ Vec2 Ennemy::getPos() const {
 
 void Ennemy::chasePlayer(const Terrain & T, const Player & P) 
 {
+    int s;
+    Vec2* t = Dijkstra(&T, pos, P.getPos(), s);
 
+    if(s > 1)
+        pos = t[1];
 }
 
-void Ennemy::patrol(const Terrain & T) 
+void Ennemy::patrol() 
 {
-
+    assert(pos.isInTab(patrolPath, length));
+    patrolPos += patrolInc;
+    if(patrolPos == length)
+    {
+        patrolPos -= 2;
+        patrolInc *= -1;
+    }
+    else if(patrolPos < 0)
+    {
+        patrolPos = 1;
+        patrolInc *= -1;
+    }
+    pos = patrolPath[patrolPos];
 }
 
 void Ennemy::update(const Terrain & T, const Player & P) 
 {
-
+    if(state == State::patrol)
+        patrol();
+    else if(state == State::pursuit)
+        chasePlayer(T, P);
+    //cout << "pos " << pos.x << " " << pos.y << " " << state << endl;
 }
 
-void Ennemy::test() const
+void Ennemy::setState(State s)
 {
-    Ennemy e;
-    assert(e.pos.x == 1. && e.pos.y == 1.);
+    state = s;
+}
+
+State Ennemy::getState() const
+{
+    return state;
+}
+
+void Ennemy::test(const Terrain *t) const
+{
+    Vec2 start(0, 0);
+    Vec2 end(9, 4);
+    Ennemy e(t, start, end);
+    assert(e.pos == start);
     cout << "The constructor works" << endl;
 
     Vec2 v = e.getPos();
-    assert(v.x == e.pos.x && v.y == e.pos.y);
+    assert(v == e.pos);
     cout << "The accessor works" << endl;
 
     cout << "TODO : The chasePlayer() function is not yet implemented !!!" << endl;
