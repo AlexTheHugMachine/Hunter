@@ -24,6 +24,7 @@ This project is part of the Lifap4 course and is a rogue-like assasination game
     - [X] Ennemy class
     - [X] Pathfinding
 
+
 - [ ] Game menus
 
 - [ ] Text display module
