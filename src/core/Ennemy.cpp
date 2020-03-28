@@ -19,6 +19,22 @@ Ennemy::~Ennemy()
     delete [] patrolPath;
 }
 
+Ennemy& Ennemy::operator=(const Ennemy& rhs)
+{
+    pos = rhs.pos;
+    patrolPos = rhs.patrolPos;
+    patrolInc = rhs.patrolInc;
+    state = rhs.state;
+    length = rhs.length;
+    patrolPath = new Vec2[length];
+
+    for(int i = 0; i < length; i++)
+    {
+        patrolPath[i] = rhs.patrolPath[i];
+    }
+    return *this;
+}
+
 Vec2 Ennemy::getPos() const {
     return pos;
 }
@@ -56,6 +72,7 @@ void Ennemy::update(const Terrain & T, const Player & P)
         patrol();
     else if(state == State::pursuit)
         chasePlayer(T, P);
+    //cout << "pos " << pos.x << " " << pos.y << " " << state << endl;
 }
 
 void Ennemy::setState(State s)

@@ -33,6 +33,11 @@ public :
      */
     Ennemy(const Terrain *t, Vec2 start, Vec2 end);
 
+    /** @brief assignment operator
+     *  @param rhs [in] Right hand side operand
+     */
+    Ennemy& operator=(const Ennemy& rhs);
+
     /**
      * @brief Destructeur par défaut de la classe ennemies
      */
@@ -66,7 +71,7 @@ public :
      */
     void test(const Terrain *t) const;
     
-private :
+public :
     Vec2 pos;       ///< Position
     Direction dir;  ///< Direction
     State state;    ///< State

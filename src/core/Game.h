@@ -21,8 +21,9 @@ public:
 
     /** @brief Updates the game state
      *  @param d [in] Direction the player is moving in
+     *  @return true if the player wins (no more ennemies)
      */
-    void UpdateGame(Direction d);
+    bool UpdateGame(Direction d);
 
     /** @brief Access the player class
      *  @return Vec2
@@ -37,14 +38,13 @@ public:
     Vec2* getEnnemiesPosition(int& s) const;
 
     /** @brief Access the terrain
-     *  @return Pointer on array of Case
-     *  @param dim [out] Vec2 comprised of the dimensions of the terrain
-     *  @warning Don't forget to delete the array!
+     *  @return Reference to the terrain
+     *  @warning Don't change the terrain !
      */
-    Case* getTerrain(Vec2& dim) const;
+    Terrain& getTerrain();
 
-    Terrain t;  ///< Terrain
 private:
+    Terrain t;  ///< Terrain
     Player p;   ///< Player
     Ennemy* E;  ///< Array of Ennemies
     int NbE;    ///< Number of Ennemies

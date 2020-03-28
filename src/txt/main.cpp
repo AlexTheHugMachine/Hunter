@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Terrain.h"
 #include "Game.h"
 
 using namespace std;
@@ -7,41 +6,48 @@ using namespace std;
 
 int main(void)
 { 
-
-    Game g(2);
     
-    /*
-    Terrain ter("data/test.txt");
+    Game g;
 
-    Vec2 start(0, 1);
-    Vec2 end(9, 4);
-    Ennemy e(&ter, start, end);
-    Player p;
+    Vec2 p;
+    Vec2* e;
+    int nbE;
+    Terrain t;
+    char c;
+    Direction dir = Direction::none;
     
     bool stop = false;
-    while(!stop)
+    bool won = false;
+    while(!stop  && !won)
     {
-        for(int j = 0; j < ter.getDimY(); ++j)
+        p = g.getPlayerPos();
+        e = g.getEnnemiesPosition(nbE);
+        t = g.getTerrain();
+
+        for(int j = 0; j < t.getDimY(); ++j)
         {
             cout << "|";
-            for(int i = 0; i < ter.getDimX(); ++i)
+            for(int i = 0; i < t.getDimX(); ++i)
             {
-
-                if(ter.getCase(Vec2(i, j)) == Case::wall)
+                if(Vec2(i, j).isInTab(e, nbE))
+                {
+                    cout << "E";
+                }
+                else if(Vec2(i, j) == p)
+                {
+                    cout << "P";
+                }
+                else if(t.getCase(Vec2(i, j)) == Case::wall)
                 {
                     cout << "#";
                 }
-                else if(Vec2(i, j) == e.getPos()) cout << "E";
-                else if(Vec2(i, j) == p.getPos()) cout << "P";
                 else cout << " ";
             }
             cout << "|" << endl;
         }
-        cout << endl;
-        char c;
+
         cin>>c;
 
-        Direction dir;
         switch(c)
         {
             case 'z':
@@ -53,23 +59,25 @@ int main(void)
             case 'q':
                 dir = Direction::left;
                 break;
+            case 'd':
+                dir = Direction::right;
+                break;
             case 'x':
-                dir = Direction::none;
                 stop = true;
                 break;
             default:
-                dir = Direction::none;
+                break;
         }
-        p.move(ter, dir);
-
-        e.update(ter, p);
+        
+        won = g.UpdateGame(dir);
     }
-    
-    */
+    delete [] e;
 
+    if(won)
+    {
+        cout << "You win!!!" << endl;
+    }
+   
     return EXIT_SUCCESS;
+    
 }
-
-/* 
-TODO : Ennemy and player movement
-*/

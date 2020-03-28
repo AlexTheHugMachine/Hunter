@@ -1,4 +1,6 @@
 #include "Game.h"
+#include <iostream>
+using namespace std;
 
 #define NB_E 2
 
@@ -9,23 +11,30 @@ Game::Game()
     NbE = NB_E;
     E = new Ennemy[NbE];
     E[0] = Ennemy(&t, Vec2(9, 0), Vec2(0, 0));
-    E[0] = Ennemy(&t, Vec2(9, 1), Vec2(0, 1));
+     
+   
+    E[1] = Ennemy(&t, Vec2(9, 4), Vec2(0, 4));
+   
+    
 }
 
 Game::~Game()
 {
-    delete [] E;
+   delete [] E;
 }
 
-void Game::UpdateGame(Direction d)
+bool Game::UpdateGame(Direction d)
 {
     p.move(t, d);
     Vec2 PPos = p.getPos();
 
+    bool over = false;
+    int count = 0;
     for(int i = 0; i < NbE; ++i)
     {
         if(E[i].getState() != State::dead)
         {
+            count++;
             E[i].update(t, p);
             Vec2 EPos = E[i].getPos();
 
@@ -44,10 +53,16 @@ void Game::UpdateGame(Direction d)
                         E[i].setState(State::pursuit);
                     }
                 } 
+                delete [] tiles;
             }
             
         }
     }
+    if(count == 0)
+        over = true;
+    
+    return over;
+   
 }
 
 Vec2 Game::getPlayerPos() const
@@ -61,7 +76,7 @@ Vec2* Game::getEnnemiesPosition(int& s) const
     s = 0;
     for(int i = 0; i < NbE; ++i)
     {
-        //if(E[i].getState() != State::dead)
+        if(E[i].getState() != State::dead)
         {
             r[i] = E[i].getPos();
             s++;
@@ -70,7 +85,7 @@ Vec2* Game::getEnnemiesPosition(int& s) const
     return r;
 }
 
-Case* Game::getTerrain(Vec2& dim) const
+Terrain& Game::getTerrain()
 {
-    return t.getTerrain(dim);
+    return t;
 }
