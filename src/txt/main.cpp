@@ -10,16 +10,17 @@ int main(void)
 { 
     termClear();
     Game g("data/Config.txt");
+    //Game g;
     
 
     Vec2 p;
     Vec2* e;
     int nbE;
-    Terrain t  = g.getTerrain();
+    Terrain ter  = g.getTerrain();
     char c;
     Direction dir = Direction::none;
     
-    WinTXT win(t.getDimX(), t.getDimY());
+    WinTXT win(ter.getDimX(), ter.getDimY());
     win.clear(' ');
     bool stop = false;
     bool won = false;
@@ -30,13 +31,13 @@ int main(void)
         //cout << "main : " << endl;
 
        // for(int i = 0; i < nbE)
-        t = g.getTerrain();
+        ter = g.getTerrain();
         
         win.clear();
-        for(int j = 0; j < t.getDimY(); ++j)
+        for(int j = 0; j < ter.getDimY(); ++j)
         {
             //cout << "|";
-            for(int i = 0; i < t.getDimX(); ++i)
+            for(int i = 0; i < ter.getDimX(); ++i)
             {
                 if(Vec2(i, j).isInTab(e, nbE))
                 {
@@ -48,7 +49,7 @@ int main(void)
                     win.print(i, j, 'P');
                     //cout << "P";
                 }
-                else if(t.getCase(Vec2(i, j)) == Case::wall)
+                else if(ter.getCase(Vec2(i, j)) == Case::wall)
                 {
                     win.print(i, j, '#');
                     cout << "#";
