@@ -8,6 +8,7 @@
 
 #include "../core/Game.h"
 
+/*
 void txtAff (WinTXT & win, const Game & g) {
 	const Terrain& ter = g.getTerrain();
 	const Player& play = g.getPlayerPos();
@@ -69,3 +70,4 @@ void txtBoucle (Game & g) {
 	} while (ok);
 
 }
+*/

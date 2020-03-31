@@ -1,21 +1,26 @@
 #include <iostream>
 #include "Game.h"
+#include "WinTxt.h"
+#include <unistd.h>
 
 using namespace std;
 
 
 int main(void)
 { 
-    
+    termClear();
     Game g;
+    
 
     Vec2 p;
     Vec2* e;
     int nbE;
-    Terrain t;
+    Terrain t  = g.getTerrain();
     char c;
     Direction dir = Direction::none;
     
+    WinTXT win(t.getDimX(), t.getDimY());
+    win.clear(' ');
     bool stop = false;
     bool won = false;
     while(!stop  && !won)
@@ -23,31 +28,36 @@ int main(void)
         p = g.getPlayerPos();
         e = g.getEnnemiesPosition(nbE);
         t = g.getTerrain();
-
+        
+        win.clear();
         for(int j = 0; j < t.getDimY(); ++j)
         {
-            cout << "|";
+            //cout << "|";
             for(int i = 0; i < t.getDimX(); ++i)
             {
                 if(Vec2(i, j).isInTab(e, nbE))
                 {
-                    cout << "E";
+                    win.print(i, j, 'E');
+                    //cout << "E";
                 }
                 else if(Vec2(i, j) == p)
                 {
-                    cout << "P";
+                    win.print(i, j, 'P');
+                    //cout << "P";
                 }
                 else if(t.getCase(Vec2(i, j)) == Case::wall)
                 {
-                    cout << "#";
+                    win.print(i, j, '#');
+                    //cout << "#";
                 }
-                else cout << " ";
+                else win.print(i, j, ' '); //cout << " ";
             }
-            cout << "|" << endl;
+            //cout << "|" << endl;
         }
-
-        cin>>c;
-
+        win.draw();
+        usleep(100000);
+        //cin>>c;
+        c = win.getCh();
         switch(c)
         {
             case 'z':
@@ -66,6 +76,7 @@ int main(void)
                 stop = true;
                 break;
             default:
+                dir = Direction::none;
                 break;
         }
         
@@ -77,6 +88,7 @@ int main(void)
     {
         cout << "You win!!!" << endl;
     }
+    termClear();
    
     return EXIT_SUCCESS;
     

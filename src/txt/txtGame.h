@@ -3,6 +3,6 @@
 
 #include "../core/Game.h"
 
-void txtBoucle (Game & g);
+//void txtBoucle (Game & g);
 
 #endif
