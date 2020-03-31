@@ -84,8 +84,8 @@ int main(void)
         }
         
         won = g.UpdateGame(dir);
+        delete [] e;
     }
-    delete [] e;
 
     if(won)
     {

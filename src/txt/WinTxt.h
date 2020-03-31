@@ -13,6 +13,7 @@ class WinTXT {
 
     public :
         WinTXT(int dx, int dy);
+        ~WinTXT();
         void clear(char c=' ');
         void print(int x, int y, char c);
         void print (int x, int y, char* c);

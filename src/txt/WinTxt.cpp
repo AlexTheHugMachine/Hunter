@@ -84,6 +84,11 @@ WinTXT::WinTXT (int dx, int dy) {
     termInit();
 }
 
+WinTXT::~WinTXT()
+{
+    delete [] win;
+}
+
 void WinTXT::clear (char c) {
     for(int i=0;i<dimx;++i)
         for(int j=0;j<dimy;++j)

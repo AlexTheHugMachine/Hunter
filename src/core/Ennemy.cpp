@@ -47,6 +47,8 @@ void Ennemy::chasePlayer(const Terrain & T, const Player & P)
 
     if(s > 1)
         pos = t[1];
+
+    delete [] t;
 }
 
 void Ennemy::patrol() 
