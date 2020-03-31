@@ -49,6 +49,18 @@ public :
      */
     Vec2 getPos() const;
 
+    /**
+     * @brief Fonction renvoyant la position sur l'axe x de l'ennemi
+     * @return Renvoie un entier en lien avec la position sur l'axe x de l'ennemi
+     */
+    int getX() const;
+
+    /**
+     * @brief Fonction renvoyant la position sur l'axe y de l'ennemi
+     * @return Renvoie un entier en lien avec la position sur l'axe y de l'ennemi
+     */
+    int getY() const;
+
     /** @brief Moves according to its state
      */
      /* @param T [in] Terrain

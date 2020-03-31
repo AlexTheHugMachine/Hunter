@@ -28,6 +28,18 @@ class Player {
         Vec2 getPos() const;
 
         /**
+         * @brief Fonction renvoyant la position sur l'axe x du joueur
+         * @return Renvoie un entier en lien avec la position sur l'axe x du joueur
+         */
+        int getX() const;
+
+        /**
+         * @brief Fonction renvoyant la position sur l'axe y du joueur
+         * @return Renvoie un entier en lien avec la position sur l'axe y du joueur
+         */
+        int getY() const;
+
+        /**
          * @brief Fonction permettant le déplacement du joueur sur un terrain en fnction d'une direction
          * @param T [in] Terrain
          * @param D [in] Direction

@@ -19,6 +19,16 @@ Vec2 Player::getPos() const
     return pos;
 }
 
+int Player::getX() const
+{
+    return pos.x;
+}
+
+int Player::getY() const
+{
+    return pos.y;
+}
+
 void Player::move(const Terrain& t, Direction D)
 {
     switch (D)

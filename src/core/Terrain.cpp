@@ -85,6 +85,11 @@ Vec2 Terrain::getDim() const
     return Vec2(dimX, dimY);
 }
 
+Vec2 Terrain::getDim(int x, int y) const 
+{
+    return Vec2(x, y);
+}
+
 Case Terrain::getCase(Vec2 v) const
 {
     return arr[dimX * (int) v.y + (int) v.x];

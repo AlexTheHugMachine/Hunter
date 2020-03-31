@@ -39,6 +39,15 @@ Vec2 Ennemy::getPos() const {
     return pos;
 }
 
+int Ennemy::getX() const
+{
+    return pos.x;
+}
+
+int Ennemy::getY() const
+{
+    return pos.y;
+}
 
 void Ennemy::chasePlayer(const Terrain & T, const Player & P) 
 {

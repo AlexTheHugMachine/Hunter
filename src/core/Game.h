@@ -41,7 +41,7 @@ public:
      *  @return Reference to the terrain
      *  @warning Don't change the terrain !
      */
-    Terrain& getTerrain();
+    const Terrain& getTerrain();
 
 private:
     Terrain t;  ///< Terrain
