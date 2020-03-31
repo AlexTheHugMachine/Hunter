@@ -42,6 +42,8 @@ public:
      */
     Vec2 getDim() const;
 
+    Vec2 getDim(int x, int y) const;
+
     /** Case accessor
      * @param v [in] Coordinates
      * @return Case value
