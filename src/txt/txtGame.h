@@ -1,8 +1,13 @@
 #ifndef _TXTGAME_H
 #define _TXTGAME_H
 
-#include "../core/Game.h"
+#include "Game.h"
+#include "WinTxt.h"
 
-void txtBoucle (Game & g);
+class txtGame
+{
+public:
+    void txtmain ();
+};
 
 #endif
