@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 #define NB_E 2
@@ -16,6 +17,31 @@ Game::Game()
     E[1] = Ennemy(&t, Vec2(9, 4), Vec2(0, 4));
    
     
+}
+
+Game::Game(std::string filename)
+{
+    ifstream file(filename);
+
+    string terrain;
+    Vec2 start, end;
+
+    if(file.is_open())
+    {
+        file >> terrain;
+        t = Terrain(terrain);
+        p = Player();
+        file >> NbE;
+        E = new Ennemy[NbE];
+        for(int i = 0; i < NbE; i++)
+        {
+            file >> start.x;
+            file >> start.y;
+            file >> end.x;
+            file >> end.y;
+            E[i] = Ennemy(&t, start, end);
+        }
+    }
 }
 
 Game::~Game()

@@ -9,7 +9,7 @@ using namespace std;
 int main(void)
 { 
     termClear();
-    Game g;
+    Game g("data/Config.txt");
     
 
     Vec2 p;

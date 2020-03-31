@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Terrain.h"
 #include "Ennemy.h"
+#include <string.h>
 
 /** @brief The game class stores the information related to the logic of the game
  *  @sa WinTxt
@@ -16,6 +17,11 @@ public:
     /** @brief Initializes the game
      */
     Game();
+
+    /** @brief Initialize the game with the configuration in a file
+     *  @param filename [in] Location of the config file
+     */
+    Game(std::string filename);
 
     ~Game();
 
