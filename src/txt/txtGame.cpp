@@ -85,14 +85,16 @@ void txtGame::txtmain()
         }
         
         won = g.UpdateGame(dir);
+        delete [] e;
     }
-    delete [] e;
+   
 
     if(won)
     {
         //win.clear();
         //win.print(2, 2, "You Win!");
         cout << "You win!!!" << endl;
+        win.pause();
     }
     termClear();
     
