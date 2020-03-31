@@ -28,14 +28,14 @@ Terrain::Terrain(std::string filename)
     ifstream file(filename);
     if(file.is_open()){
 
-    cout << "Fichier ouvert" << endl;
+    //cout << "Fichier ouvert" << endl;
     }
     else cout << "Nope" << endl; 
     file >> dimX;
     file >> dimY;
 
-    cout << "dimX " << dimX;
-    cout << " dimY " << dimY << endl << endl;
+    //cout << "dimX " << dimX;
+    //cout << " dimY " << dimY << endl << endl;
 
     arr = new Case[dimX * dimY];
     char c;

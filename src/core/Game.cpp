@@ -85,7 +85,7 @@ Vec2* Game::getEnnemiesPosition(int& s) const
     return r;
 }
 
-Terrain& Game::getTerrain()
+const Terrain& Game::getTerrain()
 {
     return t;
 }

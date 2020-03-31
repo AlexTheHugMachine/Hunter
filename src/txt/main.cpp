@@ -55,7 +55,7 @@ int main(void)
             //cout << "|" << endl;
         }
         win.draw();
-        usleep(100000);
+        usleep(500000);
         //cin>>c;
         c = win.getCh();
         switch(c)
@@ -86,7 +86,7 @@ int main(void)
 
     if(won)
     {
-        cout << "You win!!!" << endl;
+        //cout << "You win!!!" << endl;
     }
     termClear();
    
