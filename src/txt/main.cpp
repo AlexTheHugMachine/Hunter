@@ -89,9 +89,8 @@ int main(void)
 
     if(won)
     {
-        //win.clear();
-        //win.print(2, 2, "You Win!");
-        cout << "You win!!!" << endl;
+        cout << "You win!!!" << endl << endl;
+        win.pause();
     }
     termClear();
    
