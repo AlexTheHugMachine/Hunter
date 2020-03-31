@@ -27,6 +27,9 @@ int main(void)
     {
         p = g.getPlayerPos();
         e = g.getEnnemiesPosition(nbE);
+        //cout << "main : " << endl;
+
+       // for(int i = 0; i < nbE)
         t = g.getTerrain();
         
         win.clear();
@@ -48,7 +51,7 @@ int main(void)
                 else if(t.getCase(Vec2(i, j)) == Case::wall)
                 {
                     win.print(i, j, '#');
-                    //cout << "#";
+                    cout << "#";
                 }
                 else win.print(i, j, ' '); //cout << " ";
             }
@@ -86,7 +89,9 @@ int main(void)
 
     if(won)
     {
-        //cout << "You win!!!" << endl;
+        //win.clear();
+        //win.print(2, 2, "You Win!");
+        cout << "You win!!!" << endl;
     }
     termClear();
    

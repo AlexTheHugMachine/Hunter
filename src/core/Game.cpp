@@ -30,17 +30,22 @@ bool Game::UpdateGame(Direction d)
 
     bool over = false;
     int count = 0;
+    //cout << "UpdateGame : " << endl;
     for(int i = 0; i < NbE; ++i)
     {
+        //cout << i << " : " << E[i].pos.x << " " << E[i].pos.y << endl;
         if(E[i].getState() != State::dead)
         {
+            //cout << i << " : " << E[i].pos.x << " " << E[i].pos.y << endl;
             count++;
             E[i].update(t, p);
             Vec2 EPos = E[i].getPos();
 
             if(PPos == EPos)
             {
+                //cout << "Ennemi " << i << " mort" << endl;
                 E[i].setState(State::dead);
+                //if(E[i].getState() == State::dead) cout << "OK" << endl;
             }
             else
             {
@@ -72,13 +77,15 @@ Vec2 Game::getPlayerPos() const
 
 Vec2* Game::getEnnemiesPosition(int& s) const
 {
+    //cout << "GetEnPos" << endl;
     Vec2* r = new Vec2[NbE];
     s = 0;
     for(int i = 0; i < NbE; ++i)
     {
         if(E[i].getState() != State::dead)
         {
-            r[i] = E[i].getPos();
+            r[s] = E[i].getPos();
+            //cout << i << " : " << r[s].x << " " << r[s].y << endl;
             s++;
         }
     }
