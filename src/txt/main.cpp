@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Game.h"
+#include "Menu.h"
 #include "txtGame.h"
 #include "WinTxt.h"
 
@@ -8,7 +8,11 @@ using namespace std;
 
 int main(void)
 { 
-    txtGame txt;
-    txt.txtmain();
-    return EXIT_SUCCESS;
+  Menu mn;
+  mn.afficher();
+  unsigned int m;
+  std::cout << "Que voulez vous faire? indiquer le chiffre correspondant" << endl;
+  std::cin >> m;
+  mn.action(m);
+  return 0;
 }
