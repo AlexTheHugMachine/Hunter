@@ -14,8 +14,11 @@ CORE_SRC = $(wildcard $(CORE_DIR)/*.cpp)
 TXT_DIR = $(SRC)/txt
 TXT_SRC = $(wildcard $(TXT_DIR)/*.cpp)
 
+SDL_DIR = $(SRC)/sdl
+SDL_SRC = $(wildcard $(SDL_DIR)/*.cpp)
+
 # Ensemble des répertoires
-DIR = $(BIN) $(OBJ) $(DATA) $(DOC) $(SRC) $(CORE_DIR) $(TXT_DIR) 
+DIR = $(BIN) $(OBJ) $(DATA) $(DOC) $(SRC) $(CORE_DIR) $(TXT_DIR) $(SDL_DIR)
 
 # Fichier de configuration Doxygen
 CONF = Doxyfile
@@ -28,6 +31,9 @@ DOC_MAIN = $(DOC)/html/index.html
 # Nom des exécutables
 EXEC_TXT = hunter_txt.exe
 TARGET_TXT = $(BIN)/$(EXEC_TXT)
+
+EXEC_SDL = hunter_sdl.exe
+TARGET_SDL = $(BIN)/$(EXEC_SDL)
 
 
 
@@ -51,6 +57,7 @@ INCLUDE_LOCAL = -I$(CORE_DIR) -I$(TXT_DIR) #-I$(SRC) -I.
 
 # Liste des fichiers objets à générer pour l'exécutable texte
 OBJ_LIST_TXT = $(patsubst %.cpp, %.o, $(addprefix $(OBJ)/, $(notdir $(TXT_SRC) $(CORE_SRC))))
+OBJ_LIST_SDL = $(patsubst %.cpp, %.o, $(addprefix $(OBJ)/, $(notdir $(SDL_SRC) $(CORE_SRC))))
 
 #--------------------- Pour les echo ----------------------------------
 NORM = \e[0m
@@ -65,15 +72,18 @@ BLUE = \e[38;5;45m
 #=============================== Règles ===================================
 #------------------- Règle par défaut ------------------------------------
 # Pour tout compiler
-default: init $(TARGET_TXT) $(DOC_MAIN)
+default: init $(TARGET_TXT) $(TARGET_SDL) #$(DOC_MAIN)
 
 # Pour initialiser le workspace
-init: make_dir $(DOC_CONF)
+init: make_dir #$(DOC_CONF)
 
 #-------------------- Dépendances --------------------------------
 # Gérer la génération des listes de dépendences et inclusion de ces dernières
-DEP := $(patsubst %.o, %.d, $(OBJ_LIST_TXT))
--include $(DEP)
+DEP_TXT := $(patsubst %.o, %.d, $(OBJ_LIST_TXT))
+-include $(DEP_TXT)
+
+DEP_SDL := $(patsubst %.o, %.d, $(OBJ_LIST_SDL))
+-include $(DEP_SDL)
 DEPFLAGS = -MMD -MF $(@:.o=.d)
 
 
@@ -85,15 +95,21 @@ $(DIR):
 	@echo "Creating $(YELLOW)$@$(NORM) directory"
 	@mkdir $@
 
-
-
+#$(patsubst %.cpp, %.o, $(OBJ_LIST_SDL))
 #----------------- Règles de compilation --------------------------------------
 # Edition de liens
 $(TARGET_TXT): $(patsubst %.cpp, %.o, $(OBJ_LIST_TXT))
 	@echo "Linking $(BLUE)$+$(NORM) and creating executable $(GREEN)$@$(NORM)"
 	@$(LD) $(LDFLAGS) $+ -o $@ $(LDFLAGS) $(INCLUDE_LOCAL)
 	@echo "Updating documentation"
-	@$(doc_update)
+	@$(doc_update) >/dev/null
+
+$(TARGET_SDL): $(patsubst %.cpp, %.o, $(OBJ_LIST_SDL))
+	@echo "Linking $(BLUE)$+$(NORM) and creating executable $(GREEN)$@$(NORM)"
+	@$(LD) $(LDFLAGS) $+ -o $@ $(LDFLAGS) $(INCLUDE_LOCAL)
+	@echo "Updating documentation"
+	@$(doc_update) > /dev/null
+
 
 # Compilation des fichiers objets et génération des listes de dépendances
 $(OBJ)/%.o: $(SRC)/*/%.cpp
@@ -111,7 +127,7 @@ clean:
 	@echo "Emptying $(YELLOW)$(OBJ)$(NORM) and $(YELLOW)$(BIN)$(NORM) directories"
 	@rm -rf $(OBJ)/* $(BIN)/*  
 	@echo "Removing $(YELLOW)$$(find $(DOC)/* -maxdepth 0 -type d ! -name '$(CONF)')$(NORM) directory"
-	@find $(DOC)/* -maxdepth 0 -type d ! -name '$(CONF)' | xargs rm -rf
+	@find $(DOC)/*	 -maxdepth 0 -type d ! -name '$(CONF)' | xargs rm -rf
 
 doc_update = doxygen $(DOC_CONF)
 
