@@ -53,9 +53,12 @@ void afficher_regle(){
   cout<<"1.Oui      2. Non"<<endl;
   unsigned int i;
   cin >> i;
-  while(i<1 || i>2){
-    cout<<"Erreur, choississez 1 ou 2";
-    cin>>i;
+  while ( cin.fail( ) || i < 1 || i> 2) {
+
+    cout << "Erreur veuillez choisir entre 1 et 2" << std::endl;
+    cin.clear();
+    cin.ignore(256,'\n');
+    cin >> i;
   }
   if(i==1){
     txtGame txt;
@@ -88,9 +91,12 @@ void afficher_option(){
   <<"3.documention"<<endl;
   unsigned int i;
   cin>>i;
-  while (i<1 || i>3) {
-    cout<<"Erreur, choississez entre 1 et 3"<<endl;
-    cin>>i;
+  while ( cin.fail( ) || i < 1 || i> 3) {
+
+    cout << "Erreur veuillez choisir entre 1 et 3" << std::endl;
+    cin.clear();
+    cin.ignore(256,'\n');
+    cin >> i;
   }
   if(i==1){
     system("firefox https://perso.liris.cnrs.fr/alexandre.meyer/public_html/www/doku.php?id=lifap4");
@@ -101,8 +107,11 @@ void afficher_option(){
 }
 
 void Menu::action(unsigned int &m) const {
-  while(m>4 || m<1){
-    cout << "L'action n'est pas disponible choississez entre 1 et 4" << '\n';
+  while ( cin.fail( ) || m < 1 || m> 4) {
+
+    cout << "Erreur veuillez choisir entre 1 et 4" << std::endl;
+    cin.clear();
+    cin.ignore(256,'\n');
     cin >> m;
   }
   if(m==1){
