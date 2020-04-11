@@ -88,21 +88,42 @@ void afficher_option(){
   <<endl;
   cout<< "Vous pouvez consulter la documention en indiquant le chiffre"<<endl;
   cout << "1.Page de l'UE LIFAP4    " <<"2.Gameplay jeux mobiles    "
-  <<"3.documention"<<endl;
+  <<"3.documention   "<<"4.Retour au menu"<<endl
+  <<"Remarque: Vous pouvez ouvrir une seule fenêtre a la fois penser bien à "
+  <<"fermer votre navigateur pour pouvoir continuer"<<endl;
   unsigned int i;
   cin>>i;
-  while ( cin.fail( ) || i < 1 || i> 3) {
+  while ( cin.fail( ) || i < 1 || i> 4) {
 
-    cout << "Erreur veuillez choisir entre 1 et 3" << std::endl;
+    cout << "Erreur veuillez choisir entre 1 et 4" << std::endl;
     cin.clear();
     cin.ignore(256,'\n');
     cin >> i;
   }
+  //il faudra fermer le navigateur pour pouvoir continuer le programme
   if(i==1){
     system("firefox https://perso.liris.cnrs.fr/alexandre.meyer/public_html/www/doku.php?id=lifap4");
+    system("clear");
+    afficher_option();
   }
   if(i==2){
     system("firefox https://www.youtube.com/watch?v=ETm0Sg8TPlk");
+    system("clear");
+    afficher_option();
+  }
+  if(i==3){
+    system("firefox ../doc/html/index.html");
+    system("clear");
+    afficher_option();
+  }
+  if(i==4){
+    system("clear");
+    Menu mn;
+    mn.afficher();
+    unsigned int m;
+    cout << "Que voulez vous faire? indiquer le chiffre correspondant" << endl;
+    cin >> m;
+    mn.action(m);
   }
 }
 
@@ -124,5 +145,8 @@ void Menu::action(unsigned int &m) const {
   }
   if(m==3){
     afficher_option();
+  }
+  if(m==4){
+    cout<<"Merci d'avoir visité notre application"<<endl;
   }
 }
