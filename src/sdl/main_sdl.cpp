@@ -1,10 +1,14 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+#include "menu_sdl.h"
 using namespace std;
 
 int main(void)
 {
-    SDL_Window* window;
+    menu_sdl ms;
+    ms.main_menu_sdl();
+
+    /*SDL_Window* window;
     SDL_Event events;
     bool over = false;
     SDL_Renderer* renderer;
@@ -47,7 +51,7 @@ int main(void)
     SDL_DestroyWindow(window);
     SDL_Quit();//on quitte la SDL
 
-    return 0;
+    return 0;*/
 
 }
 

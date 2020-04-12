@@ -1,8 +1,4 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-
-#include <cstdlib>
+#include "menu_sdl.h"
 
 template<typename T>
 constexpr T WIDTHSCREEN{ 800 };
@@ -13,10 +9,8 @@ constexpr T HEIGHTSCREEN{ 600 };
 template<typename T>
 constexpr T TOTAL_POINTS{ 5000 };
 
-
-int main(int argc, char* argv[])
-{
-     if (SDL_Init(SDL_INIT_VIDEO) < 0)
+int menu_sdl::main_menu_sdl() {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", SDL_GetError());
         return EXIT_FAILURE;
@@ -28,7 +22,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-     SDL_Window* pWindow{ nullptr };
+    SDL_Window* pWindow{ nullptr };
     SDL_Renderer* pRenderer{ nullptr };
 
      if (SDL_CreateWindowAndRenderer(WIDTHSCREEN<unsigned int>, HEIGHTSCREEN<unsigned int>, SDL_WINDOW_SHOWN, &pWindow, &pRenderer) < 0)
@@ -64,7 +58,7 @@ int main(int argc, char* argv[])
     }
 
     //fond
-    SDL_Surface *img_fond_charge = SDL_LoadBMP("../../data/testimage.bmp");
+    SDL_Surface *img_fond_charge = SDL_LoadBMP("data/testimage.bmp");
     if (img_fond_charge == NULL) // Car la doc nous dit qu'il y a un cas où cela peut être NULL
     {
         printf("Impossible de charger 'testimage.bmp' : %s\n",SDL_GetError()); // Affichage d'un message d'erreur et utilisation de SDL_GetError() pour avoir plus d'informations, comme le dit la doc
@@ -224,4 +218,12 @@ int main(int argc, char* argv[])
     SDL_Quit();
 
     return EXIT_SUCCESS;
+}
+
+menu_sdl::menu_sdl() {
+
+}
+
+menu_sdl::~menu_sdl() {
+
 }

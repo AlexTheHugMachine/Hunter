@@ -47,7 +47,7 @@ endif
 
 # Linker et ses  options
 LD = g++
-LDFLAGS = -lSDL2 -lSDL2_image
+LDFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 
 
 
