@@ -36,8 +36,8 @@ int menu_sdl::main_menu_sdl() {
     bool isOpen{ true };
 
     //attention !! les polices se trouvents dans des fichiers diiférents
-    TTF_Font* font = TTF_OpenFont("/usr/share/fonts/truetype/Sarai/Sarai.ttf", 50); // Crée un police avec la police "ariali.ttf" et de taille 18 pixels
-    TTF_Font* sous_titre = TTF_OpenFont("/usr/share/fonts/truetype/Sarai/Sarai.ttf", 40);
+    TTF_Font* font = TTF_OpenFont("../data/minecraft_font.ttf", 50); // Crée un police avec la police "ariali.ttf" et de taille 18 pixels
+    TTF_Font* sous_titre = TTF_OpenFont("../data/minecraft_font.ttf", 40);
 
     if (font == nullptr)
     {
@@ -46,8 +46,7 @@ int menu_sdl::main_menu_sdl() {
     }
 
     SDL_Surface* Titre = TTF_RenderText_Blended(font, "HUNTER", SDL_Color{ 255, 255, 255, 0 }); // Crée un surface qui contient le texte
-    SDL_Surface* Txt = TTF_RenderText_Blended(sous_titre, "Affichage texte", SDL_Color{ 255, 255, 255, 0 });
-    SDL_Surface* Graphique = TTF_RenderText_Blended(sous_titre, "Affichage graphique", SDL_Color{ 255, 255, 255, 0 });
+    SDL_Surface* Txt = TTF_RenderText_Blended(sous_titre, "Jouer", SDL_Color{ 255, 255, 255, 0 });
     SDL_Surface* Options = TTF_RenderText_Blended(sous_titre, "Options", SDL_Color{ 50, 50, 255, 0 });
     SDL_Surface* Regle_du_Jeu = TTF_RenderText_Blended(sous_titre, "Regle du jeu", SDL_Color{ 50, 50, 255, 0 });
     SDL_Surface* Quitter = TTF_RenderText_Blended(sous_titre, "Quitter", SDL_Color{ 255, 255, 255, 0 });
@@ -58,10 +57,10 @@ int menu_sdl::main_menu_sdl() {
     }
 
     //fond
-    SDL_Surface *img_fond_charge = SDL_LoadBMP("data/testimage.bmp");
+    SDL_Surface *img_fond_charge = SDL_LoadBMP("../data/hunter.bmp");
     if (img_fond_charge == NULL) // Car la doc nous dit qu'il y a un cas où cela peut être NULL
     {
-        printf("Impossible de charger 'testimage.bmp' : %s\n",SDL_GetError()); // Affichage d'un message d'erreur et utilisation de SDL_GetError() pour avoir plus d'informations, comme le dit la doc
+        printf("Impossible de charger 'hunter.bmp' : %s\n",SDL_GetError()); // Affichage d'un message d'erreur et utilisation de SDL_GetError() pour avoir plus d'informations, comme le dit la doc
         return -1;
     }
 
@@ -123,21 +122,6 @@ int menu_sdl::main_menu_sdl() {
     position_sous_titre.x = WIDTHSCREEN<int> / 2 - position_sous_titre.w / 2;
     position_sous_titre.y = 100;
 
-    //graphique
-    SDL_Texture* Graphique_texture = SDL_CreateTextureFromSurface(pRenderer, Graphique); // Crée la texture qu'on va afficher a partir de la surface
-
-    if (Graphique_texture == nullptr)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", TTF_GetError());
-    }
-
-    SDL_Rect position_graphique;
-
-    SDL_QueryTexture(Graphique_texture, nullptr, nullptr, &position_graphique.w, &position_graphique.h); // Récupere la dimension de la texture
-
-    // Centre le titre
-    position_graphique.x = WIDTHSCREEN<int> / 2 - position_graphique.w / 2;
-    position_graphique.y = 200;
 
     //options
     SDL_Texture* Options_texture = SDL_CreateTextureFromSurface(pRenderer, Options); // Crée la texture qu'on va afficher a partir de la surface
@@ -157,7 +141,7 @@ int menu_sdl::main_menu_sdl() {
     SDL_QueryTexture(Options_texture, nullptr, nullptr, &position_regle.w, &position_regle.h); // Récupere la dimension de la texture
 
     position_regle.x = WIDTHSCREEN<int> / 2 - position_regle.w / 2;
-    position_regle.y = 400;
+    position_regle.y = 200;
 
     //quitter
     SDL_Texture* Quitter_texture = SDL_CreateTextureFromSurface(pRenderer, Quitter); // Crée la texture qu'on va afficher a partir de la surface
@@ -167,7 +151,7 @@ int menu_sdl::main_menu_sdl() {
     SDL_QueryTexture(Options_texture, nullptr, nullptr, &position_quitter.w, &position_quitter.h); // Récupere la dimension de la texture
 
     position_quitter.x = WIDTHSCREEN<int> / 2 - position_quitter.w / 2;
-    position_quitter.y = 500;
+    position_quitter.y = 400;
 
 
 
@@ -175,7 +159,6 @@ int menu_sdl::main_menu_sdl() {
     SDL_FreeSurface(Titre);
     TTF_CloseFont(font);
     SDL_FreeSurface(Txt);
-    SDL_FreeSurface(Graphique);
     SDL_FreeSurface(Options);
     SDL_FreeSurface(Regle_du_Jeu);
     SDL_FreeSurface(Quitter);
@@ -201,7 +184,6 @@ int menu_sdl::main_menu_sdl() {
         SDL_RenderCopy(pRenderer,img_fond,nullptr,&position_fond);
         SDL_RenderCopy(pRenderer, texture_titre, nullptr, &position);
         SDL_RenderCopy(pRenderer, texture_sous_titre, nullptr, &position_sous_titre);
-        SDL_RenderCopy(pRenderer,Graphique_texture,nullptr,&position_graphique);
         SDL_RenderCopy(pRenderer,Options_texture,nullptr,&position_Options);
         SDL_RenderCopy(pRenderer,regle_texture,nullptr,&position_regle);
         SDL_RenderCopy(pRenderer,Quitter_texture,nullptr,&position_quitter);

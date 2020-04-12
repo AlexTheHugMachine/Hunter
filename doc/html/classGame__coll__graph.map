@@ -1,0 +1,6 @@
+<map id="Game" name="Game">
+<area shape="rect" id="node3" href="$classEnnemy.html" title="Classe représentant les ennemis du joueur qu&#39;il doit éliminer. " alt="" coords="275,527,386,781"/>
+<area shape="rect" id="node8" href="$classTerrain.html" title="Terrain. " alt="" coords="5,491,144,817"/>
+<area shape="rect" id="node4" href="$classVec2.html" title="This class handles all vector operations. " alt="" coords="493,160,598,399"/>
+<area shape="rect" id="node10" href="$classPlayer.html" title="Represent the player. " alt="" coords="462,564,549,744"/>
+</map>
