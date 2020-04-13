@@ -36,8 +36,8 @@ int menu_sdl::main_menu_sdl() {
     bool isOpen{ true };
 
     //attention !! les polices se trouvents dans des fichiers diiférents
-    TTF_Font* font = TTF_OpenFont("../data/minecraft_font.ttf", 50); // Crée un police avec la police "ariali.ttf" et de taille 18 pixels
-    TTF_Font* sous_titre = TTF_OpenFont("../data/minecraft_font.ttf", 40);
+    TTF_Font* font = TTF_OpenFont("data/minecraft_font.ttf", 50); // Crée un police avec la police "ariali.ttf" et de taille 18 pixels
+    TTF_Font* sous_titre = TTF_OpenFont("data/minecraft_font.ttf", 40);
 
     if (font == nullptr)
     {
@@ -57,7 +57,7 @@ int menu_sdl::main_menu_sdl() {
     }
 
     //fond
-    SDL_Surface *img_fond_charge = SDL_LoadBMP("../data/hunter.bmp");
+    SDL_Surface *img_fond_charge = SDL_LoadBMP("data/hunter.bmp");
     if (img_fond_charge == NULL) // Car la doc nous dit qu'il y a un cas où cela peut être NULL
     {
         printf("Impossible de charger 'hunter.bmp' : %s\n",SDL_GetError()); // Affichage d'un message d'erreur et utilisation de SDL_GetError() pour avoir plus d'informations, comme le dit la doc
