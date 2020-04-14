@@ -151,6 +151,11 @@ menu_sdl::menu_sdl() {
   SDL_Rect position_quitter;
 
   SDL_QueryTexture(Options_texture, nullptr, nullptr, &position_quitter.w, &position_quitter.h); // Récupere la dimension de la texture
+    
+    position_quitter.x = WIDTHSCREEN<int> / 2 - position_quitter.w / 2;
+    position_quitter.y = 400;
+
+
 
     SDL_Event event;
 
