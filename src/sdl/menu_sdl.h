@@ -21,11 +21,6 @@ class menu_sdl {
          * @brief Destructeur par défaut de la classe menu_sdl
          */
         ~menu_sdl();
-
-        /**
-         * @brief Fonction permettant l'affichage du menu
-         */
-        int main_menu_sdl();
 };
 
 #endif
