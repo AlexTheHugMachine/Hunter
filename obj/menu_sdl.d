@@ -1,1 +1,0 @@
-obj/menu_sdl.o: src/sdl/menu_sdl.cpp src/sdl/menu_sdl.h
