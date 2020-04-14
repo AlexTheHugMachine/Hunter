@@ -1,12 +1,16 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include "menu_sdl.h"
+#include "WinSdl.h"
 using namespace std;
 
 int main(void)
 {
-    menu_sdl ms;
-    ms.main_menu_sdl();
+    //menu_sdl ms;
+    //ms.main_menu_sdl();
+
+    WinSdl sdl;
+    sdl.display();
 
     /*SDL_Window* window;
     SDL_Event events;
