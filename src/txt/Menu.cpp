@@ -112,7 +112,7 @@ void afficher_option(){
     afficher_option();
   }
   if(i==3){
-    system("firefox ../doc/html/index.html");
+    system("firefox ./doc/html/index.html");
     system("clear");
     afficher_option();
   }
