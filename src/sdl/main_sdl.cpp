@@ -6,6 +6,7 @@ using namespace std;
 int main(void)
 {
     menu_sdl ms;
+    return 0;
     //ms.main_menu_sdl();
 
     /*SDL_Window* window;
