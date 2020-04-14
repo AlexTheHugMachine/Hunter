@@ -48,8 +48,8 @@ menu_sdl::menu_sdl() {
 
   SDL_Surface* Titre = TTF_RenderText_Blended(font, "HUNTER", SDL_Color{ 255, 255, 255, 0 }); // Crée un surface qui contient le texte
   SDL_Surface* Txt = TTF_RenderText_Blended(sous_titre, "Jouer", SDL_Color{ 255, 255, 255, 0 });
-  SDL_Surface* Options = TTF_RenderText_Blended(sous_titre, "Options", SDL_Color{ 50, 50, 255, 0 });
-  SDL_Surface* Regle_du_Jeu = TTF_RenderText_Blended(sous_titre, "Regle du jeu", SDL_Color{ 50, 50, 255, 0 });
+  SDL_Surface* Options = TTF_RenderText_Blended(sous_titre, "Options", SDL_Color{ 255, 255, 255, 0 });
+  SDL_Surface* Regle_du_Jeu = TTF_RenderText_Blended(sous_titre, "Regle du jeu", SDL_Color{ 255, 255, 255, 0 });
   SDL_Surface* Quitter = TTF_RenderText_Blended(sous_titre, "Quitter", SDL_Color{ 255, 255, 255, 0 });
 
   if (Titre == nullptr)
@@ -152,6 +152,11 @@ menu_sdl::menu_sdl() {
 
   SDL_QueryTexture(Options_texture, nullptr, nullptr, &position_quitter.w, &position_quitter.h); // Récupere la dimension de la texture
 
+    position_quitter.x = WIDTHSCREEN<int> / 2 - position_quitter.w / 2;
+    position_quitter.y = 400;
+
+
+
     SDL_Event event;
 
   // Libération des resource de la police et de la surface qui contient le texte
@@ -228,7 +233,7 @@ menu_sdl::menu_sdl() {
 }
 
 menu_sdl::~menu_sdl() {
-  
+
 }
 
 /*while (isOpen)
