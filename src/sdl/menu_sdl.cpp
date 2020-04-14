@@ -43,6 +43,7 @@ menu_sdl::menu_sdl() {
   if (font == nullptr)
   {
       SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", TTF_GetError());
+
   }
 
   SDL_Surface* Titre = TTF_RenderText_Blended(font, "HUNTER", SDL_Color{ 255, 255, 255, 0 }); // Crée un surface qui contient le texte
@@ -72,12 +73,12 @@ menu_sdl::menu_sdl() {
   position_fond.x = 0;
   position_fond.y = 0;
 
-
   /*SDL_Texture *texture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,800,600);
   SDL_SetRenderDrawColor(pRenderer,12,50,0,255);
   SDL_SetRenderTarget(pRenderer, texture); //on modifie la texture
   SDL_RenderDrawLine(pRenderer,0,0,800,600);
   SDL_SetRenderTarget(pRenderer, NULL);// Dorénavent, on modifie à nouveau le renderer*/
+
 
   /*position.x = 600;
   position.y = 800;
@@ -117,6 +118,7 @@ menu_sdl::menu_sdl() {
 
   SDL_Rect position_sous_titre;
 
+
   SDL_QueryTexture(texture_sous_titre, nullptr, nullptr, &position_sous_titre.w, &position_sous_titre.h); // Récupere la dimension de la texture
 
   position_sous_titre.x = WIDTHSCREEN<int> / 2 - position_sous_titre.w / 2;
@@ -150,10 +152,6 @@ menu_sdl::menu_sdl() {
 
   SDL_QueryTexture(Options_texture, nullptr, nullptr, &position_quitter.w, &position_quitter.h); // Récupere la dimension de la texture
 
-  position_quitter.x = WIDTHSCREEN<int> / 2 - position_quitter.w / 2;
-  position_quitter.y = 400;
-
-
     SDL_Event event;
 
   // Libération des resource de la police et de la surface qui contient le texte
@@ -165,7 +163,6 @@ menu_sdl::menu_sdl() {
   SDL_FreeSurface(Quitter);
   TTF_CloseFont(sous_titre);
   SDL_FreeSurface(img_fond_charge);
-
 
    while (isOpen)
   {
@@ -191,9 +188,7 @@ menu_sdl::menu_sdl() {
 
       SDL_RenderPresent(pRenderer);
 
-       SDL_RenderPresent(pRenderer);
-
-        SDL_WaitEvent(&event);
+      SDL_WaitEvent(&event);
         switch(event.type)
         {
             case SDL_MOUSEBUTTONUP:
