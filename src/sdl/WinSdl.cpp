@@ -1,10 +1,15 @@
 #include "WinSdl.h"
+
 #include <iostream>
 
 using namespace std;
 
 WinSdl::WinSdl()
 {
+    t = g.getTerrain();
+    dimX = t.getDimX();
+    dimY = t.getDimY();
+
     if (SDL_Init(SDL_INIT_VIDEO) < 0) // initialisation de la SDL
     {
         cout << "Erreur d'initialisation de la SDL : " << SDL_GetError() << endl; //on affiche l'erreur
@@ -14,7 +19,7 @@ WinSdl::WinSdl()
     // Création de la fenêtre
     window = SDL_CreateWindow("Hunter",
                               SDL_WINDOWPOS_CENTERED,
-                              SDL_WINDOWPOS_CENTERED, 600, 600, SDL_WINDOW_RESIZABLE); // Création de la fenêtre
+                              SDL_WINDOWPOS_CENTERED, dimX * TileWidth, dimY * TileWidth, SDL_WINDOW_RESIZABLE); // Création de la fenêtre
 
     if (window == NULL) //gestion des erreurs
     {
@@ -37,10 +42,13 @@ WinSdl::~WinSdl()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    cout<< "coucou" << endl;
 }
 
 void WinSdl::display()
 {
+    
+
     while(!over)
     {
         SDL_WaitEvent(&events);

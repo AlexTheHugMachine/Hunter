@@ -11,6 +11,8 @@ int main(void)
 
     WinSdl sdl;
     sdl.display();
+    cout<< "coucou" << endl;
+    return 0;
 
     /*SDL_Window* window;
     SDL_Event events;
