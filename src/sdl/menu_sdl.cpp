@@ -165,6 +165,7 @@ int menu_sdl::main_menu_sdl() {
     TTF_CloseFont(sous_titre);
     SDL_FreeSurface(img_fond_charge);
 
+    SDL_Event event;
 
      while (isOpen)
     {
@@ -189,6 +190,33 @@ int menu_sdl::main_menu_sdl() {
         SDL_RenderCopy(pRenderer,Quitter_texture,nullptr,&position_quitter);
 
         SDL_RenderPresent(pRenderer);
+
+        SDL_WaitEvent(&event);
+        switch(event.type)
+        {
+            case SDL_MOUSEBUTTONUP:
+                if (event.button.x>=position_sous_titre.x && event.button.x<=position_sous_titre.x+150 && event.button.y>=position_sous_titre.y && event.button.y<=position_sous_titre.y+50)
+                {
+                    TTF_Quit();
+                    SDL_Quit();
+                }
+                if (event.button.x>=position_Options.x && event.button.x<=position_Options.x+180 && event.button.y>=position_Options.y && event.button.y<=position_Options.y+50)
+                {
+                    TTF_Quit();
+                    SDL_Quit();
+                }
+                if (event.button.x>=position_regle.x && event.button.x<=position_regle.x+180 && event.button.y>=position_regle.y && event.button.y<=position_regle.y+50)
+                {
+                    TTF_Quit();
+                    SDL_Quit();
+                }
+                if (event.button.x>=position_quitter.x && event.button.x<=position_quitter.x+180 && event.button.y>=position_quitter.y && event.button.y<=position_quitter.y+50)
+                {
+                    TTF_Quit();
+                    SDL_Quit();
+                }
+                break;
+        }
     }
 
     SDL_DestroyTexture(img_fond);
