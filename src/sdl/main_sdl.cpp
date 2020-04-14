@@ -6,7 +6,7 @@ using namespace std;
 int main(void)
 {
     menu_sdl ms;
-    ms.main_menu_sdl();
+    //ms.main_menu_sdl();
 
     /*SDL_Window* window;
     SDL_Event events;
@@ -18,7 +18,7 @@ int main(void)
       cout << "Erreur d'initialisation de la SDL : " << SDL_GetError() << endl;//on affiche l'erreur
        return EXIT_FAILURE;//on sort du programme pour éviter de plus gros problèmes
     }
-    
+
 // Création de la fenêtre
     window = SDL_CreateWindow("Hunter",
         SDL_WINDOWPOS_CENTERED,
@@ -47,11 +47,10 @@ int main(void)
         if(events.window.event == SDL_WINDOWEVENT_CLOSE)
             over = true;
     }
-    
+
     SDL_DestroyWindow(window);
     SDL_Quit();//on quitte la SDL
 
     return 0;*/
 
 }
-
