@@ -6,8 +6,8 @@
 
 using namespace std;
 
-#define TILE_WIDTH 50
-#define TILE_HEIGHT 50
+#define TILE_WIDTH 64
+#define TILE_HEIGHT 64
 
 int main(void)
 {
@@ -31,6 +31,7 @@ int main(void)
     SDL_Renderer *renderer;
     SDL_Texture *texture_empty, *texture_wall;
     SDL_Rect rect;
+    SDL_Surface *surface;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) // initialisation de la SDL
     {
@@ -72,15 +73,28 @@ int main(void)
     rect.x = 0;
     rect.y = 0;
 
-    SDL_SetRenderTarget(renderer, texture_empty);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &rect);
+    // SDL_SetRenderTarget(renderer, texture_empty);
+    // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    // SDL_RenderFillRect(renderer, &rect);
 
-    SDL_SetRenderTarget(renderer, texture_wall);
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderFillRect(renderer, &rect);
+    surface = IMG_Load("data/textures/wood_planks_small.jpg");
+    if (surface) {
+        texture_empty = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+    }
+
+
+    // SDL_SetRenderTarget(renderer, texture_wall);
+    // SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    // SDL_RenderFillRect(renderer, &rect);
 
     SDL_SetRenderTarget(renderer, nullptr);
+
+    surface = IMG_Load("data/textures/wall_top1.png");
+    if (surface) {
+        texture_wall = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+    }
 
     // Boucle : tant qu'on ferme pas la fenêtre
     while (!over)
