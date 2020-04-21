@@ -90,7 +90,7 @@ int main(void)
 
     SDL_SetRenderTarget(renderer, nullptr);
 
-    surface = IMG_Load("data/textures/wall_top1.png");
+    surface = IMG_Load("data/textures/wall_top1.jpg");
     if (surface) {
         texture_wall = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
