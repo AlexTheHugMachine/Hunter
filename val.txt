@@ -1,0 +1,409 @@
+==4091== Memcheck, a memory error detector
+==4091== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4091== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==4091== Command: bin/hunter_sdl.exe
+==4091== 
+--4091-- Valgrind options:
+--4091--    --leak-check=full
+--4091--    -v
+--4091--    --num-callers=50
+--4091--    --suppressions=./valgrind_lif7.supp
+--4091--    --show-reachable=yes
+--4091-- Contents of /proc/version:
+--4091--   Linux version 5.3.0-46-generic (buildd@lcy01-amd64-013) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #38~18.04.1-Ubuntu SMP Tue Mar 31 04:17:56 UTC 2020
+--4091-- 
+--4091-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--4091-- Page sizes: currently 4096, max supported 4096
+--4091-- Valgrind library directory: /usr/lib/valgrind
+--4091-- Reading syms from /home/celian/Documents/L2-S2/Lifap4/hunter/bin/hunter_sdl.exe
+--4091-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--4091--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--4091--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--4091--   .. CRC mismatch (computed 41ddb025 wanted 9972f546)
+--4091--    object doesn't have a symbol table
+--4091--    object doesn't have a dynamic symbol table
+--4091-- Scheduler: using generic scheduler lock implementation.
+--4091-- Reading suppressions file: ./valgrind_lif7.supp
+--4091-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==4091== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-4091-by-celian-on-???
+==4091== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-4091-by-celian-on-???
+==4091== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-4091-by-celian-on-???
+==4091== 
+==4091== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==4091== don't want to do, unless you know exactly what you're doing,
+==4091== or are doing some strange experiment):
+==4091==   /usr/lib/valgrind/../../bin/vgdb --pid=4091 ...command...
+==4091== 
+==4091== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==4091==   /path/to/gdb bin/hunter_sdl.exe
+==4091== and then give GDB the following command
+==4091==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=4091
+==4091== --pid is optional if only one valgrind process is running
+==4091== 
+--4091-- REDIR: 0x401f2f0 (ld-linux-x86-64.so.2:strlen) redirected to 0x580608c1 (???)
+--4091-- REDIR: 0x401f0d0 (ld-linux-x86-64.so.2:index) redirected to 0x580608db (???)
+--4091-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--4091--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--4091--   .. CRC mismatch (computed 50df1b30 wanted 4800a4cf)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--4091--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--4091--   .. CRC mismatch (computed f893b962 wanted 95ee359e)
+--4091--    object doesn't have a symbol table
+==4091== WARNING: new redirection conflicts with existing -- ignoring it
+--4091--     old: 0x0401f2f0 (strlen              ) R-> (0000.0) 0x580608c1 ???
+--4091--     new: 0x0401f2f0 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--4091-- REDIR: 0x401d360 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--4091-- REDIR: 0x401f830 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.8.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libSDL2_ttf-2.0.so.0.14.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libm-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/libm-2.27.so ..
+--4091--   .. CRC mismatch (computed 7feae033 wanted b29b2508)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--4091--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libdl-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/libdl-2.27.so ..
+--4091--   .. CRC mismatch (computed bd82fa02 wanted d1fdccc9)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libdl-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libpulse.so.0.20.2
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libsndio.so.6.1
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+--4091--   Considering /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0 ..
+--4091--   .. CRC mismatch (computed b483887a wanted 38c83e44)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXcursor.so.1.0.2
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0
+--4091--   Considering /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0 ..
+--4091--   .. CRC mismatch (computed 7bb99cdf wanted 61ad4d32)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXi.so.6.1.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXss.so.1.0.0
+--4091--   Considering /usr/lib/x86_64-linux-gnu/libXss.so.1.0.0 ..
+--4091--   .. CRC mismatch (computed ab522b10 wanted 5fc28128)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libwayland-egl.so.1.0.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libwayland-client.so.0.3.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libwayland-cursor.so.0.0.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libpthread-2.27.so
+--4091--   Considering /usr/lib/debug/.build-id/28/c6aade70b2d40d1f0f3d0a1a0cad1ab816448f.debug ..
+--4091--   .. build-id is valid
+--4091-- Reading syms from /lib/x86_64-linux-gnu/librt-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/librt-2.27.so ..
+--4091--   .. CRC mismatch (computed 16979484 wanted f9e041e3)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/librt-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libfreetype.so.6.15.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-11.1.so
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libbsd.so.0.8.7
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libpng16.so.16.34.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libz.so.1.2.11
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libsystemd.so.0.21.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libwrap.so.0.7.6
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.28
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libasyncns.so.0.3.1
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0
+--4091--   Considering /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0 ..
+--4091--   .. CRC mismatch (computed 256f5df8 wanted 5d40ac88)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/liblzma.so.5.2.2
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/liblz4.so.1.7.1
+--4091--   Considering /usr/lib/x86_64-linux-gnu/liblz4.so.1.7.1 ..
+--4091--   .. CRC mismatch (computed 40fbd3a8 wanted 46df455d)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libgcrypt.so.20.2.1
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libnsl-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/libnsl-2.27.so ..
+--4091--   .. CRC mismatch (computed 5dfb2e24 wanted a9b787f5)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libnsl-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libFLAC.so.8.3.0
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libogg.so.0.8.2
+--4091--   Considering /usr/lib/x86_64-linux-gnu/libogg.so.0.8.2 ..
+--4091--   .. CRC mismatch (computed 79e45162 wanted f32912dd)
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libvorbis.so.0.4.8
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /usr/lib/x86_64-linux-gnu/libvorbisenc.so.2.0.11
+--4091--    object doesn't have a symbol table
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libresolv-2.27.so
+--4091--   Considering /lib/x86_64-linux-gnu/libresolv-2.27.so ..
+--4091--   .. CRC mismatch (computed 4f654d8d wanted bb34a537)
+--4091--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libresolv-2.27.so ..
+--4091--   .. CRC is valid
+--4091-- Reading syms from /lib/x86_64-linux-gnu/libgpg-error.so.0.22.0
+--4091--    object doesn't have a symbol table
+--4091-- REDIR: 0x5d53c70 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52d40 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53f50 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52790 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52d70 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d557c0 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53de0 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53c10 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52d00 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52800 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53d40 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d710f0 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52ca0 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52870 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53fa0 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52840 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d540e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52da0 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d527c0 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d52c70 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d5d6c0 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53ff0 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53be0 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d71eb0 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53050 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53f20 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53ef0 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d557f0 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d54040 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5de68a0 (libc.so.6:__memcpy_chk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5d53b20 (libc.so.6:strstr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--4091-- REDIR: 0x5e433c0 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--4091-- REDIR: 0x5e43590 (libc.so.6:__strlen_avx2) redirected to 0x4c32cf0 (strlen)
+--4091-- REDIR: 0x5d4c070 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--4091-- REDIR: 0x5e43ad0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4c366e0 (memmove)
+--4091-- REDIR: 0x5e1ed60 (libc.so.6:__strcmp_ssse3) redirected to 0x4c33da0 (strcmp)
+--4091-- REDIR: 0x5e3fba0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4c35e00 (bcmp)
+--4091-- REDIR: 0x5d53590 (libc.so.6:__GI_strstr) redirected to 0x4c37760 (__strstr_sse2)
+--4091-- REDIR: 0x5409330 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c30830 (operator new[](unsigned long))
+--4091-- REDIR: 0x54073c0 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c316d0 (operator delete[](void*))
+--4091-- REDIR: 0x5d4c950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10B5FA: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4091==    by 0x10C71C: Game::Game() (Game.cpp:11)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4091==    by 0x10B60A: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4091==    by 0x10C71C: Game::Game() (Game.cpp:11)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10B617: Terrain::operator=(Terrain const&) (Terrain.cpp:79)
+==4091==    by 0x10C71C: Game::Game() (Game.cpp:11)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10E4EB: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:32)
+==4091==    by 0x10E743: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4091==    by 0x10D4CB: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4091==    by 0x10C7AD: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10E513: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:34)
+==4091==    by 0x10E743: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4091==    by 0x10D4CB: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4091==    by 0x10C7AD: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10E62D: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:32)
+==4091==    by 0x10E743: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4091==    by 0x10D4CB: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4091==    by 0x10C7AD: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+NOPE
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4091==    by 0x10D603: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Warning: set address range perms: large range [0xc642040, 0x369bc278) (undefined)
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10D616: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10D634: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== More than 10000000 total errors detected.  I'm not reporting any more.
+==4091== Final error counts will be inaccurate.  Go fix your program!
+==4091== Rerun with --error-limit=no to disable this cutoff.  Note
+==4091== that errors may occur in your program without prior warning from
+==4091== Valgrind, because errors are no longer being displayed.
+==4091== 
+==4091== 
+==4091== Process terminating with default action of signal 11 (SIGSEGV)
+==4091==  Access not within mapped region at address 0x0
+==4091==    at 0x10D660: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:33)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091==  If you believe this happened as a result of a stack
+==4091==  overflow in your program's main thread (unlikely but
+==4091==  possible), you can try to increase the size of the
+==4091==  main thread stack using the --main-stacksize= flag.
+==4091==  The main thread stack size used in this run was 8388608.
+==4091== 
+==4091== HEAP SUMMARY:
+==4091==     in use at exit: 708,289,168 bytes in 2 blocks
+==4091==   total heap usage: 9 allocs, 7 frees, 708,374,949 bytes allocated
+==4091== 
+==4091== Searching for pointers to 2 not-freed blocks
+==4091== Checked 708,798,248 bytes
+==4091== 
+==4091== 88 bytes in 1 blocks are still reachable in loss record 1 of 2
+==4091==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4091==    by 0x10C750: Game::Game() (Game.cpp:13)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 708,289,080 bytes in 1 blocks are possibly lost in loss record 2 of 2
+==4091==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4091==    by 0x10D603: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== LEAK SUMMARY:
+==4091==    definitely lost: 0 bytes in 0 blocks
+==4091==    indirectly lost: 0 bytes in 0 blocks
+==4091==      possibly lost: 708,289,080 bytes in 1 blocks
+==4091==    still reachable: 88 bytes in 1 blocks
+==4091==                       of which reachable via heuristic:
+==4091==                         newarray           : 88 bytes in 1 blocks
+==4091==         suppressed: 0 bytes in 0 blocks
+==4091== 
+==4091== Use --track-origins=yes to see where uninitialised values come from
+==4091== ERROR SUMMARY: 10000001 errors from 10 contexts (suppressed: 0 from 0)
+==4091== 
+==4091== 1 errors in context 1 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10D616: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1 errors in context 2 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4091==    by 0x10D603: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1 errors in context 3 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10E4EB: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:32)
+==4091==    by 0x10E743: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4091==    by 0x10D4CB: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4091==    by 0x10C7AD: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1 errors in context 4 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10B617: Terrain::operator=(Terrain const&) (Terrain.cpp:79)
+==4091==    by 0x10C71C: Game::Game() (Game.cpp:11)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1 errors in context 5 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4091==    by 0x10B60A: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4091==    by 0x10C71C: Game::Game() (Game.cpp:11)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1 errors in context 6 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10B5FA: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4091==    by 0x10C71C: Game::Game() (Game.cpp:11)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1112557 errors in context 7 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10E62D: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:32)
+==4091==    by 0x10E743: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4091==    by 0x10D4CB: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4091==    by 0x10C7AD: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 1112557 errors in context 8 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10E513: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:34)
+==4091==    by 0x10E743: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4091==    by 0x10D4CB: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4091==    by 0x10C7AD: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== 
+==4091== 7774880 errors in context 9 of 10:
+==4091== Conditional jump or move depends on uninitialised value(s)
+==4091==    at 0x10D634: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4091==    by 0x10C7B9: Game::Game() (Game.cpp:14)
+==4091==    by 0x10A360: main (main_sdl.cpp:20)
+==4091== 
+==4091== ERROR SUMMARY: 10000001 errors from 10 contexts (suppressed: 0 from 0)
+Segmentation fault

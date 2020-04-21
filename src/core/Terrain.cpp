@@ -70,6 +70,21 @@ Terrain::~Terrain()
     dimY = 0;
 }
 
+Terrain Terrain::operator=(const Terrain& rhs)
+{
+    Terrain t;
+    t.dimX = rhs.dimX;
+    t.dimY = rhs.dimY;
+    t.arr = new Case[dimX * dimY];
+    for(int i = 0; i < dimX * dimY; i++)
+    {
+        t.arr[i] = rhs.arr[i]; 
+    }
+
+    return t;
+}
+
+
 int Terrain::getDimX() const
 {
    return dimX;

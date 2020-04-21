@@ -1,0 +1,291 @@
+==4708== Memcheck, a memory error detector
+==4708== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4708== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==4708== Command: bin/hunter_txt.exe
+==4708== 
+                     Chasse Hunter
+
+                     1.Jouer
+
+                     2.Regle du jeu
+
+                     3.Options
+
+                     4.Quitter
+
+
+Que voulez vous faire? indiquer le chiffre correspondant
+[3J[H[2J[3J[H[2J==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10C38A: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4708==    by 0x10D4AC: Game::Game() (Game.cpp:11)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10C39A: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4708==    by 0x10D4AC: Game::Game() (Game.cpp:11)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10C3A7: Terrain::operator=(Terrain const&) (Terrain.cpp:79)
+==4708==    by 0x10D4AC: Game::Game() (Game.cpp:11)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10F27B: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:32)
+==4708==    by 0x10F4D3: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4708==    by 0x10E25B: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4708==    by 0x10D53D: Game::Game() (Game.cpp:14)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+NOPE
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10E393: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4708==    by 0x10D549: Game::Game() (Game.cpp:14)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10E3A6: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4708==    by 0x10D549: Game::Game() (Game.cpp:14)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10E3D4: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:31)
+==4708==    by 0x10D549: Game::Game() (Game.cpp:14)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10F27B: UnVisited::UnVisited(Terrain const*, Vec2) (Pathfinding.cpp:32)
+==4708==    by 0x10F4D3: Dijkstra(Terrain const*, Vec2, Vec2, int&) (Pathfinding.cpp:165)
+==4708==    by 0x10E25B: Ennemy::Ennemy(Terrain const*, Vec2, Vec2) (Ennemy.cpp:11)
+==4708==    by 0x10D59E: Game::Game() (Game.cpp:17)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+NOPE
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10E393: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4708==    by 0x10D5AE: Game::Game() (Game.cpp:17)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10E3A6: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4708==    by 0x10D5AE: Game::Game() (Game.cpp:17)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10E3D4: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:31)
+==4708==    by 0x10D5AE: Game::Game() (Game.cpp:17)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10A2C3: WinTXT::WinTXT(int, int) (WinTxt.cpp:82)
+==4708==    by 0x10A540: txtGame::txtmain() (txtGame.cpp:23)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10A264: WinTXT::clear(char) (WinTxt.cpp:93)
+==4708==    by 0x10A2D4: WinTXT::WinTXT(int, int) (WinTxt.cpp:83)
+==4708==    by 0x10A540: txtGame::txtmain() (txtGame.cpp:23)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10A264: WinTXT::clear(char) (WinTxt.cpp:93)
+==4708==    by 0x10A54D: txtGame::txtmain() (txtGame.cpp:24)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10C38A: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4708==    by 0x10A5C4: txtGame::txtmain() (txtGame.cpp:34)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x4C3084C: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10C39A: Terrain::operator=(Terrain const&) (Terrain.cpp:78)
+==4708==    by 0x10A5C4: txtGame::txtmain() (txtGame.cpp:34)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10C3A7: Terrain::operator=(Terrain const&) (Terrain.cpp:79)
+==4708==    by 0x10A5C4: txtGame::txtmain() (txtGame.cpp:34)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10A264: WinTXT::clear(char) (WinTxt.cpp:93)
+==4708==    by 0x10A5DB: txtGame::txtmain() (txtGame.cpp:36)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10A5EB: txtGame::txtmain() (txtGame.cpp:37)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x10A377: WinTXT::draw(int, int) (WinTxt.cpp:113)
+==4708==    by 0x10A778: txtGame::txtmain() (txtGame.cpp:61)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x57D78DA: vfprintf (vfprintf.c:1642)
+==4708==    by 0x58ACFCA: __vsprintf_chk (vsprintf_chk.c:82)
+==4708==    by 0x58ACEF9: __sprintf_chk (sprintf_chk.c:31)
+==4708==    by 0x10A156: sprintf (stdio2.h:34)
+==4708==    by 0x10A156: termMove(int, int) (WinTxt.cpp:29)
+==4708==    by 0x10A778: txtGame::txtmain() (txtGame.cpp:61)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Use of uninitialised value of size 8
+==4708==    at 0x57D386B: _itoa_word (_itoa.c:179)
+==4708==    by 0x57D6F0D: vfprintf (vfprintf.c:1642)
+==4708==    by 0x58ACFCA: __vsprintf_chk (vsprintf_chk.c:82)
+==4708==    by 0x58ACEF9: __sprintf_chk (sprintf_chk.c:31)
+==4708==    by 0x10A156: sprintf (stdio2.h:34)
+==4708==    by 0x10A156: termMove(int, int) (WinTxt.cpp:29)
+==4708==    by 0x10A778: txtGame::txtmain() (txtGame.cpp:61)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x57D3875: _itoa_word (_itoa.c:179)
+==4708==    by 0x57D6F0D: vfprintf (vfprintf.c:1642)
+==4708==    by 0x58ACFCA: __vsprintf_chk (vsprintf_chk.c:82)
+==4708==    by 0x58ACEF9: __sprintf_chk (sprintf_chk.c:31)
+==4708==    by 0x10A156: sprintf (stdio2.h:34)
+==4708==    by 0x10A156: termMove(int, int) (WinTxt.cpp:29)
+==4708==    by 0x10A778: txtGame::txtmain() (txtGame.cpp:61)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x57D7014: vfprintf (vfprintf.c:1642)
+==4708==    by 0x58ACFCA: __vsprintf_chk (vsprintf_chk.c:82)
+==4708==    by 0x58ACEF9: __sprintf_chk (sprintf_chk.c:31)
+==4708==    by 0x10A156: sprintf (stdio2.h:34)
+==4708==    by 0x10A156: termMove(int, int) (WinTxt.cpp:29)
+==4708==    by 0x10A778: txtGame::txtmain() (txtGame.cpp:61)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x57D7B4C: vfprintf (vfprintf.c:1642)
+==4708==    by 0x58ACFCA: __vsprintf_chk (vsprintf_chk.c:82)
+==4708==    by 0x58ACEF9: __sprintf_chk (sprintf_chk.c:31)
+==4708==    by 0x10A156: sprintf (stdio2.h:34)
+==4708==    by 0x10A156: termMove(int, int) (WinTxt.cpp:29)
+==4708==    by 0x10A778: txtGame::txtmain() (txtGame.cpp:61)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== Conditional jump or move depends on uninitialised value(s)
+==4708==    at 0x1106F2: Vec2::isInTab(Vec2 const*, int) const (Vec2.cpp:65)
+==4708==    by 0x10E58F: Ennemy::patrol() (Ennemy.cpp:65)
+==4708==    by 0x10DECD: Game::UpdateGame(Direction) (Game.cpp:69)
+==4708==    by 0x10A7CD: txtGame::txtmain() (txtGame.cpp:87)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+hunter_txt.exe: src/core/Ennemy.cpp:65: void Ennemy::patrol(): Assertion `pos.isInTab(patrolPath, length)' failed.
+==4708== 
+==4708== Process terminating with default action of signal 6 (SIGABRT)
+==4708==    at 0x57B9E97: raise (raise.c:51)
+==4708==    by 0x57BB800: abort (abort.c:79)
+==4708==    by 0x57AB399: __assert_fail_base (assert.c:92)
+==4708==    by 0x57AB411: __assert_fail (assert.c:101)
+==4708==    by 0x10E61C: Ennemy::patrol() (Ennemy.cpp:65)
+==4708==    by 0x10DECD: Game::UpdateGame(Direction) (Game.cpp:69)
+==4708==    by 0x10A7CD: txtGame::txtmain() (txtGame.cpp:87)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+[0;0H[0;0H==4708== 
+==4708== HEAP SUMMARY:
+==4708==     in use at exit: 168 bytes in 6 blocks
+==4708==   total heap usage: 17 allocs, 11 frees, 87,452 bytes allocated
+==4708== 
+==4708== 0 bytes in 1 blocks are still reachable in loss record 1 of 6
+==4708==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10A2C3: WinTXT::WinTXT(int, int) (WinTxt.cpp:82)
+==4708==    by 0x10A540: txtGame::txtmain() (txtGame.cpp:23)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== 8 bytes in 1 blocks are definitely lost in loss record 2 of 6
+==4708==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10E393: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4708==    by 0x10D549: Game::Game() (Game.cpp:14)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== 8 bytes in 1 blocks are definitely lost in loss record 3 of 6
+==4708==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10E393: Ennemy::operator=(Ennemy const&) (Ennemy.cpp:29)
+==4708==    by 0x10D5AE: Game::Game() (Game.cpp:17)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== 24 bytes in 1 blocks are still reachable in loss record 4 of 6
+==4708==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10E0DC: Game::getEnnemiesPosition(int&) const (Game.cpp:109)
+==4708==    by 0x10A5AB: txtGame::txtmain() (txtGame.cpp:30)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== 40 bytes in 1 blocks are still reachable in loss record 5 of 6
+==4708==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10A9FD: Menu::Menu() (Menu.cpp:10)
+==4708==    by 0x109DE2: main (main.cpp:11)
+==4708== 
+==4708== 88 bytes in 1 blocks are still reachable in loss record 6 of 6
+==4708==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4708==    by 0x10D4E0: Game::Game() (Game.cpp:13)
+==4708==    by 0x10A4ED: txtGame::txtmain() (txtGame.cpp:13)
+==4708==    by 0x10ADF5: Menu::action(unsigned int&) const (Menu.cpp:141)
+==4708==    by 0x109E2D: main (main.cpp:16)
+==4708== 
+==4708== LEAK SUMMARY:
+==4708==    definitely lost: 16 bytes in 2 blocks
+==4708==    indirectly lost: 0 bytes in 0 blocks
+==4708==      possibly lost: 0 bytes in 0 blocks
+==4708==    still reachable: 152 bytes in 4 blocks
+==4708==                       of which reachable via heuristic:
+==4708==                         newarray           : 112 bytes in 2 blocks
+==4708==         suppressed: 0 bytes in 0 blocks
+==4708== 
+==4708== For counts of detected and suppressed errors, rerun with: -v
+==4708== Use --track-origins=yes to see where uninitialised values come from
+==4708== ERROR SUMMARY: 28 errors from 28 contexts (suppressed: 0 from 0)
+Aborted

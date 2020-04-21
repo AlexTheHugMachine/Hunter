@@ -47,6 +47,8 @@ Game::Game(std::string filename)
 Game::~Game()
 {
    delete [] E;
+   E = nullptr;
+    cout << "Game destructor" << endl;
 }
 
 bool Game::UpdateGame(Direction d)
