@@ -6,9 +6,11 @@ using namespace std;
 #define NB_E 2
 
 Game::Game()
+: t("data/test.txt")
 {
     p = Player();
-    t = Terrain("data/test.txt");
+    // cout<< "coucou" << endl; 
+    // t = Terrain("data/test.txt");
     NbE = NB_E;
     E = new Ennemy[NbE];
     E[0] = Ennemy(&t, Vec2(9, 0), Vec2(0, 0));
@@ -48,7 +50,7 @@ Game::~Game()
 {
    delete [] E;
    E = nullptr;
-    cout << "Game destructor" << endl;
+   // cout << "Game destructor" << endl;
 }
 
 bool Game::UpdateGame(Direction d)

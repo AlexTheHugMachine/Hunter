@@ -131,6 +131,7 @@ clean:
 	@rm -rf $(OBJ)/* $(BIN)/*  
 	@echo "Removing $(YELLOW)$$(find $(DOC)/* -maxdepth 0 -type d ! -name '$(CONF)')$(NORM) directory"
 	@find $(DOC)/*	 -maxdepth 0 -type d ! -name '$(CONF)' | xargs rm -rf
+	@rm val*.txt
 
 doc_update = doxygen $(DOC_CONF)
 
