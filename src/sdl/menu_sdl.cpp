@@ -1,4 +1,7 @@
 #include "menu_sdl.h"
+#include "regle_sdl.h"
+#include "option_sdl.h"
+using namespace std;
 
 template<typename T>
 constexpr T WIDTHSCREEN{ 800 };
@@ -40,7 +43,7 @@ menu_sdl::menu_sdl() {
   font = TTF_OpenFont("data/minecraft_font.ttf", 50); // Crée un police avec la police "ariali.ttf" et de taille 18 pixels
   sous_titre = TTF_OpenFont("data/minecraft_font.ttf", 40);
 
-  if (font == nullptr)
+  if (font == nullptr|| sous_titre==nullptr)
   {
       SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", TTF_GetError());
 
@@ -193,26 +196,29 @@ menu_sdl::menu_sdl() {
                 {
                   TTF_Quit();
                   SDL_Quit();
-                  exit(1);
 
                 }
                 if (event.button.x>=position_Options.x && event.button.x<=position_Options.x+180 && event.button.y>=position_Options.y && event.button.y<=position_Options.y+50)
                 {
                     TTF_Quit();
                     SDL_Quit();
-                    exit(1);
+                    option_sdl op;
+
                 }
                 if (event.button.x>=position_regle.x && event.button.x<=position_regle.x+180 && event.button.y>=position_regle.y && event.button.y<=position_regle.y+50)
                 {
                     TTF_Quit();
                     SDL_Quit();
-                    exit(1);
+                    regle_sdl regle;
+
                 }
                 if (event.button.x>=position_quitter.x && event.button.x<=position_quitter.x+180 && event.button.y>=position_quitter.y && event.button.y<=position_quitter.y+50)
                 {
+                    cout<<"Merci d'avoir utiliser notre application"<<endl;
                     TTF_Quit();
                     SDL_Quit();
                     exit(1);
+
                 }
                 break;
         }

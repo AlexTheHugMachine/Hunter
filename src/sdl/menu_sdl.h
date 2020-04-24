@@ -1,6 +1,7 @@
 #ifndef _MENUSDL_H
 #define _MENUSDL_H
 
+#include "regle_sdl.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
@@ -14,7 +15,6 @@ class menu_sdl {
     public :
         menu_sdl();
         ~menu_sdl();
-        int main_menu_sdl();
   private:
     SDL_Window* pWindow;
     SDL_Renderer* pRenderer;

@@ -80,17 +80,15 @@ void afficher_option(){
   cout<<"                     ";
   cout<<"Option"<<endl<<endl;
   cout<<"Ce projet est élaboré dans le cadre de l'UE LIFAP4"
-  <<"(Conception et Developpement d'Application). "
-  <<"Realiser par Celian LOUIS-ITTY, Alexis Bonis et Lucas Rakotomalala; "
+  <<"(Conception et Developpement d'Application). "<<endl
+  <<"Realiser par Celian LOUIS-ITTY, Alexis Bonis et Lucas Rakotomalala; "<<endl
   <<"tous étudiants en deuxième année en licence informatique au sein de "
-  << "l université Claude Bernard Lyon 1."<<endl;
+  << "l université Claude Bernard"<<endl << "Lyon 1."<<endl;
   cout<<"Chasse Hunter s'inspire du jeux Hunter Assassin disponible sur telephone"
   <<endl;
   cout<< "Vous pouvez consulter la documention en indiquant le chiffre"<<endl;
   cout << "1.Page de l'UE LIFAP4    " <<"2.Gameplay jeux mobiles    "
-  <<"3.documention   "<<"4.Retour au menu"<<endl
-  <<"Remarque: Vous pouvez ouvrir une seule fenêtre a la fois penser bien à "
-  <<"fermer votre navigateur pour pouvoir continuer"<<endl;
+  <<"3.documention   "<<"4.Retour au menu"<<endl;
   unsigned int i;
   cin>>i;
   while ( cin.fail( ) || i < 1 || i> 4) {
@@ -102,17 +100,17 @@ void afficher_option(){
   }
   //il faudra fermer le navigateur pour pouvoir continuer le programme
   if(i==1){
-    system("firefox https://perso.liris.cnrs.fr/alexandre.meyer/public_html/www/doku.php?id=lifap4");
+    system("xdg-open https://perso.liris.cnrs.fr/alexandre.meyer/public_html/www/doku.php?id=lifap4");
     system("clear");
     afficher_option();
   }
   if(i==2){
-    system("firefox https://www.youtube.com/watch?v=ETm0Sg8TPlk");
+    system("xdg-open https://www.youtube.com/watch?v=ETm0Sg8TPlk");
     system("clear");
     afficher_option();
   }
   if(i==3){
-    system("firefox ./doc/html/index.html");
+    system("xdg-open ./doc/html/index.html");
     system("clear");
     afficher_option();
   }
