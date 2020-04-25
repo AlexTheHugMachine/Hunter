@@ -29,7 +29,7 @@ int main(void)
     SDL_Event events;
     bool over = false;
     SDL_Renderer *renderer;
-    SDL_Texture *texture_empty, *texture_wall;
+    SDL_Texture *texture_empty, *texture_wall, *texture_player;
     SDL_Rect rect;
     SDL_Surface *surface;
 
@@ -61,8 +61,9 @@ int main(void)
 
     texture_empty = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, TILE_WIDTH, TILE_HEIGHT);
     texture_wall = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, TILE_WIDTH, TILE_HEIGHT);
+    texture_player = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, TILE_WIDTH, TILE_HEIGHT);
 
-    if (texture_wall == nullptr || texture_empty == nullptr)
+    if (texture_wall == nullptr || texture_empty == nullptr || texture_player == nullptr)
     {
         cout << "Erreur lors de la création des textures : " << SDL_GetError() << endl;
         return EXIT_FAILURE;
@@ -80,6 +81,12 @@ int main(void)
     surface = IMG_Load("data/textures/wood_planks_small.jpg");
     if (surface) {
         texture_empty = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+    }
+
+    surface = IMG_Load("data/textures/player.png");
+    if (surface) {
+        texture_player = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
     }
 
@@ -117,6 +124,7 @@ int main(void)
                 if(t.getCase(Vec2(i, j)) == Case::wall)
                     SDL_RenderCopy(renderer, texture_wall, nullptr, &rect);
                 else SDL_RenderCopy(renderer, texture_empty, nullptr, &rect);
+                if(i == 0 && j == 0) SDL_RenderCopy(renderer, texture_player, nullptr, &rect);
             }
         }
         SDL_RenderPresent(renderer);
