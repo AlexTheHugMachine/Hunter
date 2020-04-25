@@ -52,14 +52,14 @@ void txtGame::txtmain()
                 else if(t.getCase(Vec2(i, j)) == Case::wall)
                 {
                     win.print(i, j, '#');
-                    cout << "#";
+                    //cout << "#";
                 }
                 else win.print(i, j, ' '); //cout << " ";
             }
             //cout << "|" << endl;
         }
         win.draw();
-        usleep(100000);
+        usleep(200000);
         //cin>>c;
         c = win.getCh();
         switch(c)
@@ -96,6 +96,6 @@ void txtGame::txtmain()
         cout << "You win!!!" << endl;
         win.pause();
     }
-    termClear();
+    //termClear();
     
 }

@@ -144,8 +144,7 @@ $(DOC_CONF):
 	@doxygen -g $@
 
 valgrind_txt: default
-	@valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all $(BIN)/$(EXEC_TXT) > val2.txt 2>&1
-
+	@valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all $(BIN)/$(EXEC_TXT) 
 valgrind_sdl: default
 	valgrind --leak-check=full -v --num-callers=50 --suppressions=./valgrind_lif7.supp --show-reachable=yes $(BIN)/$(EXEC_SDL) > val.txt 2>&1
 #@valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all $(BIN)/$(EXEC_SDL)

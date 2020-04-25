@@ -64,10 +64,12 @@ Terrain::Terrain(std::string filename)
 
 Terrain::~Terrain()
 {
+    // cout<< "Destroy terrain" << endl;
     delete [] arr;
     arr = nullptr;
     dimX = 0;
     dimY = 0;
+    // cout<< "Destroyed terrain" << endl;
 }
 
 Terrain Terrain::operator=(const Terrain& rhs)
