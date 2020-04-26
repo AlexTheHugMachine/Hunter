@@ -24,6 +24,11 @@ int main(void)
     const int TOTAL_WIDTH = t.getDimX();
     const int TOTAL_HEIGHT = t.getDimY();
 
+    const int FPS = 144;
+    const int frameDelay = 1000 / FPS;
+    Uint32 frameStart;
+    int frameTime;
+
     // SDL-related variables
     SDL_Window *window;
     SDL_Event events;
@@ -105,9 +110,12 @@ int main(void)
         SDL_FreeSurface(surface);
     }
 
+    // SDL_EnableKeyRepeat(int SDL_DEFAULT_REPEAT_DELAY, int SDL_DEFAULT_REPEAT_INTERVAL);
     // Boucle : tant qu'on ferme pas la fenêtre
     while (!over && !won)
     {
+        dir = Direction::none;
+        frameStart = SDL_GetTicks();
         p = g.getPlayerPos();
         // Escape from while loop if click on the "cross"
 
@@ -135,46 +143,81 @@ int main(void)
         // SDL_WaitEvent(&events);
         // if (events.window.event == SDL_WINDOWEVENT_CLOSE)
         //     over = true;
-        while(SDL_PollEvent(&events))
+        bool moved = false;
+
+        // const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+
+        // //continuous-response keys
+        // if (keystate[SDL_SCANCODE_Q])
+        // {
+        //     dir = Direction::left;
+        // }
+        // if (keystate[SDL_SCANCODE_D])
+        // {
+        //     dir = Direction::right;
+        // }
+        // if (keystate[SDL_SCANCODE_Z])
+        // {
+        //     dir = Direction::up;
+        // }
+        // if (keystate[SDL_SCANCODE_S])
+        // {
+        //     dir = Direction::down;
+        // }
+
+        while (SDL_PollEvent(&events))
         {
-            switch(events.type)
+            switch (events.type)
             {
-                case SDL_WINDOWEVENT:
-                    if(events.window.event == SDL_WINDOWEVENT_CLOSE)
-                    {
-                        over = true;
-                    }
+            case SDL_WINDOWEVENT:
+                if (events.window.event == SDL_WINDOWEVENT_CLOSE)
+                {
+                    over = true;
+                }
+                break;
+
+            case SDL_KEYDOWN:
+                switch (events.key.keysym.sym)
+                {
+                case SDLK_z:
+                    //if (!moved)
+                    dir = Direction::up;
+                    moved = true;
                     break;
-                
-                case SDL_KEYDOWN:
-                    switch (events.key.keysym.sym)
-                    {
-                    case SDLK_z:
-                        cout << "Z" << endl;
-                        dir = Direction::up;
-                        break;
-                    
-                    case SDLK_s:
-                        dir = Direction::down;
-                        break;
 
-                    case SDLK_q:
-                        dir = Direction::left;
-                        break;
+                case SDLK_s:
+                    //if (!moved)
+                    dir = Direction::down;
+                    moved = true;
+                    break;
 
-                    case SDLK_d:
-                        dir = Direction::right;
-                        break;
-                    
-                    default:
-                        dir = Direction::none;
-                        break;
-                    }
+                case SDLK_q:
+                    //if (!moved)
+                    dir = Direction::left;
+                    moved = true;
+                    break;
+
+                case SDLK_d:
+                    //if (!moved)
+                    dir = Direction::right;
+                    moved = true;
+                    break;
+
+                default:
+                    dir = Direction::none;
+                    break;
+                }
             }
         }
         g.UpdateGame(dir);
         won = false;
-        delete [] e;
+        delete[] e;
+
+        frameTime = SDL_GetTicks() - frameStart;
+        if (frameDelay > frameTime)
+        {
+            SDL_Delay(frameDelay - frameTime);
+        }
     }
     SDL_DestroyTexture(texture_empty);
     SDL_DestroyTexture(texture_wall);
