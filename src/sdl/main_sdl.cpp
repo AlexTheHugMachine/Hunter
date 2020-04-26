@@ -17,9 +17,9 @@ int main(void)
     Vec2 p;
     Vec2 *e;
     int nbE;
-    Terrain t = g.t; // g.getTerrain();
-    char c;
+    Terrain t = g.getTerrain();
     Direction dir = Direction::none;
+    bool won = false;
 
     const int TOTAL_WIDTH = t.getDimX();
     const int TOTAL_HEIGHT = t.getDimY();
@@ -79,17 +79,18 @@ int main(void)
     // SDL_RenderFillRect(renderer, &rect);
 
     surface = IMG_Load("data/textures/wood_planks_small.jpg");
-    if (surface) {
+    if (surface)
+    {
         texture_empty = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
     }
 
     surface = IMG_Load("data/textures/player.png");
-    if (surface) {
+    if (surface)
+    {
         texture_player = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
     }
-
 
     // SDL_SetRenderTarget(renderer, texture_wall);
     // SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
@@ -98,18 +99,17 @@ int main(void)
     SDL_SetRenderTarget(renderer, nullptr);
 
     surface = IMG_Load("data/textures/wall_top1.jpg");
-    if (surface) {
+    if (surface)
+    {
         texture_wall = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
     }
 
     // Boucle : tant qu'on ferme pas la fenêtre
-    while (!over)
+    while (!over && !won)
     {
+        p = g.getPlayerPos();
         // Escape from while loop if click on the "cross"
-        SDL_WaitEvent(&events);
-        if (events.window.event == SDL_WINDOWEVENT_CLOSE)
-            over = true;
 
         int i, j;
 
@@ -121,20 +121,65 @@ int main(void)
                 rect.y = j * TILE_HEIGHT;
                 rect.w = TILE_WIDTH;
                 rect.h = TILE_HEIGHT;
-                if(t.getCase(Vec2(i, j)) == Case::wall)
+                if (t.getCase(Vec2(i, j)) == Case::wall)
                     SDL_RenderCopy(renderer, texture_wall, nullptr, &rect);
-                else SDL_RenderCopy(renderer, texture_empty, nullptr, &rect);
-                if(i == 0 && j == 0) SDL_RenderCopy(renderer, texture_player, nullptr, &rect);
+                else
+                    SDL_RenderCopy(renderer, texture_empty, nullptr, &rect);
+                if (Vec2(i, j) == p)
+                    SDL_RenderCopy(renderer, texture_player, nullptr, &rect);
             }
         }
         SDL_RenderPresent(renderer);
-    }
 
+        SDL_Delay(100);
+        // SDL_WaitEvent(&events);
+        // if (events.window.event == SDL_WINDOWEVENT_CLOSE)
+        //     over = true;
+        while(SDL_PollEvent(&events))
+        {
+            switch(events.type)
+            {
+                case SDL_WINDOWEVENT:
+                    if(events.window.event == SDL_WINDOWEVENT_CLOSE)
+                    {
+                        over = true;
+                    }
+                    break;
+                
+                case SDL_KEYDOWN:
+                    switch (events.key.keysym.sym)
+                    {
+                    case SDLK_z:
+                        cout << "Z" << endl;
+                        dir = Direction::up;
+                        break;
+                    
+                    case SDLK_s:
+                        dir = Direction::down;
+                        break;
+
+                    case SDLK_q:
+                        dir = Direction::left;
+                        break;
+
+                    case SDLK_d:
+                        dir = Direction::right;
+                        break;
+                    
+                    default:
+                        dir = Direction::none;
+                        break;
+                    }
+            }
+        }
+        g.UpdateGame(dir);
+        won = false;
+        delete [] e;
+    }
     SDL_DestroyTexture(texture_empty);
     SDL_DestroyTexture(texture_wall);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit(); //on quitte la SDL
-
     return 0;
 }

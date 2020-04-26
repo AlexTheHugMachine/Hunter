@@ -24,6 +24,7 @@ void txtGame::txtmain()
     win.clear(' ');
     bool stop = false;
     bool won = false;
+        t = g.getTerrain();
     while(!stop  && !won)
     {
         p = g.getPlayerPos();
@@ -31,7 +32,6 @@ void txtGame::txtmain()
         //cout << "main : " << endl;
 
        // for(int i = 0; i < nbE)
-        t = g.getTerrain();
         
         win.clear();
         for(int j = 0; j < t.getDimY(); ++j)
