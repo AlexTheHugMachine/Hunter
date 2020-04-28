@@ -43,7 +43,6 @@ menu_sdl::menu_sdl() {
   if (font == nullptr)
   {
       SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[DEBUG] > %s", TTF_GetError());
-
   }
 
   SDL_Surface* Titre = TTF_RenderText_Blended(font, "HUNTER", SDL_Color{ 255, 255, 255, 0 }); // Crée un surface qui contient le texte
