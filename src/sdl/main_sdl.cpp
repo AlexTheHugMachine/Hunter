@@ -145,25 +145,29 @@ int main(void)
         //     over = true;
         bool moved = false;
 
-        // const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+        const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 
-        // //continuous-response keys
-        // if (keystate[SDL_SCANCODE_Q])
-        // {
-        //     dir = Direction::left;
-        // }
-        // if (keystate[SDL_SCANCODE_D])
-        // {
-        //     dir = Direction::right;
-        // }
-        // if (keystate[SDL_SCANCODE_Z])
-        // {
-        //     dir = Direction::up;
-        // }
-        // if (keystate[SDL_SCANCODE_S])
-        // {
-        //     dir = Direction::down;
-        // }
+        //continuous-response keys
+        if (keystate[SDL_SCANCODE_A])
+        {
+            dir = Direction::left;
+            // cout << "Q" << endl;
+        }
+        if (keystate[SDL_SCANCODE_D])
+        {
+            dir = Direction::right;
+            // cout << "D" << endl;
+        }
+        if (keystate[SDL_SCANCODE_W])
+        {
+            dir = Direction::up;
+            // cout << "Z" << endl;
+        }
+        if (keystate[SDL_SCANCODE_S])
+        {
+            dir = Direction::down;
+            // cout << "S" << endl;
+        }
 
         while (SDL_PollEvent(&events))
         {
@@ -176,37 +180,40 @@ int main(void)
                 }
                 break;
 
-            case SDL_KEYDOWN:
-                switch (events.key.keysym.sym)
-                {
-                case SDLK_z:
-                    //if (!moved)
-                    dir = Direction::up;
-                    moved = true;
-                    break;
+            default:
+              break;
 
-                case SDLK_s:
-                    //if (!moved)
-                    dir = Direction::down;
-                    moved = true;
-                    break;
+            // case SDL_KEYDOWN:
+            //     switch (events.key.keysym.sym)
+            //     {
+            //     case SDLK_z:
+            //         //if (!moved)
+            //         dir = Direction::up;
+            //         moved = true;
+            //         break;
 
-                case SDLK_q:
-                    //if (!moved)
-                    dir = Direction::left;
-                    moved = true;
-                    break;
+            //     case SDLK_s:
+            //         //if (!moved)
+            //         dir = Direction::down;
+            //         moved = true;
+            //         break;
 
-                case SDLK_d:
-                    //if (!moved)
-                    dir = Direction::right;
-                    moved = true;
-                    break;
+            //     case SDLK_q:
+            //         //if (!moved)
+            //         dir = Direction::left;
+            //         moved = true;
+            //         break;
 
-                default:
-                    dir = Direction::none;
-                    break;
-                }
+            //     case SDLK_d:
+            //         //if (!moved)
+            //         dir = Direction::right;
+            //         moved = true;
+            //         break;
+
+            //     default:
+            //         dir = Direction::none;
+            //         break;
+            //     }
             }
         }
         g.UpdateGame(dir);
