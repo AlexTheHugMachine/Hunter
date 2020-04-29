@@ -7,11 +7,11 @@ using namespace std;
 
 
 int main(void)
-{ 
+{
   Menu mn;
-  mn.afficher();
+  mn.display();
   unsigned int m;
-  std::cout << "Que voulez vous faire? indiquer le chiffre correspondant" << endl;
+  std::cout << "What do you want to do? indicate the corresponding figure" << endl;
   std::cin >> m;
   mn.action(m);
   return 0;

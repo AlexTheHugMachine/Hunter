@@ -1,7 +1,7 @@
 #ifndef _MENUSDL_H
 #define _MENUSDL_H
 
-#include "regle_sdl.h"
+#include "rules_sdl.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
@@ -18,23 +18,23 @@ class menu_sdl {
   private:
     SDL_Window* pWindow;
     SDL_Renderer* pRenderer;
-    SDL_Surface *img_fond_charge;
+    SDL_Surface *img_background_charge;
 
     TTF_Font * font;
-    TTF_Font * sous_titre;
+    TTF_Font * subtitles;
 
-    SDL_Surface* Titre;
+    SDL_Surface* Title;
        SDL_Surface* Txt;
        SDL_Surface* Options;
-       SDL_Surface* Regle_du_Jeu;
-       SDL_Surface* Quitter;
+       SDL_Surface* Rules;
+       SDL_Surface* Exit;
 
-       SDL_Texture *img_fond;
-       SDL_Texture* texture_titre;
-       SDL_Texture* texture_sous_titre;
+       SDL_Texture* img_background;
+       SDL_Texture* title_texture;
+       SDL_Texture* subtitles_texture;
        SDL_Texture* Options_texture;
-       SDL_Texture* regle_texture;
-       SDL_Texture* Quitter_texture;
+       SDL_Texture* rules_texture;
+       SDL_Texture* exit_texture;
 
 };
 
