@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <iostream>
 #include "menu_sdl.h"
-// #include "WinSdl.h"
+#include "WinSdl.h"
 
 using namespace std;
 
@@ -11,6 +11,9 @@ using namespace std;
 
 int main(void)
 {
+    WinSdl game;
+    game.run();
+    /*
     // Game-related variables
     Game g;
 
@@ -24,7 +27,7 @@ int main(void)
     const int TOTAL_WIDTH = t.getDimX();
     const int TOTAL_HEIGHT = t.getDimY();
 
-    const int FPS = 144;
+    const int FPS = 60;
     const int frameDelay = 1000 / FPS;
     Uint32 frameStart;
     int frameTime;
@@ -140,9 +143,7 @@ int main(void)
         SDL_RenderPresent(renderer);
 
         SDL_Delay(100);
-        // SDL_WaitEvent(&events);
-        // if (events.window.event == SDL_WINDOWEVENT_CLOSE)
-        //     over = true;
+
         bool moved = false;
 
         const Uint8 *keystate = SDL_GetKeyboardState(NULL);
@@ -181,39 +182,39 @@ int main(void)
                 break;
 
             default:
-              break;
+                break;
 
-            // case SDL_KEYDOWN:
-            //     switch (events.key.keysym.sym)
-            //     {
-            //     case SDLK_z:
-            //         //if (!moved)
-            //         dir = Direction::up;
-            //         moved = true;
-            //         break;
+                // case SDL_KEYDOWN:
+                //     switch (events.key.keysym.sym)
+                //     {
+                //     case SDLK_z:
+                //         //if (!moved)
+                //         dir = Direction::up;
+                //         moved = true;
+                //         break;
 
-            //     case SDLK_s:
-            //         //if (!moved)
-            //         dir = Direction::down;
-            //         moved = true;
-            //         break;
+                //     case SDLK_s:
+                //         //if (!moved)
+                //         dir = Direction::down;
+                //         moved = true;
+                //         break;
 
-            //     case SDLK_q:
-            //         //if (!moved)
-            //         dir = Direction::left;
-            //         moved = true;
-            //         break;
+                //     case SDLK_q:
+                //         //if (!moved)
+                //         dir = Direction::left;
+                //         moved = true;
+                //         break;
 
-            //     case SDLK_d:
-            //         //if (!moved)
-            //         dir = Direction::right;
-            //         moved = true;
-            //         break;
+                //     case SDLK_d:
+                //         //if (!moved)
+                //         dir = Direction::right;
+                //         moved = true;
+                //         break;
 
-            //     default:
-            //         dir = Direction::none;
-            //         break;
-            //     }
+                //     default:
+                //         dir = Direction::none;
+                //         break;
+                //     }
             }
         }
         g.UpdateGame(dir);
@@ -231,5 +232,6 @@ int main(void)
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit(); //on quitte la SDL
+    */
     return 0;
 }
