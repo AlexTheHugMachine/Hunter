@@ -1,2 +1,4 @@
 .vscode
-
+doc/html
+obj
+bin

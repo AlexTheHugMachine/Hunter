@@ -64,11 +64,28 @@ Terrain::Terrain(std::string filename)
 
 Terrain::~Terrain()
 {
+    // cout<< "Destroy terrain" << endl;
     delete [] arr;
     arr = nullptr;
     dimX = 0;
     dimY = 0;
+    // cout<< "Destroyed terrain" << endl;
 }
+
+Terrain Terrain::operator=(const Terrain& rhs)
+{
+    Terrain t;
+    t.dimX = rhs.dimX;
+    t.dimY = rhs.dimY;
+    t.arr = new Case[dimX * dimY];
+    for(int i = 0; i < dimX * dimY; i++)
+    {
+        t.arr[i] = rhs.arr[i]; 
+    }
+
+    return t;
+}
+
 
 int Terrain::getDimX() const
 {

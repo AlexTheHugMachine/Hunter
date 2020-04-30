@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 int main(void)
 {
   Menu mn;

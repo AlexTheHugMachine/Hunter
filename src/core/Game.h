@@ -49,8 +49,8 @@ public:
      */
     const Terrain& getTerrain();
 
-private:
     Terrain t;  ///< Terrain
+private:
     Player p;   ///< Player
     Ennemy* E;  ///< Array of Ennemies
     int NbE;    ///< Number of Ennemies
