@@ -1,6 +1,7 @@
 #include "menu_sdl.h"
 #include "rules_sdl.h"
 #include "option_sdl.h"
+#include "WinSdl.h"
 using namespace std;
 
 template<typename T>
@@ -199,6 +200,8 @@ menu_sdl::menu_sdl() {
                     event.button.y>=position_subtitles.y &&
                     event.button.y<=position_subtitles.y+50)
                 {
+                  WinSdl game;
+                  game.run();
                   TTF_Quit();
                   SDL_Quit();
 
