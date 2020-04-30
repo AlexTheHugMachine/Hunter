@@ -84,7 +84,7 @@ void WinSdl::run()
         SDL_FreeSurface(surface);
     }
 
-    surface = IMG_Load("data/textures/player.png");
+    surface = IMG_Load("data/textures/Player/player_down.png");
     if (surface)
     {
         texture_player = SDL_CreateTextureFromSurface(renderer, surface);
@@ -147,21 +147,46 @@ void WinSdl::run()
         {
             dir = Direction::left;
             // cout << "Q" << endl;
+            surface = IMG_Load("data/textures/Player/player_left.png");
+            if (surface)
+            {
+                texture_player = SDL_CreateTextureFromSurface(renderer, surface);
+                SDL_FreeSurface(surface);
+            }
         }
         if (keystate[SDL_SCANCODE_D])
         {
             dir = Direction::right;
             // cout << "D" << endl;
+            surface = IMG_Load("data/textures/Player/player_right.png");
+            if (surface)
+            {
+                texture_player = SDL_CreateTextureFromSurface(renderer, surface);
+                SDL_FreeSurface(surface);
+            }
+            
         }
         if (keystate[SDL_SCANCODE_W])
         {
             dir = Direction::up;
             // cout << "Z" << endl;
+            surface = IMG_Load("data/textures/Player/player_up.png");
+            if (surface)
+            {
+                texture_player = SDL_CreateTextureFromSurface(renderer, surface);
+                SDL_FreeSurface(surface);
+            }
         }
         if (keystate[SDL_SCANCODE_S])
         {
             dir = Direction::down;
             // cout << "S" << endl;
+            surface = IMG_Load("data/textures/Player/player_down.png");
+            if (surface)
+            {
+                texture_player = SDL_CreateTextureFromSurface(renderer, surface);
+                SDL_FreeSurface(surface);
+            }
         }
 
         while (SDL_PollEvent(&events))
