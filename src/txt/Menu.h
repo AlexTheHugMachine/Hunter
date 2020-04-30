@@ -12,12 +12,12 @@ using namespace std;
 
 class Menu{
 public:
-  unsigned int capacite;
-   unsigned int taille_utilisee;
+  unsigned int capacity;
+   unsigned int size_used;
    ElementTD * ad;
   Menu ();
     ~Menu ();
-    void afficher () const;
+    void display () const;
     void action(unsigned int &m) const;
 };
 

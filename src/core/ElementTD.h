@@ -3,7 +3,7 @@
 
 typedef const  char* ElementTD;
 
-void afficheElementTD(ElementTD e);
+void displayElementTD(ElementTD e);
 /* Preconditions : aucune */
 /* Postconditions : affichage de e sur la sortie standard */
 

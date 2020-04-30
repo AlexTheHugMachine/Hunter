@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ElementTD.h"
 
-void afficheElementTD(ElementTD e) {
+void displayElementTD(ElementTD e) {
   std::cout << e;
 }
