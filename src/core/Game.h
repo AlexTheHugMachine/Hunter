@@ -8,6 +8,12 @@
 #include "Ennemy.h"
 #include <string.h>
 
+
+enum GameState {
+  running,
+  win,
+  lose
+};
 /** @brief The game class stores the information related to the logic of the game
  *  @sa WinTxt
  */
@@ -27,9 +33,9 @@ public:
 
     /** @brief Updates the game state
      *  @param d [in] Direction the player is moving in
-     *  @return true if the player wins (no more ennemies)
+     *  @return GameState
      */
-    bool UpdateGame(Direction d);
+    GameState UpdateGame(Direction d);
 
     /** @brief Access the player class
      *  @return Vec2

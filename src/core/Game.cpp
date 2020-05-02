@@ -53,29 +53,30 @@ Game::~Game()
    // cout << "Game destructor" << endl;
 }
 
-bool Game::UpdateGame(Direction d)
+GameState Game::UpdateGame(Direction d)
 {
     p.move(t, d);
     Vec2 PPos = p.getPos();
 
-    bool over = false;
-    int count = 0;
+    GameState state = GameState::running;
+
+    //int count = 0;
     //cout << "UpdateGame : " << endl;
     for(int i = 0; i < NbE; ++i)
     {
         //cout << i << " : " << E[i].pos.x << " " << E[i].pos.y << endl;
-        if(E[i].getState() != State::dead)
-        {
+    //   if(E[i].getState() != State::dead)
+      //  {
             //cout << i << " : " << E[i].pos.x << " " << E[i].pos.y << endl;
-            count++;
+           // count++;
             E[i].update(t, p);
             Vec2 EPos = E[i].getPos();
 
             if(PPos == EPos)
             {
-                //cout << "Ennemi " << i << " mort" << endl;
-                E[i].setState(State::dead);
-                //if(E[i].getState() == State::dead) cout << "OK" << endl;
+                //E[i].setState(State::dead);
+                state = GameState::lose;
+                break;
             }
             else
             {
@@ -91,12 +92,12 @@ bool Game::UpdateGame(Direction d)
                 delete [] tiles;
             }
             
-        }
+        //}
     }
-    if(count == 0)
-        over = true;
-    
-    return over;
+    if(t.getCase(PPos) == Case::end)
+        state = GameState::win;
+        
+    return state;
    
 }
 

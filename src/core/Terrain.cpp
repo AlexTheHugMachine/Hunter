@@ -146,7 +146,7 @@ bool Terrain::isInTerrain(Vec2 v) const
 
 bool Terrain::isTerrainPath(Vec2 v) const
 {
-    return isInTerrain(v) && getCase(v) == Case::empty;
+    return isInTerrain(v) && ( getCase(v) == Case::empty || getCase(v) == Case::start || getCase(v) == Case::end);
     
 }
 
