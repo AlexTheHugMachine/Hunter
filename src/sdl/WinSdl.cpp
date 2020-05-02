@@ -238,12 +238,14 @@ void WinSdl::run()
         if(state == GameState::win) {
             won = true;
             // TODO : afficher "gagné"
+            SDL_Delay(5000);
             break;
         };
 
         if(state == GameState::lose) {
             lost = true;
             // TODO : afficher "game over"
+            SDL_Delay(5000);
             break;
         }
         delete[] e;
