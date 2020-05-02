@@ -52,6 +52,14 @@ Terrain::Terrain(std::string filename)
                 break;
             case ' ':
                 arr[i] = Case::empty;
+                break;
+            case 'S':
+                arr[i] = Case::start;
+                start = Vec2(i % dimX, i / dimX);
+                break;
+            case 'E':
+                arr[i] = Case::end;
+                break;
             default:
                 break;
             }

@@ -8,7 +8,7 @@ using namespace std;
 Game::Game()
 : t("data/test.txt")
 {
-    p = Player();
+    p = Player(t.start);
     // cout<< "coucou" << endl; 
     // t = Terrain("data/test.txt");
     NbE = NB_E;

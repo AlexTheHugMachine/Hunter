@@ -54,6 +54,10 @@ void txtGame::txtmain()
                     win.print(i, j, '#');
                     //cout << "#";
                 }
+                 else if(t.getCase(Vec2(i, j)) == Case::end)
+                {
+                    win.print(i, j, 'E');
+                }
                 else win.print(i, j, ' '); //cout << " ";
             }
             //cout << "|" << endl;

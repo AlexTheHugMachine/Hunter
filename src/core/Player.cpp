@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Vec2.h"
 
 #include <assert.h>
 #include <iostream>
@@ -7,6 +8,11 @@ using namespace std;
 Player::Player()
 {
     pos = Vec2(0, 0);
+}
+
+Player::Player(Vec2 p)
+{
+    pos = p;
 }
 
 Player::~Player()

@@ -16,6 +16,10 @@ class Player {
          */
         Player();
 
+         /** @brief constructor
+         */
+        Player(Vec2 p);
+        
         /**
          * @brief Destructeur par défaut de la classe player
          */

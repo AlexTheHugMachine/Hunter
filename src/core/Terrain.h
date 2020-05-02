@@ -102,6 +102,7 @@ public:
 
 
 
+    Vec2 start; ///< starting point for the player
 private:
     Case* arr; ///< Array of tiles
     int dimX; ///< width
