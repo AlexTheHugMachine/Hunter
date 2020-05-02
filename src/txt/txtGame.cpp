@@ -24,6 +24,7 @@ void txtGame::txtmain()
     win.clear(' ');
     bool stop = false;
     bool won = false;
+        t = g.getTerrain();
     while(!stop  && !won)
     {
         p = g.getPlayerPos();
@@ -31,7 +32,6 @@ void txtGame::txtmain()
         //cout << "main : " << endl;
 
        // for(int i = 0; i < nbE)
-        t = g.getTerrain();
         
         win.clear();
         for(int j = 0; j < t.getDimY(); ++j)
@@ -52,14 +52,14 @@ void txtGame::txtmain()
                 else if(t.getCase(Vec2(i, j)) == Case::wall)
                 {
                     win.print(i, j, '#');
-                    cout << "#";
+                    //cout << "#";
                 }
                 else win.print(i, j, ' '); //cout << " ";
             }
             //cout << "|" << endl;
         }
         win.draw();
-        usleep(100000);
+        usleep(200000);
         //cin>>c;
         c = win.getCh();
         switch(c)
@@ -96,6 +96,6 @@ void txtGame::txtmain()
         cout << "You win!!!" << endl;
         win.pause();
     }
-    termClear();
+    //termClear();
     
 }

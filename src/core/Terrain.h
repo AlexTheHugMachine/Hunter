@@ -27,6 +27,8 @@ public:
      */
     ~Terrain();
 
+    Terrain operator=(const Terrain& rhs);
+
     /** DimX accessor
      * @return DimY
      */
