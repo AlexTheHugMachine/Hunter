@@ -122,7 +122,7 @@ void WinSdl::run()
 
 
     // Boucle : tant qu'on ferme pas la fenêtre
-    while (!over && !won)
+    while (!over)
     {
         dir = Direction::none;
         frameStart = SDL_GetTicks();
