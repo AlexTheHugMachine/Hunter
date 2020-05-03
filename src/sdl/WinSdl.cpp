@@ -1,6 +1,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "WinSdl.h"
+#include "menu_sdl.h"
+#include "loser.h"
+#include "winer.h"
 
 #include <iostream>
 
@@ -211,6 +214,7 @@ void WinSdl::run()
             }
         }
 
+        
         while (SDL_PollEvent(&events))
         {
             switch (events.type)
@@ -262,14 +266,14 @@ void WinSdl::run()
         GameState state = g.UpdateGame(dir);
         if(state == GameState::win) {
             won = true;
-            // TODO : afficher "gagné"
+            winer winer;
             SDL_Delay(5000);
             break;
         };
 
         if(state == GameState::lose) {
             lost = true;
-            // TODO : afficher "game over"
+            loser loser;
             SDL_Delay(5000);
             break;
         }

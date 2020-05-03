@@ -204,7 +204,6 @@ menu_sdl::menu_sdl() {
                   game.run();
                   TTF_Quit();
                   SDL_Quit();
-
                 }
                 if (event.button.x>=position_Options.x &&
                     event.button.x<=position_Options.x+180 &&
