@@ -21,6 +21,7 @@ void WinSdl::run()
     Terrain t = g.getTerrain();
     Direction dir = Direction::none;
     bool won = false;
+    bool lost = false;
 
     const int TOTAL_WIDTH = t.getDimX();
     const int TOTAL_HEIGHT = t.getDimY();
@@ -35,7 +36,7 @@ void WinSdl::run()
     SDL_Event events;
     bool over = false;
     SDL_Renderer *renderer;
-    SDL_Texture *texture_empty, *texture_wall, *texture_player, *texture_ennemy;
+    SDL_Texture *texture_empty, *texture_wall, *texture_player, *texture_ennemy, *texture_start, *texture_end;
     SDL_Rect rect;
     SDL_Surface *surface;
 
@@ -105,9 +106,23 @@ void WinSdl::run()
         SDL_FreeSurface(surface);
     }
 
+    surface = IMG_Load("data/textures/portal.png");
+    if (surface)
+    {
+        texture_start = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+    }
+
+    surface = IMG_Load("data/textures/portal1.png");
+    if (surface)
+    {
+        texture_end = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+    }
+
 
     // Boucle : tant qu'on ferme pas la fenêtre
-    while (!over && !won)
+    while (!over)
     {
         dir = Direction::none;
         frameStart = SDL_GetTicks();
@@ -128,6 +143,13 @@ void WinSdl::run()
                     SDL_RenderCopy(renderer, texture_wall, nullptr, &rect);
                 else
                     SDL_RenderCopy(renderer, texture_empty, nullptr, &rect);
+
+                if(t.getCase(Vec2(i, j)) == Case::start)
+                    SDL_RenderCopy(renderer, texture_start, nullptr, &rect);
+
+                if(t.getCase(Vec2(i, j)) == Case::end)
+                    SDL_RenderCopy(renderer, texture_end, nullptr, &rect);
+                
                 if (Vec2(i, j) == p)
                     SDL_RenderCopy(renderer, texture_player, nullptr, &rect);
                 else if(Vec2(i, j).isInTab(e, nbE))
@@ -236,8 +258,21 @@ void WinSdl::run()
                 //     }
             }
         }
-        g.UpdateGame(dir);
-        won = false;
+        
+        GameState state = g.UpdateGame(dir);
+        if(state == GameState::win) {
+            won = true;
+            // TODO : afficher "gagné"
+            SDL_Delay(5000);
+            break;
+        };
+
+        if(state == GameState::lose) {
+            lost = true;
+            // TODO : afficher "game over"
+            SDL_Delay(5000);
+            break;
+        }
         delete[] e;
 
         frameTime = SDL_GetTicks() - frameStart;
