@@ -10,7 +10,8 @@ Rakotomalala    |   Lucas   |   p1803588
 Referent teacher : Elodie Desseree
 
 ## Presentation
-This project is part of the Lifap4 course and is a rogue-like assasination game, we have oly one level but this one is hard, so try it !
+This project is part of the Lifap4 course and is a rogue-like assasination game, where you need to go from a starting point
+to a finish point, without beeing killed by the zombies. The game hhave only one level but this one is hard, so try it !
 
 ## Utilisation
 You can run the game by only use the command "make" in a terminal in the project's root folder
@@ -47,4 +48,8 @@ You can run the game by only use the command "make" in a terminal in the project
 - **data** : contains all non-code data used by the project
     - **texture** : contains the textures of the game
         - **Ennemies** : contains the textures of the ennemies
+        - **menu** : contains the textures for the menus
+        - **planks** : contains the textures for the ground
         - **Player** : contains the player's texture
+        - **portal** : contains the starting line's and the finish line's textures
+        - **wall** : contains the wall's textures

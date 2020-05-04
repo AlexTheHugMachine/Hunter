@@ -77,7 +77,7 @@ rules_sdl::rules_sdl() {
   }
 
 //background
-  img_background_charge_rules = SDL_LoadBMP("data/hunter.bmp");
+  img_background_charge_rules = SDL_LoadBMP("data/textures/menu/hunter.bmp");
   if (img_background_charge_rules == NULL)
   {
       printf("Unable to load 'hunter.bmp' : %s\n",SDL_GetError());
@@ -95,7 +95,7 @@ rules_sdl::rules_sdl() {
   position_backgound.y = 0;
 
 //image keyboard
-  img_keyboard = SDL_LoadBMP("data/keyboard.bmp");
+  img_keyboard = SDL_LoadBMP("data/textures/menu/keyboard.bmp");
   if (img_keyboard == NULL)
   {
     printf("Unable to load 'keyboard.bmp' : %s\n",SDL_GetError());
@@ -111,7 +111,7 @@ rules_sdl::rules_sdl() {
 
 
   //image left
-  img_left = SDL_LoadBMP("data/fleche_gauche.bmp");
+  img_left = SDL_LoadBMP("data/textures/menu/fleche_gauche.bmp");
   if (img_keyboard == NULL)
   {
       printf("Unable to load 'fleche_gauche.bmp' : %s\n",SDL_GetError());

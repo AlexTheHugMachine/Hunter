@@ -65,7 +65,7 @@ menu_sdl::menu_sdl() {
   }
 
   //background
-  img_background_charge = SDL_LoadBMP("data/hunter.bmp");
+  img_background_charge = SDL_LoadBMP("data/textures/menu/hunter.bmp");
   if (img_background_charge == NULL)
   {
     // Affichage d'un message d'erreur et utilisation de SDL_GetError()

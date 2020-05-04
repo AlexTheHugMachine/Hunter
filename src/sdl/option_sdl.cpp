@@ -81,7 +81,7 @@ option_sdl::option_sdl() {
   }
 
 //background
-  img_background_charge_option = SDL_LoadBMP("data/hunter.bmp");
+  img_background_charge_option = SDL_LoadBMP("data/textures/menu/hunter.bmp");
   if (img_background_charge_option == NULL)
   {
     printf("Unable to load'hunter.bmp' : %s\n",SDL_GetError());
@@ -102,7 +102,7 @@ option_sdl::option_sdl() {
 
 
 //image left
-  img_left_option = SDL_LoadBMP("data/fleche_gauche.bmp");
+  img_left_option = SDL_LoadBMP("data/textures/menu/fleche_gauche.bmp");
   if (img_left_option == NULL)
   {
     printf("Unable to load 'fleche_gauche.bmp' : %s\n",SDL_GetError());

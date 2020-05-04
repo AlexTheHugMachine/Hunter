@@ -81,7 +81,7 @@ void WinSdl::run()
     rect.y = 0;
 
 
-    surface = IMG_Load("data/textures/wood_planks_small.jpg");
+    surface = IMG_Load("data/textures/planks/wood_planks_small.jpg");
     if (surface)
     {
         texture_empty = SDL_CreateTextureFromSurface(renderer, surface);
@@ -95,7 +95,7 @@ void WinSdl::run()
         SDL_FreeSurface(surface);
     }
 
-    surface = IMG_Load("data/textures/wall_top1.jpg");
+    surface = IMG_Load("data/textures/wall/wall_top1.jpg");
     if (surface)
     {
         texture_wall = SDL_CreateTextureFromSurface(renderer, surface);
@@ -109,14 +109,14 @@ void WinSdl::run()
         SDL_FreeSurface(surface);
     }
 
-    surface = IMG_Load("data/textures/portal.png");
+    surface = IMG_Load("data/textures/portal/portal.png");
     if (surface)
     {
         texture_start = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_FreeSurface(surface);
     }
 
-    surface = IMG_Load("data/textures/portal1.png");
+    surface = IMG_Load("data/textures/portal/portal1.png");
     if (surface)
     {
         texture_end = SDL_CreateTextureFromSurface(renderer, surface);
