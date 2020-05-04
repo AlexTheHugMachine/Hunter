@@ -7,6 +7,9 @@
 class txtGame
 {
 public:
+    /**
+     * @brief Procédure permettant de créer la logique du jeu en l'adaptant au format txt dans un terminal
+     */
     void txtmain ();
 };
 
