@@ -14,7 +14,14 @@
 class winer
 {
     public:
+        /**
+         * @brief Constructeur par défaut de la classe winer
+         * @return Renvoie une fenêtre affichant le texte "YOU WIN ! CONGRATULATION" lorsque le joueur gagne
+         */
         winer();
+        /**
+         * @brief Destructeur par défaut de la classe winer
+         */
         ~winer();
     private:
         SDL_Window* pWindow;

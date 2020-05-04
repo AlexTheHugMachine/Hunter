@@ -7,5 +7,8 @@ private:
 
 public:
 
+    /**
+     * @brief Procédure lançant l'affichage du jeu en version graphique
+     */
     void run();
 };

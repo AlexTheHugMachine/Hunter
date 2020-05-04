@@ -14,7 +14,14 @@
 class loser
 {
     public:
+        /**
+         * @brief Constructeur par défaut de la classe loser
+         * @return Renvoie l'affichage d'une fenêtre avec un texte "YOU LOSE" si le joueur perd
+         **/
         loser();
+        /**
+         * @brief Destructeur par défaut de la classe loser
+         */
         ~loser();
     private:
         SDL_Window* pWindow;

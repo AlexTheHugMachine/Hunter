@@ -13,7 +13,14 @@
 
 class menu_sdl {
     public :
+        /**
+         * @brief Constructeur par défaut de la classe menu_sdl
+         * @return Renvoie une fenêtre permettant de séléctionner ce que l'utilisateur veut faire
+         */
         menu_sdl();
+        /**
+         * @brief Destructeur par défaut de la classe menu_sdl
+         */
         ~menu_sdl();
   private:
     SDL_Window* pWindow;

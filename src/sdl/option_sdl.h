@@ -12,7 +12,14 @@
 
 class option_sdl {
     public :
+        /**
+         * @brief Constructeur par défaut de la classe option_sdl
+         * @return Renvoie une fenêtre avec les options
+         */
         option_sdl();
+        /**
+         * @brief Destructeur par défaut de la classe option_sdl
+         */
         ~option_sdl();
   private:
     SDL_Window* pWindow_option;

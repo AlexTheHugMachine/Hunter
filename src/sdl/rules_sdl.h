@@ -12,7 +12,14 @@
 
 class rules_sdl {
     public :
+        /**
+         * @brief Constructeur par défaut de la classe rules_sdl
+         * @return Renvoie une fenêtre avec les règles du jeu
+         */
         rules_sdl();
+        /**
+         * @brief Destructeur par défaut de la classe rules_sdl
+         */
         ~rules_sdl();
   private:
     SDL_Window* pWindow_rules;
