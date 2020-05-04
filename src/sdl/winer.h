@@ -11,6 +11,9 @@
 #include <iostream>
 #include <string.h>
 
+/**
+ * @brief Classe permettant d'afficher une fenetre avec un texte prédéfini lorsque le joueur gagne
+ */
 class winer
 {
     public:

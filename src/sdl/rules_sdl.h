@@ -10,6 +10,9 @@
 #include <iostream>
 #include <string.h>
 
+/**
+ * @brief Classe permettant d'afficher une nouvelle fenêtre avec les règles du jeu
+ */
 class rules_sdl {
     public :
         /**

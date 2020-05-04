@@ -4,6 +4,9 @@
 #include "Game.h"
 #include "WinTxt.h"
 
+/**
+ * @brief Classe permettant de créer la logique du jeu en l'adaptant au format txt dans un terminal
+ */
 class txtGame
 {
 public:

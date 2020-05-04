@@ -11,6 +11,9 @@
 #include <iostream>
 #include <string.h>
 
+/**
+ * @brief classe permettant d'afficher le menu dans la version sdl
+ */
 class menu_sdl {
     public :
         /**

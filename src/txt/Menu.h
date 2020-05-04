@@ -10,6 +10,9 @@
 
 using namespace std;
 
+/**
+ * @brief Classe permettant de créer un menu en version txt
+ */
 class Menu{
 public:
   unsigned int capacity;

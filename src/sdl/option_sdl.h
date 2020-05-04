@@ -10,6 +10,9 @@
 #include <iostream>
 #include <string.h>
 
+/**
+ * @brief Classe permettant d'afficher une nouvelle fenêtre avec les options du jeu
+ */
 class option_sdl {
     public :
         /**
